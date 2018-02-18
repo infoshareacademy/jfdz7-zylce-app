@@ -3,8 +3,9 @@ export default [
         id: 0,
         title: 'All Day Event very long title',
         allDay: true,
-        start: new Date(2018, 3, 0),
-        end: new Date(2018, 3, 1),
+        category: 'music',
+        start: new Date(2018, 2, 0),
+        end: new Date(2018, 2, 1),
     },
     {
         id: 1,
