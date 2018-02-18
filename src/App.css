@@ -1,0 +1,8 @@
+.rbc-calendar {
+    margin: 0 auto;
+    width: 80%;
+}
+
+.rbc-calendar .rbc-month-view {
+    height: 600px;
+}

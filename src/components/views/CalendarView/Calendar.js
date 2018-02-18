@@ -5,13 +5,14 @@ import 'moment/locale/nb';
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import events from './dataForTest/events'
 
-BigCalendar.momentLocalizer(moment);
+BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment));
 
 class Calendar extends React.Component {
     constructor() {
         super();
         this.state = {
             events: [],
+
         };
     }
 
@@ -20,7 +21,6 @@ class Calendar extends React.Component {
             <React.Fragment>
                 <h1>kalendarz</h1>
                 <BigCalendar
-                    defaultDate={new Date(2015, 3, 1)}
                     events={events}
                 />
             </React.Fragment>

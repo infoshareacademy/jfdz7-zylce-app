@@ -6,7 +6,7 @@ class CalendarView extends Component {
         return (
             <React.Fragment>
                 <p>test test</p>
-                <Calendar />
+                <Calendar id="calendar"/>
             </React.Fragment>
         )
     }
