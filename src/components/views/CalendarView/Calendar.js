@@ -1,10 +1,12 @@
 import React from 'react'
 import BigCalendar from 'react-big-calendar'
 import moment from 'moment'
-import 'moment/locale/nb';
+import 'moment/locale/pl'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
+
 import events from './dataForTest/events'
 
+moment.locale('pl');
 BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment));
 
 class Calendar extends React.Component {
@@ -20,25 +22,21 @@ class Calendar extends React.Component {
             date: 'Data',
             time: 'Czas',
             event: 'Wydarzenie'},
-        culture: 'en',
         events: events,
-        views: ['month', 'week', 'day']
-    }
-
+        views: ['month', 'week', 'day'],
+    };
 
     render() {
+
         return (
             <React.Fragment>
                 <h1>kalendarz</h1>
-                <div class="calendar">
+                <div className="calendar">
                 <BigCalendar
                     messages={this.state.messages}
-                    culture={this.state.culture}
                     events={this.state.events}
                     views={this.state.views}
                     view={this.state.view}
-                    formats={{timeGutterFormat: 'h A', dayFormat:'ddd D'}}
-                    step={15}
                 />
                 </div>
             </React.Fragment>
