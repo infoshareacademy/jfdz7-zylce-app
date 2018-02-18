@@ -21,6 +21,7 @@ class Calendar extends React.Component {
             <React.Fragment>
                 <h1>kalendarz</h1>
                 <BigCalendar
+                    culture='pl'
                     events={events}
                 />
             </React.Fragment>
