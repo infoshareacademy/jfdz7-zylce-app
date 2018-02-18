@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { Route } from 'react-router-dom'
+
 import './App.css';
+import Header from './components/views/Header'
+import CalendarView from './components/views/CalendarView'
+import UserView from './components/views/UserView'
+import AdminView from './components/views/AdminView'
+import Footer from './components/views/Foooter'
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <React.Fragment>
+        <Route path="/" component={Header} />
+        <Route exact path="/" component={CalendarView} />
+        <Route path="/" component={UserView} />
+        <Route path="/" component={AdminView} />
+        <Route path="/" component={Footer} />
+      </React.Fragment>
     );
   }
 }
