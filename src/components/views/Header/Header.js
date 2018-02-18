@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-class CalendarView extends Component {
+class Header extends Component {
     render() {
         return (
             <React.Fragment>
-                <p>test test</p>
+                <p>Header</p>
             </React.Fragment>
         )
     }
 }
 
-export default CalendarView
+export default Header

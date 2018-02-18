@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-class CalendarView extends Component {
+class UserView extends Component {
     render() {
         return (
             <React.Fragment>
-                <p>test test</p>
+                <p>test User</p>
             </React.Fragment>
         )
     }
 }
 
-export default CalendarView
+export default UserView
