@@ -26,6 +26,7 @@ class Calendar extends React.Component {
         views: ['month', 'week', 'day'],
     };
 
+
     render() {
 
         return (
@@ -33,12 +34,15 @@ class Calendar extends React.Component {
                 <h1>kalendarz</h1>
                 <div className="calendar">
                 <BigCalendar
-
                     messages={this.state.messages}
                     eventPropGetter={event => ({className: `category-${event.category}`})}
                     events={this.state.events}
                     views={this.state.views}
                     view={this.state.view}
+                    selectable = {true}
+                    showMultiDayTimes
+                    popup
+                    timeslots={4}
                 />
                 </div>
             </React.Fragment>
