@@ -6,3 +6,15 @@
 .calendar .rbc-calendar .rbc-month-view {
     height: 600px;
 }
+
+.calendar .rbc-calendar .category-cinema {
+    background-color: #FF0080;
+}
+
+.calendar .rbc-calendar .category-concert {
+    background-color: #00C0B0;
+}
+
+.calendar .rbc-calendar .category-theatre {
+    background-color: #4f2f4c;
+}

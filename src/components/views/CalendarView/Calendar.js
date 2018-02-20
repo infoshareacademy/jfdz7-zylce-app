@@ -33,7 +33,9 @@ class Calendar extends React.Component {
                 <h1>kalendarz</h1>
                 <div className="calendar">
                 <BigCalendar
+
                     messages={this.state.messages}
+                    eventPropGetter={event => ({className: `category-${event.category}`})}
                     events={this.state.events}
                     views={this.state.views}
                     view={this.state.view}
