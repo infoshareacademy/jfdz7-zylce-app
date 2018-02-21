@@ -39,7 +39,12 @@ class Calendar extends React.Component {
     };
 
     render() {
-
+        const min = new Date();
+        min.setHours(8);
+        min.setMinutes(0, 0, 0);
+        const max = new Date();
+        max.setHours(23);
+        max.setMinutes(57, 0, 0);
         return (
             <React.Fragment>
                 <h1>kalendarz</h1>
@@ -51,11 +56,12 @@ class Calendar extends React.Component {
                     views={this.state.views}
                     view={this.state.view}
                     selectable = {true}
-                    showMultiDayTimes
                     popup
-                    timeslots={4}
+
                     defaultDate={new Date()}
                     formats={formats}
+                    min={min}
+                    max={max}
                 />
                 </div>
             </React.Fragment>
