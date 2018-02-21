@@ -57,7 +57,8 @@ class Calendar extends React.Component {
                     view={this.state.view}
                     selectable = {true}
                     popup
-
+                    timeslots={4}
+                    step={15}
                     defaultDate={new Date()}
                     formats={formats}
                     min={min}
