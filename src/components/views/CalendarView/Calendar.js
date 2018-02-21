@@ -24,6 +24,7 @@ class Calendar extends React.Component {
             event: 'Wydarzenie'},
         events: events,
         views: ['month', 'week', 'day'],
+
     };
 
 
@@ -35,7 +36,7 @@ class Calendar extends React.Component {
                 <div className="calendar">
                 <BigCalendar
                     messages={this.state.messages}
-                    eventPropGetter={event => ({className: `category-${event.category}`})}
+                    eventPropGetter={event => ({className: `category-${event.category} event-${event.id}`})}
                     events={this.state.events}
                     views={this.state.views}
                     view={this.state.view}
@@ -43,6 +44,7 @@ class Calendar extends React.Component {
                     showMultiDayTimes
                     popup
                     timeslots={4}
+                    defaultDate={new Date()}
                 />
                 </div>
             </React.Fragment>
