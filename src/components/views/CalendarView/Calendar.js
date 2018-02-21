@@ -9,17 +9,6 @@ import events from './dataForTest/events'
 moment.locale('pl');
 BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment));
 
-let formats = {
-    dayFormat: (date, culture, localizer) =>
-        localizer.format(date, 'dd, DoMM', culture),
-
-    dayRangeHeaderFormat: ({start, end}, culture, localizer) =>
-        localizer.format(start, 'DoMM', culture) + ' - ' + localizer.format(end, 'DoMM', culture),
-
-    dayHeaderFormat: (date, culture, localizer) =>
-        localizer.format(date, 'dddd, DD MMMM', culture)
-};
-
 class Calendar extends React.Component {
     state = {
         messages: {
@@ -38,6 +27,7 @@ class Calendar extends React.Component {
 
     };
 
+
     render() {
 
         return (
@@ -55,7 +45,6 @@ class Calendar extends React.Component {
                     popup
                     timeslots={4}
                     defaultDate={new Date()}
-                    formats={formats}
                 />
                 </div>
             </React.Fragment>
