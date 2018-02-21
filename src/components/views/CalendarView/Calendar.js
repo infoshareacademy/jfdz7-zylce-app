@@ -17,7 +17,9 @@ let formats = {
         localizer.format(start, 'DoMM', culture) + ' - ' + localizer.format(end, 'DoMM', culture),
 
     dayHeaderFormat: (date, culture, localizer) =>
-        localizer.format(date, 'dddd, DD MMMM', culture)
+        localizer.format(date, 'dddd, DD MMMM', culture),
+
+
 };
 
 class Calendar extends React.Component {
@@ -61,6 +63,7 @@ class Calendar extends React.Component {
                     step={15}
                     defaultDate={new Date()}
                     formats={formats}
+                    showMultiDayTimes = {true}
                     min={min}
                     max={max}
                 />
