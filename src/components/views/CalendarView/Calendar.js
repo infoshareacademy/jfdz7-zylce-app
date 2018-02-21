@@ -4,8 +4,6 @@ import moment from 'moment'
 import 'moment/locale/pl'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 
-import events from './dataForTest/events'
-
 moment.locale('pl');
 BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment));
 
@@ -35,9 +33,16 @@ class Calendar extends React.Component {
             date: 'Data',
             time: 'Czas',
             event: 'Wydarzenie'},
-        events: events,
         views: ['month', 'week', 'day'],
 
+    };
+
+    slotSelected = () => {
+        console.log('slot select')
+    };
+
+    eventSelected = (event) => {
+        console.log('event select', event.title)
     };
 
     render() {
@@ -49,12 +54,11 @@ class Calendar extends React.Component {
         max.setMinutes(57, 0, 0);
         return (
             <React.Fragment>
-                <h1>kalendarz</h1>
                 <div className="calendar">
                 <BigCalendar
                     messages={this.state.messages}
                     eventPropGetter={event => ({className: `category-${event.category} event-${event.id}`})}
-                    events={this.state.events}
+                    events={this.props.events}
                     views={this.state.views}
                     view={this.state.view}
                     selectable = {true}
@@ -66,6 +70,8 @@ class Calendar extends React.Component {
                     showMultiDayTimes = {true}
                     min={min}
                     max={max}
+                    onSelectSlot={this.slotSelected}
+                    onSelectEvent={this.eventSelected}
                 />
                 </div>
             </React.Fragment>
