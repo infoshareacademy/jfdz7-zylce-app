@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../../App.css';
 
 class FilterEvents extends React.Component {
 
@@ -9,9 +10,23 @@ class FilterEvents extends React.Component {
         return uniqueCategories
     };
 
-    renderOptionsWithCategoriesForFilter = () => {
+    renderButtonsWithCategory = () => {
         let eventsCategories = this.getUniqueEventsCategories();
-        return eventsCategories.map((category, idx) => <option key={idx} name={category}>{category}</option>)
+        return eventsCategories.map((category, index) => <button key={index} value={category} onClick={this.handleOnClickBtn}>{category}</button>)
+    };
+
+    handleOnClickBtn = event => {
+        event.preventDefault();
+        this.props.deliveredCategory(event.target.value);
+        this.showAllEventsBtn();
+    };
+
+    showAllEventsBtn = () => document.getElementById('show-all-events-btn').classList.remove('hidden');
+
+    handleClickOnShowAllEventsBtn = event => {
+        event.preventDefault();
+        this.props.clearFilter();
+        event.target.classList.add('hidden');
     };
 
     render() {
@@ -19,13 +34,10 @@ class FilterEvents extends React.Component {
             <React.Fragment>
             <h1>FilterEvents</h1>
                 <div className="events-filter">
-                    <select
-                        name="events-category-filter"
-                        onChange={({ target: { value }}) => {this.props.deliveredCategory(value)}}
-                    >
-                        {this.renderOptionsWithCategoriesForFilter()}
-                    </select>
-
+                    <span >
+                    {this.renderButtonsWithCategory()}
+                    <button id="show-all-events-btn" className="show-all-events-btn hidden" onClick={this.handleClickOnShowAllEventsBtn}>wyczyść filtr</button>
+                    </span>
                 </div>
             </React.Fragment>
         )

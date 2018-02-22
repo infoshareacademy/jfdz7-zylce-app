@@ -16,8 +16,6 @@ let formats = {
 
     dayHeaderFormat: (date, culture, localizer) =>
         localizer.format(date, 'dddd, DD MMMM', culture),
-
-
 };
 
 class Calendar extends React.Component {
