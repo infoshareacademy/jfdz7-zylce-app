@@ -10,9 +10,11 @@ class UserView extends Component {
         return (
             <React.Fragment>
                 <div className="user-view-panel">
-                <h3 className="my-events-list-title">Moje wyarzenia</h3>
-                <UserEventLists/>
+                    <h3 className="my-events-list-title">Moje wyarzenia</h3>
+                    <UserEventLists/>
+                    <h3 className="my-events-list-title">Tu będzie kalendarz</h3>
                 </div>
+
             </React.Fragment>
         )
     }

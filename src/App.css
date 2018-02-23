@@ -1,6 +1,11 @@
 .my-events-list{
     text-align: center ;
 }
+.event-list{
+    list-style: none;
+    padding: 10px;
+
+}
 
 .my-events-btn{
     margin-right: 5px;
@@ -15,5 +20,22 @@
     height: 100vh;
     border: 1px solid grey;
     box-shadow: 5px 0 15px grey;
+}
 
+.panel-hidden{
+    display: none
+}
+
+/*My Event Filter styles*/
+.filter-movie{
+    background-color: cornflowerblue;
+    border-radius: 5px;
+}
+.filter-concert{
+    background-color: hotpink;
+    border-radius: 5px;
+}
+.filter-sport{
+    background-color: yellow;
+    border-radius: 5px;
 }
