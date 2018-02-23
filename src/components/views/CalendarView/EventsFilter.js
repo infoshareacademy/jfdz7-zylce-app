@@ -8,9 +8,22 @@ class FilterEvents extends React.Component {
             .filter((value, index, categoriesArray) => categoriesArray.indexOf(value) === index)
     };
 
+    translateCategoryName = (categoryName) => {
+        switch(categoryName) {
+            case 'cinema':
+                return 'kino';
+            case 'theatre':
+                return 'teatr';
+            case 'concert':
+                return 'koncert';
+            default:
+                return categoryName
+        }
+    };
+
     renderButtonsWithCategory = () => {
         let eventsCategories = this.state.eventsCategories;
-        return eventsCategories.map((category, index) => <button key={index} className={`category-${category} filter-btn`} value={category} onClick={this.handleOnClickBtn}>{category}</button>)
+        return eventsCategories.map((category, index) => <button key={index} className={`category-${category} filter-btn`} value={category} onClick={this.handleOnClickBtn}>{this.translateCategoryName(category)}</button>)
     };
 
     clearActiveClassFromFilterButtons = () => {
