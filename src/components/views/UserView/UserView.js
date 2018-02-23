@@ -1,4 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+
+
+import UserEventLists from './UserEventsList'
 
 class UserView extends Component {
 
@@ -6,14 +9,10 @@ class UserView extends Component {
     render() {
         return (
             <React.Fragment>
-                <strong>Moje wyarzenia</strong>
-                <ul>
-                    <li>Moje wydarzenie</li>
-                    <li>Moje wydarzenie</li>
-                    <li>Moje wydarzenie</li>
-                    <li>Moje wydarzenie</li>
-                </ul>
-
+                <div className="user-view-panel">
+                <h3 className="my-events-list-title">Moje wyarzenia</h3>
+                <UserEventLists/>
+                </div>
             </React.Fragment>
         )
     }

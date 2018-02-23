@@ -1,0 +1,19 @@
+.my-events-list{
+    text-align: center ;
+}
+
+.my-events-btn{
+    margin-right: 5px;
+}
+
+.my-events-list-title{
+    text-align: center;
+}
+.user-view-panel{
+    background-color: lightgray;
+    width: 30%;
+    height: 100vh;
+    border: 1px solid grey;
+    box-shadow: 5px 0 15px grey;
+
+}
