@@ -5,16 +5,16 @@ import EventsFilter from "./EventsFilter";
 
 class CalendarView extends Component {
     state = {
+        allEvents: events,
         events: events,
     };
 
     filterEvents = category => event => event.category === category;
 
     showFilteredEvents = (value) => {
-        console.log(this.state.events.filter(this.filterEvents(value)));
         this.setState({
-            events: this.state.events.filter(this.filterEvents(value))
-        })
+            events: this.state.allEvents.filter(this.filterEvents(value)),
+        });
     };
 
     showAllEvents = () => {

@@ -2,31 +2,38 @@ import React from 'react';
 import '../../../App.css';
 
 class FilterEvents extends React.Component {
-
-    getUniqueEventsCategories = () => {
-        let uniqueCategories = this.props.events
+    state = {
+        eventsCategories: this.props.events
             .map(event => event.category.toLowerCase())
-            .filter((value, index, categoriesArray) => categoriesArray.indexOf(value) === index);
-        return uniqueCategories
+            .filter((value, index, categoriesArray) => categoriesArray.indexOf(value) === index)
     };
 
     renderButtonsWithCategory = () => {
-        let eventsCategories = this.getUniqueEventsCategories();
-        return eventsCategories.map((category, index) => <button key={index} value={category} onClick={this.handleOnClickBtn}>{category}</button>)
+        let eventsCategories = this.state.eventsCategories;
+        return eventsCategories.map((category, index) => <button key={index} className={`category-${category} filter-btn`} value={category} onClick={this.handleOnClickBtn}>{category}</button>)
     };
 
-    handleOnClickBtn = event => {
+    clearActiveClassFromFilterButtons = () => {
+        let buttons = document.getElementsByClassName('filter-btn');
+        for (let i=0; i<buttons.length; i++) {
+            buttons[i].classList.remove('active') ;
+        }
+    };
+
+    handleOnClickBtn = (event) => {
         event.preventDefault();
+        this.clearActiveClassFromFilterButtons();
+        event.target.classList.add('active');
         this.props.deliveredCategory(event.target.value);
-        this.showAllEventsBtn();
+        document.getElementById('show-all-events-btn').classList.remove('hidden');
+        this.renderButtonsWithCategory()
     };
 
-    showAllEventsBtn = () => document.getElementById('show-all-events-btn').classList.remove('hidden');
-
-    handleClickOnShowAllEventsBtn = event => {
+    handleShowAllClick = (event) => {
         event.preventDefault();
+        this.clearActiveClassFromFilterButtons();
         this.props.clearFilter();
-        event.target.classList.add('hidden');
+        document.getElementById('show-all-events-btn').classList.add('hidden');
     };
 
     render() {
@@ -34,10 +41,13 @@ class FilterEvents extends React.Component {
             <React.Fragment>
             <h1>FilterEvents</h1>
                 <div className="events-filter">
-                    <span >
+                    <div className="filter-message">
+                        Filtruj wydarzenia
+                    </div>
+                    <div id="filter-buttons" className="filter-buttons">
                     {this.renderButtonsWithCategory()}
-                    <button id="show-all-events-btn" className="show-all-events-btn hidden" onClick={this.handleClickOnShowAllEventsBtn}>wyczyść filtr</button>
-                    </span>
+                    <button id="show-all-events-btn" className="show-all-events-btn hidden" onClick={this.handleShowAllClick}>wyczyść filtr</button>
+                    </div>
                 </div>
             </React.Fragment>
         )
