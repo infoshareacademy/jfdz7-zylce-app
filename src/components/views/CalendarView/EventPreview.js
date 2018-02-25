@@ -16,6 +16,8 @@ class EventPreview extends React.Component {
         document.getElementById('event-preview-date').innerText = '';
     };
 
+    //TODO: Tablica z wydarzeniami użytkownika (po kliknięciu zapisz wydarzenie) i ostylować close z popupu
+
     render() {
         return (
             <React.Fragment>
@@ -24,7 +26,10 @@ class EventPreview extends React.Component {
                         <div id="event-preview-title" className="event-preview-title"></div>
                         <div id="event-preview-date" className="event-preview-date"></div>
                         <div id="event-preview-user-actions" className="event-preview-user-actions"></div>
-                        <div id="event-preview-btns" className="event-preview-btns"><button>Zapisz wydarzenie</button><button onClick={this.hidePopup}>Wróc do kalendarza wydarzeń</button></div>
+                        <div id="event-preview-btns" className="event-preview-btns">
+                            <button>Zapisz wydarzenie</button>
+                            <button onClick={this.hidePopup}>Wróc do kalendarza wydarzeń</button>
+                        </div>
                         <a id="close-event-preview" className="close-event-preview" onClick={this.hidePopup} href=''>x</a>
                     </div>
                 </div>
