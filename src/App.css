@@ -82,7 +82,7 @@
 
 .calendar .event-preview-inner {
     max-width: 500px;
-    min-height: 250px;
+    min-height: 200px;
     width: 90%;
     position: absolute;
     top: 50%;
@@ -142,14 +142,17 @@
 }
 
 
-.close-event-preview-btn {
+.event-preview-btns {
     width: 100%;
+    display: flex;
+    justify-content: space-around;
     position: fixed;
     bottom: 5px;
     text-align: center;
 }
 
-.close-event-preview-btn button {
+.event-preview-btns button {
+    width: 220px;
     background-color: #888888;
     padding: 10px 20px;
     margin: 0 auto;
@@ -165,6 +168,30 @@
 
 }
 
-.close-event-preview-btn button:hover {
+.event-preview-btns button:hover {
         background-color: #666666;
+}
+
+.save-event-btn {
+    width: 100%;
+    position: fixed;
+    text-align: center;
+    box-shadow: 2px 2px 4px #b8b8b8,
+                -2px 2px 4px #b8b8b8,
+                -2px -2px 4px #b8b8b8;
+}
+
+.save-event-btn button {
+    background-color: #888888;
+    padding: 10px 20px;
+    margin-top: 10px;
+    color: #fff;
+    cursor: pointer;
+    font-family: sans-serif;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border: 1px solid #888888;
+    border-radius: 5px;
+    opacity: 0.65;
+    outline: none;
 }

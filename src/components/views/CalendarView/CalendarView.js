@@ -3,6 +3,7 @@ import Calendar from './Calendar'
 import events from "./dataForTest/events";
 import EventsFilter from "./EventsFilter";
 
+
 class CalendarView extends Component {
     state = {
         allEvents: events,
