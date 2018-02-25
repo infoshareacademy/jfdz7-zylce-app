@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Calendar from './Calendar'
-import events from "./dataForTest/events";
+import events from "../../../data/events";
 import EventsFilter from "./EventsFilter";
 
 
