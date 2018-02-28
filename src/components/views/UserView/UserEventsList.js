@@ -1,36 +1,36 @@
 import React, { Component } from 'react';
 
-import TestData from './TestData'
-import NewTestData from './TestData'
+import InitialUserEvents from './userEventsData/userEvents';
+import UserEvents from './userEventsData/userEvents'
 
 class UserEventsList extends Component {
     state = {
-        events: TestData,
+        userEvents: UserEvents
     };
 
-    initnialEvenstState = ()=>{
+    initialEventsState = ()=>{
         this.setState({
-            events: NewTestData
+            userEvents: InitialUserEvents
         })
     }
 
     filterEventCinema = () => {
         console.log('filtr na kino');
         this.setState({
-            events: this.state.events.filter( event => event.category === 'movie')
+            userEvents: this.state.userEvents.filter( event => event.category === 'movie')
         })
 
     };
     filterEventSport = () => {
         console.log('filtr na sport');
         this.setState({
-            events: this.state.events.filter( event => event.category === 'sport')
+            userEvents: this.state.userEvents.filter( event => event.category === 'sport')
         })
     };
     filterEventConcert = () => {
         console.log('filtr na koncert');
         this.setState({
-            events: this.state.events.filter( event => event.category === 'concert')
+            userEvents: this.state.userEvents.filter( event => event.category === 'concert')
         })
     };
 
@@ -42,14 +42,12 @@ class UserEventsList extends Component {
                     <button className="my-events-btn" onClick={this.filterEventCinema}>Kino</button>
                     <button className="my-events-btn" onClick={this.filterEventSport}>Sport</button>
                     <button className="my-events-btn" onClick={this.filterEventConcert}>Koncert</button>
-                    <button className="my-events-btn" onClick={this.initnialEvenstState}>Wyczyść</button>
+                    <button className="my-events-btn" onClick={this.initialEventsState}>Wyczyść</button>
                 </div>
-
                 <ul className="event-list">
-                    {this.state.events.map( (myEvent)=>{
-                        return <li key={myEvent.id} className={`filter-${myEvent.category}`}><strong>{myEvent.title}</strong>, <br /> kiedy: {myEvent.start}</li>
+                    {this.state.userEvents.map( event => {
+                        return <li key={event.id} className={`filter-${event.category}`}><strong>{event.title}</strong></li>
                     })}
-
                 </ul>
             </React.Fragment>
         );
