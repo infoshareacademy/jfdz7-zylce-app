@@ -4,6 +4,7 @@ import moment from 'moment'
 import 'moment/locale/pl'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import EventPreview from "./EventPreview";
+import userEvents from '../../../data/userEvents'
 
 moment.locale('pl');
 BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment));
@@ -18,6 +19,8 @@ let formats = {
     dayHeaderFormat: (date, culture, localizer) =>
         localizer.format(date, 'dddd, DD MMMM', culture),
 };
+
+let newUserEvent ; // nowa zmienna potrzebna do zrobienia nowego eventu pushowanego do UserEvents
 
 class Calendar extends React.Component {
     state = {
@@ -40,7 +43,31 @@ class Calendar extends React.Component {
         console.log('slot select')
     };
 
+    // Kod Łukasza
+
+    createNewUserEvent = (event) => {
+        const newId = Date.now().toString(32);
+
+        const myEvent = {
+            id: newId,
+            name: event.title,
+            start: event.start,
+            end: event.end
+        };
+        newUserEvent = myEvent;
+
+        console.log(myEvent); //tylko testowo
+        console.log(userEvents); //tylko testowo
+        console.log(newUserEvent, 'nowy event') //tylko testowo
+    };
+    addNewUserEventToUserEvents = ()=>{
+        userEvents.push(newUserEvent);
+        console.log(userEvents); // tylko testowo
+    }
+
+
     eventPreview = (event) => {
+        this.createNewUserEvent(event);
         let eventStartDate = event.start;
         let eventEndDate = event.end;
         let category = event.category;
@@ -83,7 +110,7 @@ class Calendar extends React.Component {
                             onSelectSlot={this.slotSelected}
                             onSelectEvent={this.eventPreview}
                         />
-                        <EventPreview eventPreview={this.eventPreview} />
+                        <EventPreview addEvent={this.addNewUserEventToUserEvents} eventPreview={this.eventPreview} />
                     </div>
                     </React.Fragment>
                 )
