@@ -47,7 +47,6 @@ class Calendar extends React.Component {
 
     createNewUserEvent = (event) => {
         const newId = Date.now().toString(32);
-
         const myEvent = {
             id: newId,
             name: event.title,
@@ -59,12 +58,13 @@ class Calendar extends React.Component {
         console.log(myEvent); //tylko testowo
         console.log(userEvents); //tylko testowo
         console.log(newUserEvent, 'nowy event') //tylko testowo
-    };
+    }
+
     addNewUserEventToUserEvents = ()=>{
         userEvents.push(newUserEvent);
         console.log(userEvents); // tylko testowo
     }
-
+    // Koniec kodu Łukasza
 
     eventPreview = (event) => {
         this.createNewUserEvent(event);

@@ -195,3 +195,18 @@
     opacity: 0.65;
     outline: none;
 }
+
+
+.user-event-description-btn{
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #4f2f4c;
+}
+.user-event-description{
+    display:none;
+    font-size: 12px;
+    padding-top: 5px;
+    padding-bottom: 15px;
+
+}
