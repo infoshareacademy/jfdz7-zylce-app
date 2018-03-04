@@ -104,12 +104,13 @@
     top: 0;
     right: 0;
     transform: translate(50%, -50%);
-    border-radius: 50px;
-    background: rgba(0,0,0,0.8);
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
     font-size: 20px;
+    text-decoration: none;
     text-align: center;
     line-height: 100%;
-    color: #ffffff;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .event-preview-title {

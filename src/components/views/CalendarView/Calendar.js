@@ -4,6 +4,7 @@ import moment from 'moment'
 import 'moment/locale/pl'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import EventPreview from "./EventPreview";
+import users from '../../../data/users'
 
 moment.locale('pl');
 BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment));
@@ -33,7 +34,7 @@ class Calendar extends React.Component {
             time: 'Czas',
             event: 'Wydarzenie'},
         views: ['month', 'week', 'day'],
-
+        currentEvent: [],
     };
 
     slotSelected = () => {
@@ -53,7 +54,18 @@ class Calendar extends React.Component {
         document.getElementById('event-preview-title').classList.add(`category-${category}`);
         document.getElementById('event-preview-date').appendChild(paragraph).innerText =
              `${eventStartDate.toLocaleDateString('pl-PL', dateOptions)}, ${eventStartDate.toLocaleTimeString('pl-PL', timeOptions)} - ${eventEndDate.toLocaleTimeString('pl-PL', timeOptions)}`;
+        let currentEvent = {title: event.title, start: event.start, end: event.end, category: event.category};
+        this.setState({currentEvent: [currentEvent]});
     };
+
+    saveEventToUserEvents = () => {
+        // concat userEvents with currentEvent from state
+        let arr = users[0].userEvents.concat(this.state.currentEvent);
+        console.log(arr);
+    };
+
+
+
 
     render() {
                 const min = new Date();
@@ -83,7 +95,7 @@ class Calendar extends React.Component {
                             onSelectSlot={this.slotSelected}
                             onSelectEvent={this.eventPreview}
                         />
-                        <EventPreview eventPreview={this.eventPreview} />
+                        <EventPreview eventPreview={this.eventPreview}     saveEventToUserEvents={this.saveEventToUserEvents} />
                     </div>
                     </React.Fragment>
                 )
