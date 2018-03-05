@@ -14,6 +14,8 @@ export default [
         start: new Date(2018, 1, 28, 14, 0, 0, 0),
         end: new Date(2018, 1, 28, 16, 0, 0, 0),
         category: 'cinema',
+        desc: 'Movie about something',
+
     },
     {
         id: 2,

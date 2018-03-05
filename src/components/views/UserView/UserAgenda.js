@@ -14,8 +14,11 @@ class UserAgenda extends Component {
         userEvents: userEvents
     };
 
+    //Jakoś trzeba funkcję skonstruować żeby zmieniała state po dodaniu do tablicy
+    //eventu.
 
-    onHandleShowEventDescription = () => {
+    onHandleShowEventDescription = (event) => {
+        event.preventDefault()
         console.log('show description')
         const eventDesc = document.querySelector('.user-event-description');
         const eventDescBtn = document.querySelector('.user-event-description-btn');
@@ -52,7 +55,7 @@ class UserAgenda extends Component {
                                 </div>
                             </td>
                             <td>
-                                <button className="user-event-delete-btn">Usuń</button>
+                                <button className="user-event-delete-btn" onClick={}>Usuń</button>
                             </td>
                         </tr>
 

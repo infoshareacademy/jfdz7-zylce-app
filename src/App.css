@@ -204,7 +204,7 @@
     color: #4f2f4c;
 }
 .user-event-description{
-    display:none;
+    display: block;
     font-size: 12px;
     padding-top: 5px;
     padding-bottom: 15px;

@@ -49,7 +49,7 @@ class Calendar extends React.Component {
         const newId = Date.now().toString(32);
         const myEvent = {
             id: newId,
-            name: event.title,
+            title: event.title,
             start: event.start,
             end: event.end
         };
