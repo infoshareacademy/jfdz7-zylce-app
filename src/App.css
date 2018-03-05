@@ -1,0 +1,198 @@
+.calendar {
+    position: relative;
+}
+
+.calendar .rbc-calendar, .events-filter {
+    margin: 0 auto;
+    width: 80%;
+}
+.hidden {
+    display: none;
+}
+.calendar .rbc-calendar .rbc-month-view {
+    height: 600px;
+}
+
+.calendar .rbc-calendar .category-cinema, .category-cinema {
+    background-color: #FF0080;
+}
+
+.calendar .rbc-calendar .category-concert, .category-concert {
+    background-color: #00C0B0;
+}
+
+.calendar .rbc-calendar .category-theatre, .category-theatre {
+    background-color: #4f2f4c;
+}
+
+.calendar .rbc-time-content {
+    border-top: none;
+    padding-top: 0;
+}
+.calendar .rbc-time-view .rbc-time-header > .rbc-row:nth-of-type(2) {
+    display: none;
+}
+
+.events-filter .filter-message, .events-filter .filter-buttons {
+    display: inline-block;
+    margin-right: 8px;
+    color: #b8b8b8;
+}
+
+.events-filter .filter-buttons .show-all-events-btn {
+    background-color: white;
+    color: #b8b8b8
+}
+
+.events-filter button {
+    padding: 10px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    width: 100px;
+    color: #fff;
+    cursor: pointer;
+    font-family: sans-serif;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border: 1px #ffffff;
+    border-radius: 5px;
+    opacity: 0.65;
+    outline: none;
+}
+
+.events-filter button.active {
+    opacity: 1;
+    box-shadow: -1px 1px 2px #b8b8b8,
+                1px -1px 2px #b8b8b8,
+                -1px -1px 2px #b8b8b8,
+                1px 1px 2px #b8b8b8;
+}
+
+.calendar .event-preview {
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+    position: absolute;
+    z-index: 88;
+    right: 0;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.85);
+}
+
+.calendar .event-preview-inner {
+    max-width: 500px;
+    min-height: 200px;
+    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+    box-shadow: 2px 2px 4px #b8b8b8,
+                -2px 2px 4px #b8b8b8,
+                -2px -2px 4px #b8b8b8;
+    border-radius: 10px;
+    background-color: #ffffff;;
+}
+
+.close-event-preview {
+    width: 30px;
+    height: 30px;
+    padding-top: 4px;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    font-size: 20px;
+    text-decoration: none;
+    text-align: center;
+    line-height: 100%;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.event-preview-title {
+    border-radius: 10px 10px 0 0;
+    padding-top: 20px;
+    height: 80px;
+    width: 100%;
+    box-shadow: 0px 3px 4px #b8b8b8;
+}
+
+.event-preview-title h3{
+    margin-left: 10px;
+    vertical-align: middle;
+    font-size: 24px;
+    color: #fffafaba;
+}
+
+.event-preview-date {
+    height: 30px;
+    width: 100%;
+    box-shadow: 0px 3px 4px #b8b8b8;
+}
+
+.event-preview-date p{
+    margin-left: 10px;
+    text-align: center;
+    vertical-align: text-top;
+    font-size: 15px;
+    color: rgba(12, 0, 255, 0.73);
+}
+
+
+.event-preview-btns {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 5px;
+    text-align: center;
+}
+
+.event-preview-btns button {
+    width: 220px;
+    background-color: #888888;
+    padding: 10px 20px;
+    margin: 0 auto;
+    color: #fff;
+    cursor: pointer;
+    font-family: sans-serif;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border: 1px solid #888888;
+    border-radius: 5px;
+    opacity: 0.65;
+    outline: none;
+
+}
+
+.event-preview-btns button:hover {
+        background-color: #666666;
+}
+
+.save-event-btn {
+    width: 100%;
+    position: fixed;
+    text-align: center;
+    box-shadow: 2px 2px 4px #b8b8b8,
+                -2px 2px 4px #b8b8b8,
+                -2px -2px 4px #b8b8b8;
+}
+
+.save-event-btn button {
+    background-color: #888888;
+    padding: 10px 20px;
+    margin-top: 10px;
+    color: #fff;
+    cursor: pointer;
+    font-family: sans-serif;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border: 1px solid #888888;
+    border-radius: 5px;
+    opacity: 0.65;
+    outline: none;
+}
