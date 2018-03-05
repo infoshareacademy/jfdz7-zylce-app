@@ -205,9 +205,34 @@
     color: #4f2f4c;
 }
 .user-event-description{
-    display: block;
+    /*display: block;*/
     font-size: 12px;
     padding-top: 5px;
     padding-bottom: 15px;
 
+}
+.user-event-description-hidden{
+
+}
+.user-event-delete-btn{
+    background: #888888;
+    border-radius: 5px;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.user-event-delete-btn:hover{
+    background-color: #666666;
+}
+
+.user-agenda-filter button{
+    border: none;
+    color: #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 15px;
+    opacity: 0.65;
+    margin-right: 10px;
 }

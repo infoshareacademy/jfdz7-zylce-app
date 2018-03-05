@@ -3,7 +3,11 @@ export default
         {
             id: '1520178660144',
             name: 'Eric Forrester',
-            userEvents: [{title: 'event-test'}]
+            userEvents: [
+                {id: '1221223123', title: 'event-test', category: 'cinema'},
+                {id: '1221223144', title: 'event-test-2', category: 'concert'}
+
+            ]
         },
         {
             id: '1520178657678',

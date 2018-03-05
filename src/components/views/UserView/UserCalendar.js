@@ -3,7 +3,8 @@ import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
 import 'moment/locale/pl';
 
-import userEvents from '../../../data/userEvents';
+// import users from '../../../data/users';
+import testEvents from '../../../data/events'
 
 
 BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment))
@@ -15,13 +16,13 @@ class UserCalendar extends Component {
             <React.Fragment>
                 <h3>Mój kalendarz</h3>
                 <BigCalendar
-                    events={userEvents}
+                    events={testEvents}
                     step={15}
-                    timeslots={4}
+                    timeslots={2}
                     defaultView= 'month'
                     selectable = {true}
                     defaultDate={new Date()}
-                    toolbar = {false}
+                    toolbar = {true}
                 />
             </React.Fragment>
         )

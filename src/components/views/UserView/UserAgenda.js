@@ -2,26 +2,40 @@ import React, { Component } from 'react';
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
 
-import userEvents from '../../../data/userEvents';
+import users from '../../../data/users';
 
 BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment))
-
-
 
 class UserAgenda extends Component {
 
     state = {
-        userEvents: userEvents
+        user: users[0]
     };
 
-    //Jakoś trzeba funkcję skonstruować żeby zmieniała state po dodaniu do tablicy
-    //eventu.
+    eventFilterCinema = () => {
+        console.log('filtr na kino');
+        this.setState({
+            user: this.state.user.userEvents.filter( event => event.category === 'cinema')
+        })
+    };
+    eventFilterTheatre = () => {
+        console.log('filtr na teatr');
+        this.setState({
+            user: this.state.user.userEvents.filter( event => event.category === 'theatre')
+        })
+    };
+    eventFilterConcert = () => {
+        console.log('filtr na koncert');
+        this.setState({
+            user: this.state.user.userEvents.filter( event => event.category === 'concert')
+        })
+    };
 
-    onHandleShowEventDescription = (event) => {
-        event.preventDefault()
+
+    showEventDescription = () => {
         console.log('show description')
-        const eventDesc = document.querySelector('.user-event-description');
-        const eventDescBtn = document.querySelector('.user-event-description-btn');
+        const eventDesc = document.querySelector('.users-event-description');
+        const eventDescBtn = document.querySelector('.users-event-description-btn');
 
         if (eventDesc.style.display === "none") {
             eventDesc.style.display = "block";
@@ -30,32 +44,48 @@ class UserAgenda extends Component {
             eventDesc.style.display = "none";
             eventDescBtn.innerText = '...pokaż więcej';
         }
-        // eventDesc.style.display = 'block';
-        // eventDescBtn.innerText = '...pokaż mniej';
+        console.log(this.state.user[0].user);
+
+        // tu może coś zrobić ze statem czyli np description na hidden i w if zmieniac na block i tak na zmiane
     }
 
+    removeEvent = (eventId) => {
+        console.log(eventId);
+        console.log(this.state.user[0].userEvents);
+
+        // this.setState({
+        //     user: this.state.user[0].userEvents.filter( event => event.id !== eventId )
+        // })
+    }
+
+
+
     render() {
+
         return (
             <React.Fragment>
                 <h3>Moje wydarzenia</h3>
+                <div className="user-agenda-filter">
+                    <button className="category-cinema" onClick={this.eventFilterCinema}>Kino</button>
+                    <button className="category-concert" onClick={this.eventFilterConcert}>Koncert</button>
+                    <button className="category-theatre" onClick={this.eventFilterTheatre}>Teatr</button>
+                </div>
                 <table>
                     <thead>
                     <th>Nazwa wydarzena</th>
-                    <th>Akcja</th>
                     </thead>
                     <tbody>
-                    {this.state.userEvents.map( event => {
-                        return <tr key={event.id} className={`filter-${event.category}`}>
+                    {this.state.user.userEvents.map( event => {
+                        return <tr key={event.id} className={`category-${event.category}`}>
                             <td>
-                                {event.title} <button className="user-event-description-btn" onClick={this.onHandleShowEventDescription}>...pokaż więcej</button>
+                                {event.title} <button className="user-event-description-btn" onClick={this.showEventDescription}>...pokaż więcej</button>
+                                <button className="user-event-delete-btn" onClick={()=> {this.removeEvent(event.id)}}>Usuń</button>
+
                                 <div className="user-event-description">
                                     <strong>Kiedy:</strong> "Tutaj będzie data"
                                     <br/>
                                     <strong>Opis:</strong> {event.desc}
                                 </div>
-                            </td>
-                            <td>
-                                <button className="user-event-delete-btn" onClick={}>Usuń</button>
                             </td>
                         </tr>
 
@@ -63,19 +93,6 @@ class UserAgenda extends Component {
                     })}
                     </tbody>
                 </table>
-
-                {/*<BigCalendar*/}
-                    {/*events={userEvents}*/}
-                    {/*step={15}*/}
-                    {/*timeslots={4}*/}
-                    {/*defaultView="agenda"*/}
-                    {/*defaultDate={new Date()}*/}
-                    {/*toolbar = {false}*/}
-                    {/*popup*/}
-                    {/*selectable = {true}*/}
-                    {/*onSelectSlot={this.onSelectedEvent}*/}
-                    {/*onSelectEvent={this.onSelectedEvent}*/}
-                {/*/>*/}
 
             </React.Fragment>
         )
