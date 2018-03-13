@@ -15,15 +15,19 @@ class UserCalendar extends Component {
         return (
             <React.Fragment>
                 <h3>Mój kalendarz</h3>
-                <BigCalendar
-                    events={this.state.userEvents}
-                    step={15}
-                    timeslots={5}
-                    defaultView= 'week'
-                    selectable = {true}
-                    defaultDate={new Date()}
-                    toolbar = {true}
-                />
+                <div className="calendar">
+                    <BigCalendar
+                        className="user-calendar"
+                        events={this.state.userEvents}
+                        eventPropGetter={event => ({className: `category-${event.category} event-${event.id}`})}
+                        step={15}
+                        timeslots={5}
+                        defaultView= 'month'
+                        selectable = {true}
+                        defaultDate={new Date()}
+                        toolbar = {true}
+                    />
+                </div>
             </React.Fragment>
         )
     }

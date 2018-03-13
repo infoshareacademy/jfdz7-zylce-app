@@ -14,6 +14,13 @@ class UserAgenda extends Component {
         initialUsers: this.props.userAgenda,
     };
 
+    eventFilterRefresh = () => {
+        console.log('filtr - wyczyść');
+        this.setState({
+            userEvents: this.state.initialUsers
+        })
+    };
+
     eventFilterCinema = () => {
         console.log('filtr - kino');
         this.setState({
@@ -33,12 +40,6 @@ class UserAgenda extends Component {
             userEvents: this.state.userEvents.filter( userEvent => userEvent.category === 'concert')
         })
     };
-    eventFilterRefresh = () => {
-        console.log('filtr - wyczyść');
-        this.setState({
-            userEvents: this.state.initialUsers
-        })
-    };
 
     removeEvent = (eventId) => {
         console.log(eventId);
@@ -48,8 +49,6 @@ class UserAgenda extends Component {
         console.log(this.state.userEvents);
 
     }
-
-
 
     render() {
 
@@ -64,7 +63,7 @@ class UserAgenda extends Component {
                 </div>
                     <ul className="user-events">
                     {this.state.userEvents.map( event => {
-                        return <li key={event.id}>
+                        return <li key={event.id} className={`user-event-${event.category}`}>
                                 <div className={`user-event-title category-${event.category}`}>
                                     {event.title}
                                     <button className="user-event-delete-btn" onClick={()=> {this.removeEvent(event.id)}}>Usuń</button>

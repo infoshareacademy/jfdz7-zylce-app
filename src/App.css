@@ -209,6 +209,7 @@
 .user-event-description{
     font-size: 12px;
     padding-top: 5px;
+    padding-left: 10px;
     padding-bottom: 15px;
 }
 .user-event-title{
@@ -219,6 +220,7 @@
     font-weight: bold;
     padding: 5px 10px;
     border-radius: 5px;
+    color: #ffffff;
 }
 .user-event-delete-btn{
     background: #888888;
@@ -241,4 +243,8 @@
     padding: 10px 15px;
     opacity: 0.65;
     margin-right: 10px;
+}
+
+.user-calendar{
+    min-height: 500px;
 }

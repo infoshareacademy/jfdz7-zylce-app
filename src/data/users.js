@@ -12,6 +12,13 @@ export default
                     category: 'cinema',
                 },
                 {
+                    id: '1221223333',
+                    title: 'event-test',
+                    start: new Date(2018, 2, 18, 14, 0, 0, 0),
+                    end: new Date(2018, 2, 18, 16, 0, 0, 0),
+                    category: 'cinema',
+                },
+                {
                     id: '1221223144',
                     title: 'event-test-2',
                     start: new Date(2018, 2, 23, 14, 0, 0, 0),
