@@ -12,6 +12,17 @@ class UserAgenda extends Component {
     state = {
         userEvents: this.props.userAgenda,
         initialUsers: this.props.userAgenda,
+        messages: {
+            next:">",
+            previous:"<",
+            today:"dziś",
+            month:"miesiąc",
+            week:"tydzień",
+            day:"dzień",
+            allDay: 'Cały dzień',
+            date: 'Data',
+            time: 'Czas',
+            event: 'Wydarzenie'},
     };
 
     eventFilterRefresh = () => {
@@ -49,11 +60,18 @@ class UserAgenda extends Component {
         console.log(this.state.userEvents);
 
     }
+    onSelectEvent = (event) => {
+        let eventStartDate = event.start;
+        console.log('kliknałem agende')
+        console.log(eventStartDate)
+    }
 
     render() {
+        let dateOptions = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
+        let timeOptions = {hour: 'numeric', minute: 'numeric'};
 
         return (
-            <React.Fragment>
+            <React.Fragment >
                 <h3>Moje wydarzenia</h3>
                 <div className="user-agenda-filter">
                     <button className="category-cinema" onClick={this.eventFilterCinema}>Kino</button>
@@ -64,12 +82,12 @@ class UserAgenda extends Component {
                     <ul className="user-events">
                     {this.state.userEvents.map( event => {
                         return <li key={event.id} className={`user-event-${event.category}`}>
-                                <div className={`user-event-title category-${event.category}`}>
+                                <div className={`user-agenda-title category-${event.category}`}>
                                     {event.title}
-                                    <button className="user-event-delete-btn" onClick={()=> {this.removeEvent(event.id)}}>Usuń</button>
+                                    <button className="user-agenda-delete-btn" onClick={()=> {this.removeEvent(event.id)}}>Usuń</button>
                                 </div>
                                 <div className="user-event-description">
-                                    <strong>Kiedy:</strong> {event.start.toLocaleString()}
+                                    <strong>Kiedy:</strong> {event.start.toLocaleString('pl-PL', dateOptions)}
                                     <br/>
                                     <strong>Opis:</strong> {event.desc}
                                 </div>
