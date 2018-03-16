@@ -12,10 +12,12 @@ const reducer = (state=initialState, action) => {
                 ...state,
 
             }
-        case 'DELETE_EVENT' :
-
+        case 'DELETE_USER_EVENT' :
+            console.log('usuwam event usera!')
+            const updatedUserEventArray = state.userEvents.filter( event => event.id !== action.eventId)
             return {
                 ...state,
+                userEvents: updatedUserEventArray
             }
         default:
             return state

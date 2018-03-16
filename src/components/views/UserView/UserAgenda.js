@@ -36,29 +36,29 @@ class UserAgenda extends Component {
     eventFilterCinema = () => {
         console.log('filtr - kino');
         this.setState({
-            userEvents: this.state.userEvents.filter( userEvent => userEvent.category === 'cinema')
+            userEvents: this.props.userEventsFromState.filter( userEvent => userEvent.category === 'cinema')
         })
 
     };
     eventFilterTheatre = () => {
         console.log('filtr - teatr');
         this.setState({
-            userEvents: this.state.userEvents.filter( userEvent => userEvent.category === 'theatre')
+            userEvents: this.props.userEventsFromState.filter( userEvent => userEvent.category === 'theatre')
         })
     };
     eventFilterConcert = () => {
         console.log('filtr - koncert');
         this.setState({
-            userEvents: this.state.userEvents.filter( userEvent => userEvent.category === 'concert')
+            userEvents: this.props.userEventsFromState.filter( userEvent => userEvent.category === 'concert')
         })
     };
 
     removeEvent = (eventId) => {
         console.log(eventId);
         this.setState({
-            userEvents: this.state.userEvents.filter( userEvent => userEvent.id !== eventId)
+            userEvents: this.props.userEventsFromState.filter( userEvent => userEvent.id !== eventId)
         })
-        console.log(this.state.userEvents);
+        console.log(this.props.userEventsFromState);
 
     }
     onSelectEvent = (event) => {
@@ -85,7 +85,7 @@ class UserAgenda extends Component {
                         return <li key={event.id} className={`user-event-${event.category}`}>
                                 <div className={`user-agenda-title category-${event.category}`}>
                                     {event.title}
-                                    <button className="user-agenda-delete-btn" onClick={()=> {this.removeEvent(event.id)}}>Usuń</button>
+                                    <button className="user-agenda-delete-btn" onClick={()=> {this.props.onDeleteUserEvent(event.id)}}>Usuń</button>
                                 </div>
                                 <div className="user-event-description">
                                     <strong>Kiedy:</strong> {event.start.toLocaleString('pl-PL', dateOptions)}
@@ -112,7 +112,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-
+        onDeleteUserEvent: (id)=> dispatch({type: 'DELETE_USER_EVENT', eventId: id})
     }
 }
 
