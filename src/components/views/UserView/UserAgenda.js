@@ -81,7 +81,7 @@ class UserAgenda extends Component {
                     <button className="category-refresh" onClick={this.eventFilterRefresh}>Wyczyść</button>
                 </div>
                     <ul className="user-events">
-                    {this.state.userEvents.map( event => {
+                    {this.props.userEventsFromState.map( event => {
                         return <li key={event.id} className={`user-event-${event.category}`}>
                                 <div className={`user-agenda-title category-${event.category}`}>
                                     {event.title}
@@ -106,8 +106,14 @@ class UserAgenda extends Component {
 
 const mapStateToProps = state => {
     return {
+        userEventsFromState: state.userEvents
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
 
     }
 }
 
-export default connect()(UserAgenda)
+export default connect(mapStateToProps, mapDispatchToProps)(UserAgenda)
