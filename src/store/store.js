@@ -19,6 +19,20 @@ const reducer = (state=initialState, action) => {
                 ...state,
                 userEvents: updatedUserEventArray
             }
+        case 'CLOSE_USER_EVENT_WINDOW' :
+            console.log('chcę zamknąć event!')
+            let userEventWindow = document.querySelector('.user-event-window');
+            userEventWindow.classList.add('hidden');
+            return {
+                ...state,
+            }
+        case 'OPEN_USER_EVENT_WINDOW' :
+            console.log('chcę otworzyć okno z evenetem!');
+            userEventWindow = document.querySelector('.user-event-window');
+            userEventWindow.classList.remove('hidden');
+            return {
+                ...state
+            }
         default:
             return state
     }
