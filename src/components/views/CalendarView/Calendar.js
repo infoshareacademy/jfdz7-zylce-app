@@ -1,10 +1,14 @@
-import React from 'react'
-import BigCalendar from 'react-big-calendar'
-import moment from 'moment'
-import 'moment/locale/pl'
-import 'react-big-calendar/lib/css/react-big-calendar.css'
+import React from 'react';
+import BigCalendar from 'react-big-calendar';
+import moment from 'moment';
+import 'moment/locale/pl';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
 import EventPreview from "./EventPreview";
-import users from '../../../data/users'
+import users from '../../../data/users';
+
+import {connect} from 'react-redux'
+
+
 
 moment.locale('pl');
 BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment));
@@ -34,7 +38,8 @@ class Calendar extends React.Component {
             time: 'Czas',
             event: 'Wydarzenie'},
         views: ['month', 'week', 'day'],
-        currentEvent: [],
+        // currentEvent: [],
+        currentEvent: this.props.userCurrentEvent
     };
 
     slotSelected = () => {
@@ -54,13 +59,13 @@ class Calendar extends React.Component {
         document.getElementById('event-preview-title').classList.add(`category-${category}`);
         document.getElementById('event-preview-date').appendChild(paragraph).innerText =
              `${eventStartDate.toLocaleDateString('pl-PL', dateOptions)}, ${eventStartDate.toLocaleTimeString('pl-PL', timeOptions)} - ${eventEndDate.toLocaleTimeString('pl-PL', timeOptions)}`;
-        let currentEvent = {title: event.title, start: event.start, end: event.end, category: event.category};
+        let currentEvent = {id: Date.now().toString(32), title: event.title, start: event.start, end: event.end, category: event.category};
         this.setState({currentEvent: [currentEvent]});
     };
 
     saveEventToUserEvents = () => {
         // concat userEvents with currentEvent from state
-        let arr = users[0].userEvents.concat(this.state.currentEvent);
+        let arr = this.props.userEvents.concat(this.state.currentEvent);
         console.log(arr);
     };
 
@@ -80,7 +85,7 @@ class Calendar extends React.Component {
                         <BigCalendar
                             messages={this.state.messages}
                             eventPropGetter={event => ({className: `category-${event.category} event-${event.id}`})}
-                            events={this.props.events}
+                            events={this.props.allEvents}
                             views={this.state.views}
                             view={this.state.view}
                             selectable = {true}
@@ -102,4 +107,16 @@ class Calendar extends React.Component {
             }
 }
 
-export default Calendar
+const mapStateToProps = state => {
+    return{
+        allEvents: state.allEvents,
+        userEvents: state.userEvents,
+        userCurrentEvent: state.currentEvent
+    }
+}
+const mapDispatchToProps = dispatch => {
+    return {
+
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Calendar)

@@ -1,14 +1,22 @@
 import {createStore} from 'redux'
-import users from '../data/userEvents'
+import users from '../data/users'
+import events from '../data/events'
 
 const initialState = {
-    userEvents: users
+    allEvents: events,
+    userEvents: users[0].userEvents,
+    userInfo: users[0],
+    currentEvent: []
 }
 
 const reducer = (state=initialState, action) => {
     switch (action.type) {
         case 'ADD_EVENT' :
+            console.log('dodaję event!')
+            console.log(state.currentEvent)
+            const updatedEvents = state.userEvents.concat(state.currentEvent)
             return {
+                userEvents: updatedEvents,
                 ...state,
 
             }

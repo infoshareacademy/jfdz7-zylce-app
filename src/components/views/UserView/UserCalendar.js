@@ -54,7 +54,6 @@ class UserCalendar extends Component {
         let userEvenTitle = document.querySelector('.user-event-title');
         let userEventStart = document.querySelector('.user-event-start');
         let userEventEnd = document.querySelector('.user-event-end');
-        let userEventDelBtn = document.querySelector('.user-event-delete-btn');
         userEventWindow.classList.remove('hidden');
         userEvenTitle.innerHTML = eventTitle;
         userEvenTitle.classList.add(`category-${eventCategory}`)
