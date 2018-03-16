@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
 import 'moment/locale/pl';
+import {connect} from 'react-redux'
 
 BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment))
 
 
 class UserCalendar extends Component {
     state ={
-        userEvents: this.props.userCalendar,
+        // userEvents: this.props.userCalendar,
         messages: {
             next:">",
             previous:"<",
@@ -81,7 +82,7 @@ class UserCalendar extends Component {
                     <BigCalendar
                         messages={this.state.messages}
                         className="user-calendar"
-                        events={this.state.userEvents}
+                        events={this.props.userEventsFromState}
                         eventPropGetter={event => ({className: `category-${event.category} event-${event.id}`})}
                         step={15}
                         timeslots={5}
@@ -108,4 +109,15 @@ class UserCalendar extends Component {
     }
 }
 
-export default UserCalendar
+const mapStateToProps = state => {
+    return {
+        userEventsFromState: state.userEvents
+    }
+}
+const mapDispatchToProps = dispatch => {
+    return {
+
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(UserCalendar)

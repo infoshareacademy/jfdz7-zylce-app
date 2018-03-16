@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
+import {connect} from 'react-redux'
 
 
 BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment))
@@ -103,4 +104,10 @@ class UserAgenda extends Component {
     }
 }
 
-export default UserAgenda
+const mapStateToProps = state => {
+    return {
+
+    }
+}
+
+export default connect()(UserAgenda)

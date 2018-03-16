@@ -1,8 +1,8 @@
 import {createStore} from 'redux'
-import users from '../data/users'
+import users from '../data/userEvents'
 
 const initialState = {
-    userEvents: users[0]
+    userEvents: users
 }
 
 const reducer = (state=initialState, action) => {
