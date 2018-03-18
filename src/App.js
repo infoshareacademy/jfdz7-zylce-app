@@ -1,26 +1,27 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom'
+import { Route, withRouter } from 'react-router-dom'
+
 
 import './App.css';
-import Header from './components/views/Header'
-import CalendarView from './components/views/CalendarView'
-import UserView from './components/views/UserView'
-import AdminView from './components/views/AdminView'
-import Footer from './components/views/Foooter'
+import Main from './components/Menu'
+import Auth from './components/Auth'
+import CalendarView from './components/views/CalendarView/CalendarView'
+import UserView from './components/views/UserView/UserView'
+import Footer from './components/views/Foooter/Footer'
 
 
 class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <Route path="/" component={Header} />
-        <Route exact path="/" component={CalendarView} />
-        <Route path="/" component={UserView} />
-        <Route path="/" component={AdminView} />
-        <Route path="/" component={Footer} />
+          <Main />
+        <Route exact path="/" component={Auth} />
+        <Route path="/calendar" component={CalendarView} />
+        <Route path="/userCalendar" component={UserView} />
+      <Footer/>
       </React.Fragment>
     );
   }
 }
 
-export default App;
+export default withRouter(App);
