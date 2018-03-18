@@ -5,8 +5,6 @@ import moment from 'moment'
 import 'moment/locale/pl'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 
-import FilterControls from './FilterControls'
-
 moment.locale('pl');
 BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment));
 
@@ -74,7 +72,10 @@ class Calendar extends React.Component {
                     <BigCalendar
                         messages={config.messages}
                         eventPropGetter={event => ({className: `category-${event.category} event-${event.id}`})}
-                        events={events}
+                        events={events.filter(event => activeFilterNames.length === 0
+                            ? true
+                            : activeFilterNames.includes(event.category)
+                        )}
                         views={config.views}
                         view={config.view}
                         selectable = {true}

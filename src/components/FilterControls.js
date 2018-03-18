@@ -16,10 +16,11 @@ class FilterControls extends Component {
         }
     };
 
-    toggleActive = (event) => {
+    setActive = (event) => {
         event.preventDefault();
-        event.target.classList.contains('active') ? event.target.classList.remove('active') : event.target.classList.add('active');
+        event.target.classList.add('active')
         document.getElementById('show-all-events-btn').classList.remove('hidden');
+
     };
 
     clearActiveClassFromFilterButtons = () => {
@@ -48,7 +49,7 @@ class FilterControls extends Component {
                         key={categoryName}
                         className={`category-${categoryName} filter-btn`} value={categoryName}
                         onClick={(event) => {
-                            this.toggleActive(event);
+                            this.setActive(event);
                             this.props.activateFilter(categoryName);
                             }
                         }
