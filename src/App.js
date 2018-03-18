@@ -5,7 +5,7 @@ import { Route, withRouter } from 'react-router-dom'
 import './App.css';
 import Main from './components/Menu'
 import HomeView from './components/HomeView'
-import CalendarView from './components/views/CalendarView/CalendarView'
+import CalendarView from './components/Calendar'
 import UserView from './components/views/UserView/UserView'
 import Footer from './components/views/Foooter/Footer'
 
