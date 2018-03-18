@@ -11,33 +11,41 @@ const options = [
     },
     {
         path: '/calendar',
-        label: 'Calendar'
+        label: 'kalendarz'
     },
     {
         path: '/userCalendar',
-        label: 'User Calendar'
+        label: 'moje wydarzenia'
     },
-]
+];
 
-const defaultOptions = {}
+const defaultOptions = {};
 
 
 class Menu extends React.Component {
 
     render() {
         return (
-            <ul>
-                {options.map((option, index) => (
-                    <li key={index}>
-                        <NavLink
-                            exact={(option.options || defaultOptions).exact}
-                            to={option.path}
-                        >
-                            {option.label}
-                        </NavLink>
-                    </li>
-                ))}
-            </ul>
+            <div className='header'>
+                <div id='menu' className='menu'>
+                    <div className="menu-list">
+                        {options.map((option, index) => (
+                            <button key={index}>
+                                <NavLink
+                                    exact={(option.options || defaultOptions).exact}
+                                    to={option.path}
+                                >
+                                    {option.label}
+                                </NavLink>
+                            </button>
+                        ))}
+                    </div>
+                    <div id="authentication" className="authentication">
+                        LOGOWANIE I TAK DALEJ
+                    </div>
+                </div>
+
+            </div>
         )
     }
 }

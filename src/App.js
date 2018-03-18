@@ -15,10 +15,15 @@ class App extends Component {
     return (
       <React.Fragment>
           <Main />
-        <Route exact path="/" component={HomeView} />
-        <Route path="/calendar" component={CalendarView} />
-        <Route path="/userCalendar" component={UserView} />
-      <Footer/>
+          <div className='container'>
+              <div className="content">
+                  <Route exact path="/" component={HomeView} />
+                  <Route path="/calendar" component={CalendarView} />
+                  <Route path="/userCalendar" component={UserView} />
+              </div>
+              <Footer/>
+          </div>
+
       </React.Fragment>
     );
   }
