@@ -68,19 +68,20 @@
                 1px 1px 2px #b8b8b8;
 }
 
-.calendar .event-preview {
-    width: 80%;
-    height: 100%;
+.event-preview {
+    width: 100%;
+    height: auto;
     margin: 0 auto;
-    position: absolute;
+    position: fixed;
     z-index: 88;
     right: 0;
     top: 0;
     left: 0;
+    bottom: 0;
     background: rgba(255, 255, 255, 0.85);
 }
 
-.calendar .event-preview-inner {
+.event-preview .event-preview-inner {
     max-width: 500px;
     min-height: 200px;
     width: 90%;
@@ -96,8 +97,8 @@
 }
 
 .close-event-preview {
-    width: 30px;
-    height: 30px;
+    width: 42px;
+    height: 40px;
     padding-top: 4px;
     display: inline-block;
     position: absolute;
@@ -105,12 +106,16 @@
     right: 0;
     transform: translate(50%, -50%);
     border-radius: 50%;
-    background: rgba(0, 0, 0, 0.5);
-    font-size: 20px;
+    background: rgba(103, 99, 109, 0.5);
+    font-size: 30px;
     text-decoration: none;
     text-align: center;
+    text-shadow: 1px 1px 1px #403c46,
+            -1px -1px 1px #403c46,
+            1px -1px 1px #403c46,
+            -1px 1px 1px #403c46;
     line-height: 100%;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgb(255, 253, 245);
 }
 
 .event-preview-title {

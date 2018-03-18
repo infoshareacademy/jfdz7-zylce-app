@@ -5,6 +5,8 @@ import moment from 'moment'
 import 'moment/locale/pl'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 
+import EventPreview from './EventPreview'
+
 moment.locale('pl');
 BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment));
 
@@ -43,20 +45,20 @@ class Calendar extends React.Component {
         console.log('slot select')
     };
 
-    // eventPreview = (event) => {
-    //     let eventStartDate = event.start;
-    //     let eventEndDate = event.end;
-    //     let category = event.category;
-    //     let paragraph = document.createElement('p');
-    //     let title = document.createElement('h3');
-    //     let dateOptions = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
-    //     let timeOptions = {hour: 'numeric', minute: 'numeric'};
-    //     document.getElementById('event-preview').classList.remove('hidden');
-    //     document.getElementById('event-preview-title').appendChild(title).append(`${event.title}`);
-    //     document.getElementById('event-preview-title').classList.add(`category-${category}`);
-    //     document.getElementById('event-preview-date').appendChild(paragraph).innerText =
-    //         `${eventStartDate.toLocaleDateString('pl-PL', dateOptions)}, ${eventStartDate.toLocaleTimeString('pl-PL', timeOptions)} - ${eventEndDate.toLocaleTimeString('pl-PL', timeOptions)}`;
-    // };
+    eventPreview = (event) => {
+        let eventStartDate = event.start;
+        let eventEndDate = event.end;
+        let category = event.category;
+        let paragraph = document.createElement('p');
+        let title = document.createElement('h3');
+        let dateOptions = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
+        let timeOptions = {hour: 'numeric', minute: 'numeric'};
+        document.getElementById('event-preview').classList.remove('hidden');
+        document.getElementById('event-preview-title').appendChild(title).append(`${event.title}`);
+        document.getElementById('event-preview-title').classList.add(`category-${category}`);
+        document.getElementById('event-preview-date').appendChild(paragraph).innerText =
+            `${eventStartDate.toLocaleDateString('pl-PL', dateOptions)}, ${eventStartDate.toLocaleTimeString('pl-PL', timeOptions)} - ${eventEndDate.toLocaleTimeString('pl-PL', timeOptions)}`;
+    };
 
     render() {
         const min = new Date();
@@ -88,9 +90,11 @@ class Calendar extends React.Component {
                         min={min}
                         max={max}
                         onSelectSlot={this.slotSelected}
-                        // onSelectEvent={this.eventPreview}
+                        onSelectEvent={this.eventPreview}
                     />
-                    {/*<EventPreview eventPreview={this.eventPreview} />*/}
+                </div>
+                <div>
+                    <EventPreview eventPreview={this.eventPreview} />
                 </div>
             </React.Fragment>
         )
