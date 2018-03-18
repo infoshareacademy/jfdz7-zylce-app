@@ -1,9 +1,11 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import events from './state/events';
+import filtering from "./state/filtering";
 
 const reducer = combineReducers({
-    events
+    events,
+    filtering
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

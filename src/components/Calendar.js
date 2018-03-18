@@ -5,6 +5,8 @@ import moment from 'moment'
 import 'moment/locale/pl'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 
+import FilterControls from './FilterControls'
+
 moment.locale('pl');
 BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment));
 
@@ -65,7 +67,7 @@ class Calendar extends React.Component {
         const max = new Date();
         max.setHours(23);
         max.setMinutes(57, 0, 0);
-        const { events } = this.props;
+        const { events, activeFilterNames } = this.props;
         return (
             <React.Fragment>
                 <div id="calendar" className="calendar">
@@ -96,6 +98,7 @@ class Calendar extends React.Component {
 
 export default connect(
     state => ({
-        events: state.events.data
+        events: state.events.data,
+        activeFilterNames: state.filtering.activeFilterNames
     }), {}
 )(Calendar)
