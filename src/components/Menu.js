@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 const options = [
     {
         path: '/',
-        label: 'Auth',
+        label: 'Home',
         options: {
             exact: true
         }

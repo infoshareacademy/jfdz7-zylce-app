@@ -1,6 +1,6 @@
 import React from 'react'
 
-class Auth extends React.Component {
+class HomeView extends React.Component {
 
     render() {
         return (
@@ -9,4 +9,4 @@ class Auth extends React.Component {
     }
 }
 
-export default Auth;
+export default HomeView;
