@@ -263,7 +263,13 @@
 
 .user-events{
     list-style: none;
+    padding: 0;
+}
 
+.user-events > li {
+    border: 2px solid #666666;
+    border-radius: 5px;
+    margin-bottom: 5px;
 }
 
 .user-agenda-title{
@@ -273,4 +279,25 @@
     font-weight: bold;
     color: #ffffff;
     padding: 5px 10px;
+    border-radius-topleft: 5px ;
+    border-radius-topright: 5px ;
+}
+.user-event-description{
+    padding: 5px 5px;
+}
+
+.user-event-delete-btn{
+    background-color: #EF5350;
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #fff;
+
+}
+
+.user-event-delete-btn:hover{
+    background-color: #E53935;
+    border: 1px solid #fff;
+
 }

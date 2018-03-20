@@ -13,7 +13,6 @@ class UserAgenda extends Component {
 
     handleRemoveClick = event => {
         const eventId = event.id
-        console.log('event target: ', eventId)
         this.props.removeEvent(eventId)
     }
 
@@ -35,11 +34,14 @@ class UserAgenda extends Component {
                         return <li key={event.id} className={`user-event-${event.category}`}>
                             <div className={`user-agenda-title category-${event.category}`}>
                                 {event.title}
-                                <button className="user-agenda-delete-btn" onClick={()=>this.handleRemoveClick(event)}>Usuń</button>
+                                <button className="user-event-delete-btn" onClick={()=>this.handleRemoveClick(event)}>Usuń</button>
                             </div>
                             <div className="user-event-description">
-                                <strong>Kiedy:</strong> {event.start.toLocaleString('pl-PL', dateOptions)}
+                                <strong>Start:</strong> {event.start.toLocaleString('pl-PL', dateOptions)}, {event.start.toLocaleTimeString('pl-PL', timeOptions)}
+                                <span> </span>
+                                <strong>Koniec:</strong> {event.end.toLocaleString('pl-PL', dateOptions)}, {event.end.toLocaleTimeString('pl-PL', timeOptions)}
                                 <br/>
+                                <hr />
                                 <strong>Opis:</strong> {event.desc}
                             </div>
                         </li>
@@ -48,25 +50,10 @@ class UserAgenda extends Component {
                     })}
                 </ul>
 
-
             </React.Fragment>
         )
     }
 }
-
-// const mapStateToProps = state => {
-//     return {
-//         userEventsFromState: state.userEvents
-//     }
-// }
-//
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         onDeleteUserEvent: (id)=> dispatch({type: 'DELETE_USER_EVENT', eventId: id})
-//     }
-// }
-//
-// export default connect(mapStateToProps, mapDispatchToProps)(UserAgenda)
 
 export default connect(
     state => ({

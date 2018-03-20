@@ -18,9 +18,7 @@ export default (state = initialState, action = {}) => {
     switch (action.type) {
         case REMOVE_EVENT:
             console.log('usuwam event usera!')
-            console.log(state.data)
             const updatedUserEventArray = state.data.filter( event => event.id !== action.eventId)
-            console.log(updatedUserEventArray)
             return {
                 ...state,
                 data: updatedUserEventArray
