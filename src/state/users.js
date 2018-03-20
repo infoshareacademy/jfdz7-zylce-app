@@ -1,11 +1,30 @@
 import userEvents from "../data/users";
 
+// Action Types
+const REMOVE_EVENT = 'userView/REMOVE_TASK';
+
+// Action Creators
+export const removeEvent = (eventId) => ({
+    type: REMOVE_EVENT,
+    eventId
+})
+
 const initialState = {
-    data: userEvents
+    data: userEvents[0].userEvents
 };
 
+// Reducer
 export default (state = initialState, action = {}) => {
     switch (action.type) {
+        case REMOVE_EVENT:
+            console.log('usuwam event usera!')
+            console.log(state.data)
+            const updatedUserEventArray = state.data.filter( event => event.id !== action.eventId)
+            console.log(updatedUserEventArray)
+            return {
+                ...state,
+                data: updatedUserEventArray
+            }
         default:
             return state
     }

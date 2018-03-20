@@ -120,6 +120,6 @@ class UserCalendar extends Component {
 
 export default connect(
     state => ({
-        userEventsFromState: state.users.data[0].userEvents
+        userEventsFromState: state.users.data
     }), {}
 )(UserCalendar)
