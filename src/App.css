@@ -258,3 +258,19 @@
     opacity: 0.65;
     outline: none;
 }
+
+/*UserView Styles*/
+
+.user-events{
+    list-style: none;
+
+}
+
+.user-agenda-title{
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+    padding: 5px 10px;
+}
