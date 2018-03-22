@@ -1,11 +1,11 @@
 import React from 'react'
 import BigCalendar from 'react-big-calendar'
-import { connect } from 'react-redux'
 import moment from 'moment'
 import 'moment/locale/pl'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 
 import EventPreview from './EventPreview'
+import {connect} from "react-redux";
 
 moment.locale('pl');
 BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment));
@@ -67,14 +67,14 @@ class Calendar extends React.Component {
         const max = new Date();
         max.setHours(23);
         max.setMinutes(57, 0, 0);
-        const { events, activeFilterNames } = this.props;
+        const { activeFilterNames } = this.props;
         return (
             <React.Fragment>
                 <div id="calendar" className="calendar">
                     <BigCalendar
                         messages={config.messages}
                         eventPropGetter={event => ({className: `category-${event.category} event-${event.id}`})}
-                        events={events.filter(event => activeFilterNames.length === 0
+                        events={this.props.events.filter(event => activeFilterNames.length === 0
                             ? true
                             : activeFilterNames.includes(event.category)
                         )}
@@ -103,7 +103,6 @@ class Calendar extends React.Component {
 
 export default connect(
     state => ({
-        events: state.events.data,
         activeFilterNames: state.filtering.activeFilterNames
     }), {}
 )(Calendar)
