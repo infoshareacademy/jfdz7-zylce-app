@@ -267,7 +267,7 @@
 }
 
 .user-events > li {
-    border: 2px solid #666666;
+    border: 2px solid #b8b8b8;
     border-radius: 5px;
     margin-bottom: 5px;
 }
@@ -300,4 +300,10 @@
     background-color: #E53935;
     border: 1px solid #fff;
 
+}
+
+.user-filter-btn{
+    padding: 5px 5px;
+    color: #ffffff;
+    border-radius: 3px;
 }

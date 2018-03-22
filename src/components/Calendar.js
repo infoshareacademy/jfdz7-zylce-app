@@ -38,7 +38,7 @@ const config = {
 
 class Calendar extends React.Component {
     state = {
-
+        currentEvent: this.props.newUserEvent
     };
 
     slotSelected = () => {
@@ -58,6 +58,21 @@ class Calendar extends React.Component {
         document.getElementById('event-preview-title').classList.add(`category-${category}`);
         document.getElementById('event-preview-date').appendChild(paragraph).innerText =
             `${eventStartDate.toLocaleDateString('pl-PL', dateOptions)}, ${eventStartDate.toLocaleTimeString('pl-PL', timeOptions)} - ${eventEndDate.toLocaleTimeString('pl-PL', timeOptions)}`;
+
+        //add user event to state
+        console.log(this.state.currentEvent)
+        const userEvent = {
+            id: Date.now().toString(32),
+            title: event.title,
+            category: event.category,
+            start: event.start,
+            end: event.end}
+
+        this.setState({
+            currentEvent: this.state.currentEvent = userEvent
+        })
+        console.log(this.state.currentEvent)
+
     };
 
     render() {
@@ -104,6 +119,7 @@ class Calendar extends React.Component {
 export default connect(
     state => ({
         events: state.events.data,
-        activeFilterNames: state.filtering.activeFilterNames
+        activeFilterNames: state.filtering.activeFilterNames,
+        newUserEvent: state.users.newEvent
     }), {}
 )(Calendar)

@@ -1,4 +1,7 @@
 import React from 'react'
+import {connect} from 'react-redux'
+
+import {addEvent} from "../state/users"
 
 class EventPreview extends React.Component {
 
@@ -16,6 +19,10 @@ class EventPreview extends React.Component {
         document.getElementById('event-preview-date').innerText = '';
     };
 
+    saveEventToUserEvents = (event) => {
+        event.preventDefault();
+        console.log('test!!!!')
+    }
 
 
     render() {
@@ -27,7 +34,7 @@ class EventPreview extends React.Component {
                         <div id="event-preview-date" className="event-preview-date"></div>
                         <div id="event-preview-user-actions" className="event-preview-user-actions"></div>
                         <div id="event-preview-btns" className="event-preview-btns">
-                            <button onClick={this.props.saveEventToUserEvents}>Zapisz wydarzenie</button>
+                            <button onClick={this.saveEventToUserEvents}>Zapisz wydarzenie</button>
                             <button onClick={this.hidePopup}>Wróc do kalendarza wydarzeń</button>
                         </div>
                         <a id="close-event-preview" className="close-event-preview" onClick={this.hidePopup} href=''>x</a>
@@ -39,4 +46,5 @@ class EventPreview extends React.Component {
     }
 }
 
-export default EventPreview;
+export default connect(state => ({
+}), { addEvent})(EventPreview);

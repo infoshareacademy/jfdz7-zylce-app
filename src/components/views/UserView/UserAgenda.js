@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import BigCalendar from 'react-big-calendar';
-import moment from 'moment';
 import {connect} from 'react-redux'
+
+import UserEventFilter from './UserEventFilter'
+
 import {removeEvent} from "../../../state/users"
-
-
-BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment))
-
 
 
 class UserAgenda extends Component {
@@ -23,12 +20,7 @@ class UserAgenda extends Component {
         return (
             <React.Fragment >
                 <h3>Moje wydarzenia</h3>
-                <div className="user-agenda-filter">
-                    <button className="category-cinema" onClick={this.eventFilterCinema}>Kino</button>
-                    <button className="category-concert" onClick={this.eventFilterConcert}>Koncert</button>
-                    <button className="category-theatre" onClick={this.eventFilterTheatre}>Teatr</button>
-                    <button className="category-refresh" onClick={this.eventFilterRefresh}>Wyczyść</button>
-                </div>
+                <UserEventFilter/>
                 <ul className="user-events">
                     {this.props.userAgendaFromState.map( event => {
                         return <li key={event.id} className={`user-event-${event.category}`}>
