@@ -25,6 +25,7 @@ export default (state = initialState, action = {}) => {
     switch (action.type) {
         case ADD_EVENT:
             console.log('dodaje event usera!')
+            console.log(state.newEvent)
             return {
                 ...state,
             }

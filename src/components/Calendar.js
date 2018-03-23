@@ -72,6 +72,7 @@ class Calendar extends React.Component {
             currentEvent: this.state.currentEvent = userEvent
         })
         console.log(this.state.currentEvent)
+        const mystate = this.state.currentEvent
 
     };
 
