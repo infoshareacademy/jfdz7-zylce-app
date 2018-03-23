@@ -21,8 +21,7 @@ class EventPreview extends React.Component {
 
     saveEventToUserEvents = (event) => {
         event.preventDefault();
-        console.log('test!!!!')
-        this.props.addEvent(event)
+        this.props.addEvent()
     }
 
 

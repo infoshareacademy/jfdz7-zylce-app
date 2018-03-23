@@ -38,7 +38,7 @@ const config = {
 
 class Calendar extends React.Component {
     state = {
-        currentEvent: this.props.newUserEvent
+        selectedEvent: this.props.newUserEvent
     };
 
     slotSelected = () => {
@@ -60,19 +60,20 @@ class Calendar extends React.Component {
             `${eventStartDate.toLocaleDateString('pl-PL', dateOptions)}, ${eventStartDate.toLocaleTimeString('pl-PL', timeOptions)} - ${eventEndDate.toLocaleTimeString('pl-PL', timeOptions)}`;
 
         //add user event to state
-        console.log(this.state.currentEvent)
+        console.log(this.state.selectedEvent)
         const userEvent = {
-            id: Date.now().toString(32),
-            title: event.title,
-            category: event.category,
-            start: event.start,
-            end: event.end}
+
+                id: Date.now().toString(32),
+                title: event.title,
+                category: event.category,
+                start: event.start,
+                end: event.end
+            }
 
         this.setState({
-            currentEvent: this.state.currentEvent = userEvent
+            selectedEvent: this.state.selectedEvent = userEvent
         })
-        console.log(this.state.currentEvent)
-        const mystate = this.state.currentEvent
+        console.log(this.state.selectedEvent)
 
     };
 

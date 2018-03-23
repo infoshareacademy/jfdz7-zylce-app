@@ -17,16 +17,25 @@ export const addEvent = (event) => ({
 
 const initialState = {
     data: userEvents[0].userEvents,
-    newEvent: {}
+    newEvent: {
+        id: '',
+        category: '',
+        title: 'xxx',
+        description: '',
+        start: '',
+        end: ''
+    }
 };
 
 // Reducer
 export default (state = initialState, action = {}) => {
     switch (action.type) {
         case ADD_EVENT:
-            console.log('dodaje event usera!')
             console.log(state.newEvent)
+            const addingNewEvent = state.data.concat(state.newEvent)
+
             return {
+                data: addingNewEvent,
                 ...state,
             }
         case REMOVE_EVENT:
