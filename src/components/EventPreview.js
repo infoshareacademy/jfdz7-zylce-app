@@ -5,7 +5,7 @@ class EventPreview extends React.Component {
     showPopup = (event) => {
         event.preventDefault();
         document.getElementById('event-preview').classList.add('event-preview');
-        console.log('event select', event.title)
+
     };
 
     hidePopup = (event) => {

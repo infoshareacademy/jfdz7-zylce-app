@@ -2,11 +2,8 @@ import React, { Component } from 'react'
 import Calendar from '../Calendar'
 import FilterControls from '../FilterControls'
 import {connect} from "react-redux";
-import firebase from 'firebase';
 
-
-// TODO Create component displaying list of tasks
-class TasksView extends Component {
+class CalendarView extends Component {
 
 
 
@@ -26,4 +23,4 @@ export default connect(
         events: state.events.data,
         activeFilterNames: state.filtering.activeFilterNames
     }), {}
-)(TasksView)
+)(CalendarView)

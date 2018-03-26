@@ -11,24 +11,27 @@ export const getEvents = () => dispatch => {
     dbRef = firebase.database().ref('events');
     callback = snapshot => {
         const value = snapshot.val();
-        dispatch({ type: SET_EVENTS, data: value })
+        dispatch({ type: SET_EVENTS, data: value });
     };
     dbRef.on('value', callback);
+
 };
-
-
 
 const initialState = {
     data: events
 };
 
 export default (state = initialState, action = {}) => {
-    if (action.type === 'SET_EVENTS') {
-        return {
-            ...state,
-            events: action.events
-        };
-    } else {
-        return state
+    switch (action.type) {
+        case 'SET_EVENTS':
+            return {
+                ...state,
+                data: action.data
+            }
+        default:
+        {
+            return state
+        }
     }
+
 }

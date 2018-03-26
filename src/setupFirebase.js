@@ -1,9 +1,5 @@
 import firebase from 'firebase';
 
-export const getSectionsDB = () => {
-    return database.ref('/').once('value')
-}
-
 const config = {
     apiKey: "AIzaSyCcFm7bKFMdfCQH9Xcu10605wxm5l1zQTk",
     authDomain: "zaplanujto-53dc4.firebaseapp.com",
@@ -13,7 +9,3 @@ const config = {
     messagingSenderId: "120684714085"
 };
 firebase.initializeApp(config);
-
-const database = firebase.database();
-
-export default database;

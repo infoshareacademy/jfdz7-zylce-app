@@ -6,7 +6,6 @@ import 'react-big-calendar/lib/css/react-big-calendar.css'
 
 import EventPreview from './EventPreview'
 import {connect} from "react-redux";
-import firebase from "firebase";
 
 moment.locale('pl');
 BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment));
@@ -51,6 +50,7 @@ class Calendar extends React.Component {
         let eventStartDate = event.start;
         let eventEndDate = event.end;
         let category = event.category;
+        let description = event.description;
         let paragraph = document.createElement('p');
         let title = document.createElement('h3');
         let dateOptions = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
@@ -60,6 +60,8 @@ class Calendar extends React.Component {
         document.getElementById('event-preview-title').classList.add(`category-${category}`);
         document.getElementById('event-preview-date').appendChild(paragraph).innerText =
             `${eventStartDate.toLocaleDateString('pl-PL', dateOptions)}, ${eventStartDate.toLocaleTimeString('pl-PL', timeOptions)} - ${eventEndDate.toLocaleTimeString('pl-PL', timeOptions)}`;
+        console.log('event select', event.title);
+        console.log('event select', event.description);
     };
 
     render() {
