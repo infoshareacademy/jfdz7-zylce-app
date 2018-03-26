@@ -2,9 +2,15 @@ import React, { Component } from 'react'
 import Calendar from '../Calendar'
 import FilterControls from '../FilterControls'
 import {connect} from "react-redux";
+import firebase from 'firebase';
+
 
 // TODO Create component displaying list of tasks
 class TasksView extends Component {
+
+
+
+
     render() {
         return (
             <React.Fragment>

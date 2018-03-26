@@ -6,6 +6,7 @@ import 'react-big-calendar/lib/css/react-big-calendar.css'
 
 import EventPreview from './EventPreview'
 import {connect} from "react-redux";
+import firebase from "firebase";
 
 moment.locale('pl');
 BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment));
@@ -40,6 +41,7 @@ class Calendar extends React.Component {
     state = {
 
     };
+
 
     slotSelected = () => {
         console.log('slot select')
