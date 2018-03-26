@@ -59,7 +59,7 @@ class Calendar extends React.Component {
         document.getElementById('event-preview-title').appendChild(title).append(`${event.title}`);
         document.getElementById('event-preview-title').classList.add(`category-${category}`);
         document.getElementById('event-preview-date').appendChild(paragraph).innerText =
-            `${eventStartDate.toLocaleDateString('pl-PL', dateOptions)}, ${eventStartDate.toLocaleTimeString('pl-PL', timeOptions)} - ${eventEndDate.toLocaleTimeString('pl-PL', timeOptions)}`;
+            `${eventStartDate}, ${eventStartDate} - ${eventEndDate}`;
         console.log('event select', event.title);
         console.log('event select', event.description);
     };

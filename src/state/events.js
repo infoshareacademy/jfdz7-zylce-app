@@ -8,10 +8,10 @@ let dbRef;
 let callback;
 
 export const getEvents = () => dispatch => {
-    dbRef = firebase.database().ref('events');
+    dbRef = firebase.database().ref('events/');
     callback = snapshot => {
         const value = snapshot.val();
-        dispatch({ type: SET_EVENTS, data: value });
+        dispatch({ type: 'SET_EVENTS', data: value });
     };
     dbRef.on('value', callback);
 
