@@ -3,9 +3,9 @@ import BigCalendar from 'react-big-calendar'
 import moment from 'moment'
 import 'moment/locale/pl'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
-
-import EventPreview from './EventPreview'
 import {connect} from "react-redux";
+import {setActiveEvent} from "../state/eventPreview";
+
 
 moment.locale('pl');
 BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment));
@@ -41,16 +41,10 @@ class Calendar extends React.Component {
 
     };
 
-
-    slotSelected = () => {
-        console.log('slot select')
-    };
-
     eventPreview = (event) => {
         let eventStartDate = event.start;
         let eventEndDate = event.end;
         let category = event.category;
-        let description = event.description;
         let paragraph = document.createElement('p');
         let title = document.createElement('h3');
         let dateOptions = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
@@ -59,9 +53,11 @@ class Calendar extends React.Component {
         document.getElementById('event-preview-title').appendChild(title).append(`${event.title}`);
         document.getElementById('event-preview-title').classList.add(`category-${category}`);
         document.getElementById('event-preview-date').appendChild(paragraph).innerText =
-            `${eventStartDate}, ${eventStartDate} - ${eventEndDate}`;
-        console.log('event select', event.title);
-        console.log('event select', event.description);
+            `${eventStartDate.toLocaleDateString('pl-PL', dateOptions)}, ${eventStartDate.toLocaleTimeString('pl-PL', timeOptions)} - ${eventEndDate.toLocaleTimeString('pl-PL', timeOptions)}`;
+    };
+
+    slotSelected = () => {
+        console.log('slot select')
     };
 
     render() {
@@ -94,11 +90,12 @@ class Calendar extends React.Component {
                         min={min}
                         max={max}
                         onSelectSlot={this.slotSelected}
-                        onSelectEvent={this.eventPreview}
+                        onSelectEvent={event => {
+                            this.props.setActiveEvent(event);
+                            this.eventPreview(event);
+                            }
+                        }
                     />
-                </div>
-                <div>
-                    <EventPreview eventPreview={this.eventPreview} />
                 </div>
             </React.Fragment>
         )
@@ -107,6 +104,7 @@ class Calendar extends React.Component {
 
 export default connect(
     state => ({
-        activeFilterNames: state.filtering.activeFilterNames
-    }), {}
+        activeFilterNames: state.filtering.activeFilterNames,
+        activeEvent: state.eventPreview.activeEvent
+    }), { setActiveEvent }
 )(Calendar)

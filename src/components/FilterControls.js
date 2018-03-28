@@ -49,16 +49,16 @@ class FilterControls extends Component {
                 <div id="filter-buttons" className="filter-buttons">
                     {this.props.categoryNames.map(categoryName => (
                         <button
-                    key={categoryName}
-                    className={`category-${categoryName} filter-btn`} value={categoryName}
-                    onClick={(event) => {
-                    this.setActive(event);
-                    this.props.activateFilter(categoryName);
-                    }
-                    }
-                    >
-                    {this.translateCategoryName(categoryName)}
-                    </button>
+                            key={categoryName}
+                            className={`category-${categoryName} filter-btn`} value={categoryName}
+                            onClick={(event) => {
+                                this.setActive(event);
+                                this.props.activateFilter(categoryName);
+                             }
+                         }
+                        >
+                            {this.translateCategoryName(categoryName)}
+                        </button>
                     ))}
                 <button
                     id="show-all-events-btn"

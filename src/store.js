@@ -4,10 +4,12 @@ import './setupFirebase';
 
 import events, {getEvents} from './state/events';
 import filtering from "./state/filtering";
+import eventPreview from "./state/eventPreview";
 
 const reducer = combineReducers({
     events,
-    filtering
+    filtering,
+    eventPreview
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
