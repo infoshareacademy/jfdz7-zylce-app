@@ -39,14 +39,6 @@ class FilterControls extends Component {
         document.getElementById('show-all-events-btn').classList.add('hidden');
     };
 
-    componentDidUpdate = () => {
-        console.log('100')
-        console.log('props')
-        console.log(this.props)
-        console.log('state')
-        console.log(this.state)
-    };
-
     render() {
 
         return (
@@ -55,7 +47,6 @@ class FilterControls extends Component {
                     Filtruj wydarzenia
                 </div>
                 <div id="filter-buttons" className="filter-buttons">
-                    {console.log(this.props)}
                     {this.props.categoryNames.map(categoryName => (
                         <button
                     key={categoryName}
