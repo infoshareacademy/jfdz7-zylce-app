@@ -3,8 +3,6 @@ import {connect} from 'react-redux'
 
 class EventPreview extends React.Component {
 
-
-
     showPopup = (event) => {
         event.preventDefault();
         document.getElementById('event-preview').classList.add('event-preview');
@@ -16,6 +14,7 @@ class EventPreview extends React.Component {
         document.getElementById('event-preview').classList.add('hidden');
         document.getElementById('event-preview-title').innerText = '';
         document.getElementById('event-preview-date').innerText = '';
+        document.getElementById('event-preview-picture').innerText = '';
     };
 
     render() {
@@ -28,8 +27,18 @@ class EventPreview extends React.Component {
                     <div className="event-preview-inner">
                         <div id="event-preview-title" className="event-preview-title">
                         </div>
-                        <div id="event-preview-date" className="event-preview-date"></div>
-                        <div id="event-preview-user-actions" className="event-preview-user-actions"></div>
+                        <div id="event-preview-date" className="event-preview-date">
+
+                        </div>
+                        <div id="event-preview-dsc" className="event-preview-dsc">
+                            <div id="event-preview-picture" className="event-preview-picture">
+
+                            </div>
+                            <div id="event-preview-description" className="event-preview-description" />
+                        </div>
+                        <div id="event-preview-user-actions" className="event-preview-user-actions">
+
+                        </div>
                         <div id="event-preview-btns" className="event-preview-btns">
                             <button onClick={() => console.log('zapisz')}>Zapisz wydarzenie</button>
                             <button onClick={this.hidePopup}>Wróc do kalendarza wydarzeń</button>

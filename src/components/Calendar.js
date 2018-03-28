@@ -45,13 +45,18 @@ class Calendar extends React.Component {
         let eventStartDate = event.start;
         let eventEndDate = event.end;
         let category = event.category;
+        let picture = event.picture;
         let paragraph = document.createElement('p');
         let title = document.createElement('h3');
+        let img = document.createElement('img');
+        let description = event.description;
         let dateOptions = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
         let timeOptions = {hour: 'numeric', minute: 'numeric'};
         document.getElementById('event-preview').classList.remove('hidden');
         document.getElementById('event-preview-title').appendChild(title).append(`${event.title}`);
         document.getElementById('event-preview-title').classList.add(`category-${category}`);
+        document.getElementById('event-preview-picture').appendChild(img).setAttribute('src', picture);
+        document.getElementById('event-preview-description').innerText = description
         document.getElementById('event-preview-date').appendChild(paragraph).innerText =
             `${eventStartDate.toLocaleDateString('pl-PL', dateOptions)}, ${eventStartDate.toLocaleTimeString('pl-PL', timeOptions)} - ${eventEndDate.toLocaleTimeString('pl-PL', timeOptions)}`;
     };
