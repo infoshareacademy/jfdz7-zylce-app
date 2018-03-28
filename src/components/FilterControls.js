@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { activateFilter, deactivateFilter } from '../state/filtering'
+import { toggleFilter, deactivateFilter } from '../state/filtering'
 
 class FilterControls extends Component {
 
@@ -18,10 +18,17 @@ class FilterControls extends Component {
         }
     };
 
-    setActive = (event) => {
+    toggleActive = (event) => {
         event.preventDefault();
-        event.target.classList.add('active');
-        document.getElementById('show-all-events-btn').classList.remove('hidden');
+       if (event.target.classList.contains('active')) {
+           event.target.classList.remove('active')
+           if (!event.target.nextElementSibling.classList.contains('active')) {
+               document.getElementById('show-all-events-btn').classList.add('hidden');
+           }
+       } else {
+           event.target.classList.add('active');
+           document.getElementById('show-all-events-btn').classList.remove('hidden');
+       }
 
     };
 
@@ -52,7 +59,7 @@ class FilterControls extends Component {
                             key={categoryName}
                             className={`category-${categoryName} filter-btn`} value={categoryName}
                             onClick={(event) => {
-                                this.setActive(event);
+                                this.toggleActive(event);
                                 this.props.activateFilter(categoryName);
                              }
                          }
@@ -83,5 +90,5 @@ export default connect(
                 }, {})
         )
     }),
-    { activateFilter, deactivateFilter }
+    { activateFilter: toggleFilter, deactivateFilter }
 )(FilterControls)

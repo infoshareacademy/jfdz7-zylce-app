@@ -1,7 +1,7 @@
 const ACTIVATE_FILTER = 'filtering/ACTIVATE_FILTER';
 const DEACTIVATE_FILTER = 'filtering/DEACTIVATE_FILTER';
 
-export const activateFilter = filterName => ({
+export const toggleFilter = filterName => ({
     type: ACTIVATE_FILTER,
     filterName
 });
@@ -21,7 +21,7 @@ export default (state = initialState, action = {}) => {
             return {
                 ...initialState,
                 activeFilterNames: state.activeFilterNames.includes(action.filterName)
-                    ? state.activeFilterNames
+                    ? state.activeFilterNames.filter(category => category !== action.filterName)
                     : state.activeFilterNames.concat(action.filterName)
             };
         case DEACTIVATE_FILTER:

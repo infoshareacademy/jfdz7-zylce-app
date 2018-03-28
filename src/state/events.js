@@ -1,7 +1,6 @@
 import firebase from 'firebase';
 import '../setupFirebase';
 
-const SET_EVENTS = 'events/SET_EVENTS';
 
 let dbRef;
 let callback;
