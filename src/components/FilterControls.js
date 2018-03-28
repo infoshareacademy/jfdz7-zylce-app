@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { activateFilter, deactivateFilter } from '../state/filtering'
 
 class FilterControls extends Component {
+
+
     translateCategoryName = (categoryName) => {
         switch(categoryName) {
             case 'cinema':
@@ -18,7 +20,7 @@ class FilterControls extends Component {
 
     setActive = (event) => {
         event.preventDefault();
-        event.target.classList.add('active')
+        event.target.classList.add('active');
         document.getElementById('show-all-events-btn').classList.remove('hidden');
 
     };
@@ -26,7 +28,7 @@ class FilterControls extends Component {
     clearActiveClassFromFilterButtons = () => {
         let buttons = document.getElementsByClassName('filter-btn');
         for (let i=0; i<buttons.length; i++) {
-            buttons[i].classList.remove('active') ;
+            buttons[i].classList.remove('active');
         }
     };
 
@@ -37,26 +39,36 @@ class FilterControls extends Component {
         document.getElementById('show-all-events-btn').classList.add('hidden');
     };
 
+    componentDidUpdate = () => {
+        console.log('100')
+        console.log('props')
+        console.log(this.props)
+        console.log('state')
+        console.log(this.state)
+    };
+
     render() {
+
         return (
             <div className="events-filter">
                 <div className="filter-message">
                     Filtruj wydarzenia
                 </div>
                 <div id="filter-buttons" className="filter-buttons">
-                {this.props.categoryNames.map(categoryName => (
-                    <button
-                        key={categoryName}
-                        className={`category-${categoryName} filter-btn`} value={categoryName}
-                        onClick={(event) => {
-                            this.setActive(event);
-                            this.props.activateFilter(categoryName);
-                            }
-                        }
+                    {console.log(this.props)}
+                    {this.props.categoryNames.map(categoryName => (
+                        <button
+                    key={categoryName}
+                    className={`category-${categoryName} filter-btn`} value={categoryName}
+                    onClick={(event) => {
+                    this.setActive(event);
+                    this.props.activateFilter(categoryName);
+                    }
+                    }
                     >
-                        {this.translateCategoryName(categoryName)}
+                    {this.translateCategoryName(categoryName)}
                     </button>
-                ))}
+                    ))}
                 <button
                     id="show-all-events-btn"
                     className="show-all-events-btn hidden"
@@ -68,14 +80,14 @@ class FilterControls extends Component {
     }
 }
 
-
 export default connect(
     state => ({
+        data: state.events.data,
         categoryNames: Object.keys(
             state.events.data
                 .map(event => event.category)
                 .reduce((uniqueCategoryNames, nextCategoryName) => {
-                    uniqueCategoryNames[nextCategoryName] = true
+                    uniqueCategoryNames[nextCategoryName] = true;
                     return uniqueCategoryNames
                 }, {})
         )

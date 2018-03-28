@@ -78,7 +78,7 @@ class Calendar extends React.Component {
                     <BigCalendar
                         messages={config.messages}
                         eventPropGetter={event => ({className: `category-${event.category} event-${event.id}`})}
-                        events={this.props.events.filter(event => activeFilterNames.length === 0
+                        events={(this.props.events.filter)(event => activeFilterNames.length === 0
                             ? true
                             : activeFilterNames.includes(event.category)
                         )}

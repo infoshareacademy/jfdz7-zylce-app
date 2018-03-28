@@ -1,4 +1,3 @@
-import events from "../data/events";
 import firebase from 'firebase';
 import '../setupFirebase';
 
@@ -18,7 +17,7 @@ export const getEvents = () => dispatch => {
 };
 
 const initialState = {
-    data: events
+    data: []
 };
 
 export default (state = initialState, action = {}) => {

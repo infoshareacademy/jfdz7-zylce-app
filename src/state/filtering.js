@@ -11,7 +11,8 @@ export const deactivateFilter = () => ({
 });
 
 const initialState = {
-    activeFilterNames: []
+    activeFilterNames: [],
+    categoryNames: []
 };
 
 export default (state = initialState, action = {}) => {
