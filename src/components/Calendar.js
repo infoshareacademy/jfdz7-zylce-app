@@ -62,7 +62,6 @@ class Calendar extends React.Component {
         //add user event to state
         console.log(this.state.selectedEvent)
         const userEvent = {
-
                 id: Date.now().toString(32),
                 title: event.title,
                 category: event.category,
