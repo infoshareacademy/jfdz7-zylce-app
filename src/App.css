@@ -339,6 +339,7 @@
 .user-event-poster{
     width: 75px;
     height: 100px;
+    border: 2px solid #b8b8b8;
 }
 
 /*SignUp ana LogIn panel*/
