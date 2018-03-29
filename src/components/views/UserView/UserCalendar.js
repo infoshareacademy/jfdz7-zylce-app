@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import BigCalendar from 'react-big-calendar';
+import Calendar from '../../Calendar';
+import EventPreview from '../../EventPreview';
 import moment from 'moment';
 import 'moment/locale/pl';
 import {connect} from 'react-redux'
-// import UserEventPreviewWindow from './UserEventPreviewWindow'
 
 BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment))
 
 
 class UserCalendar extends Component {
     state ={
-        // userEvents: this.props.userCalendar,
         messages: {
             next:">",
             previous:"<",
@@ -70,22 +70,33 @@ class UserCalendar extends Component {
 
         return (
             <React.Fragment>
-                <div className="calendar">
-                    <BigCalendar
-                        messages={this.state.messages}
-                        className="user-calendar"
-                        events={this.props.userEventsFromState}
-                        eventPropGetter={event => ({className: `category-${event.category} event-${event.id}`})}
-                        step={15}
-                        timeslots={5}
-                        defaultView= 'month'
-                        selectable = {true}
-                        defaultDate={new Date()}
-                        toolbar = {true}
-                        onSelectSlot={this.onSelectSlot}
-                        onSelectEvent={this.props.onOpenUserEventWindow}
-                    />
-                </div>
+                {/*<div className="calendar">*/}
+                    {/*<BigCalendar*/}
+                        {/*messages={this.state.messages}*/}
+                        {/*className="user-calendar"*/}
+                        {/*events={this.props.userEventsFromState}*/}
+                        {/*eventPropGetter={event => ({className: `category-${event.category} event-${event.id}`})}*/}
+                        {/*step={15}*/}
+                        {/*timeslots={5}*/}
+                        {/*defaultView= 'month'*/}
+                        {/*selectable = {true}*/}
+                        {/*defaultDate={new Date()}*/}
+                        {/*toolbar = {true}*/}
+                        {/*onSelectSlot={this.onSelectSlot}*/}
+                        {/*onSelectEvent={this.props.onOpenUserEventWindow}*/}
+                    {/*/>*/}
+                {/*</div>*/}
+                <Calendar events={this.props.userEventsFromState.map(event =>  ({
+                        id: event.id,
+                        title: event.title,
+                        start: moment(event.start).toDate(),
+                        end: moment(event.end).toDate(),
+                        category: event.category,
+                        description: event.description,
+                        picture: event.picture
+                    })
+                )}/>
+                <EventPreview />
             </React.Fragment>
         )
     }

@@ -9,10 +9,18 @@ const ADD_EVENT = 'calendarView/ADD_EVENT';
 const SET_TASKS = 'userView/SET_TASKS'
 
 // Action Creators
-export const removeEvent = (eventId) => ({
-    type: REMOVE_EVENT,
-    eventId
-})
+
+// export const removeEvent = (eventId) => ({
+//     type: REMOVE_EVENT,
+//     eventId
+// }
+
+export const removeEvent = eventId => dispatch => {
+    const userUid = firebase.auth().currentUser.uid
+    dbRef = firebase.database().ref('/users/' + userUid + '/events')
+    console.log(dbRef)
+    // dbRef.child(taskId).remove()
+}
 
 export const addEvent = (event) => ({
     type: ADD_EVENT,

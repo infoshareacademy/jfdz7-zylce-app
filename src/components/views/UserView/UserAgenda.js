@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import firebase from 'firebase';
-
-
 import UserEventFilter from './UserEventFilter'
+
 
 import {removeEvent} from "../../../state/users"
 
@@ -11,12 +10,10 @@ import {removeEvent} from "../../../state/users"
 class UserAgenda extends Component {
 
     handleRemoveClick = event => {
-        const eventId = event.id
+        const eventId = event.target.dataset.eventId
+
         this.props.removeEvent(eventId)
     }
-
-
-
 
     render() {
         let dateOptions = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
@@ -53,7 +50,13 @@ class UserAgenda extends Component {
                         <li key={event.id}>
                             <div className={`user-agenda-title category-${event.category}`}>
                                 {event.title}
-                                <button className="user-event-delete-btn" onClick={()=>this.handleRemoveClick(event)}>Usuń</button>
+                                <button
+                                    className="user-event-delete-btn"
+                                    data-task-id={event.id}
+                                    data-test-id="remove-event"
+                                    onClick={()=>this.handleRemoveClick(event)}
+                                >Usuń
+                                </button>
                             </div>
                             <div>
                                 <strong>Start:</strong> {event.start},
