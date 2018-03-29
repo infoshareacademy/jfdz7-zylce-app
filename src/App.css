@@ -310,6 +310,8 @@
 }
 .user-event-description{
     padding: 5px 5px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .user-event-delete-btn{
@@ -332,6 +334,11 @@
     padding: 5px 5px;
     color: #ffffff;
     border-radius: 3px;
+}
+
+.user-event-poster{
+    width: 100px;
+    height: 75px;
 }
 
 /*SignUp ana LogIn panel*/

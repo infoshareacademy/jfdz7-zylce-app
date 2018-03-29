@@ -30,7 +30,6 @@ class Menu extends React.Component {
     componentWillMount(){
         const userUid = firebase.auth().currentUser.uid
 
-        //ksywka
         const rootUserDb = firebase.database().ref().child('users');
         const userNameRef = rootUserDb.child(userUid + '/firstName');
         const userLastNameRef = rootUserDb.child(userUid + '/lastName');
@@ -49,7 +48,6 @@ class Menu extends React.Component {
     }
 
     render() {
-        console.log('moje imie: ', this.state.firstname)
         return (
             <div className='header'>
                 <div id='menu' className='menu'>

@@ -86,38 +86,10 @@ class UserCalendar extends Component {
                         onSelectEvent={this.props.onOpenUserEventWindow}
                     />
                 </div>
-
-                {/*<UserEventPreviewWindow/>*/}
-
-                {/*<div className="user-event-window hidden hidden">*/}
-                {/*<div className="user-event">*/}
-                {/*<h1 className="user-event-title"></h1>*/}
-                {/*<p className="user-event-start"></p>*/}
-                {/*<p className="user-event-end"></p>*/}
-                {/*<button className="user-event-delete-btn">Usuń wydarzenie</button>*/}
-                {/*<button className="user-event-close-btn">Zamknij</button>*/}
-                {/*</div>*/}
-                {/*</div>*/}
-
             </React.Fragment>
         )
     }
 }
-
-// const mapStateToProps = state => {
-//     return {
-//         userEventsFromState: state.userEvents
-//     }
-// }
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         onDeleteUserEvent: (id)=> dispatch({type: 'DELETE_USER_EVENT', eventId: id}),
-//         onOpenUserEventWindow: ()=> dispatch({type: 'OPEN_USER_EVENT_WINDOW'})
-//     }
-// }
-//
-// export default connect(mapStateToProps,mapDispatchToProps)(UserCalendar)
-
 export default connect(
     state => ({
         userEventsFromState: state.users.data

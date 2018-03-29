@@ -24,10 +24,11 @@ const setTasks = tasks => ({
     tasks
 })
 
+let dbRef;
+
 export const enableSync = () => dispatch => {
     const userUid = firebase.auth().currentUser.uid
-    console.log('zalogowany user to: ', userUid)
-    const dbRef = firebase.database().ref('/users/' + userUid + '/events')
+     dbRef = firebase.database().ref('/users/' + userUid + '/events')
 
     dbRef.on('value', snapshot => {
         const value = snapshot.val()

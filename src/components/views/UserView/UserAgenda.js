@@ -55,13 +55,16 @@ class UserAgenda extends Component {
                                 {event.title}
                                 <button className="user-event-delete-btn" onClick={()=>this.handleRemoveClick(event)}>Usuń</button>
                             </div>
-                            <div className="user-event-description">
-                                {/*<strong>Start:</strong> {event.start.toLocaleString('pl-PL', dateOptions)}, {event.start.toLocaleTimeString('pl-PL', timeOptions)}*/}
-                                {/*<span> </span>*/}
-                                {/*<strong>Koniec:</strong> {event.end.toLocaleString('pl-PL', dateOptions)}, {event.end.toLocaleTimeString('pl-PL', timeOptions)}*/}
-                                {/*<br/>*/}
+                            <div>
+                                <strong>Start:</strong> {event.start},
+                                <span> </span>
+                                <strong>Koniec:</strong> {event.end}
+                                <br/>
                                 <hr />
-                                <strong>Opis:</strong> {event.description}
+                                <div className="user-event-description">
+                                    <span> <strong>Opis:</strong> {event.description}</span>
+                                    <img className="user-event-poster" src={event.picture}/>
+                                </div>
                                 </div>
                         </li>)
                     })}
