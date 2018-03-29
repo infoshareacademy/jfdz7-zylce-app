@@ -54,5 +54,5 @@ class EventPreview extends React.Component {
 }
 
 export default connect(state => ({
-    activeEvent: state.eventPreview.activeEvent
+    activeEvent: state.activeEvent.activeEvent
 }), {})(EventPreview);

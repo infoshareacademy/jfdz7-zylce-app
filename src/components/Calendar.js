@@ -110,6 +110,6 @@ class Calendar extends React.Component {
 export default connect(
     state => ({
         activeFilterNames: state.filtering.activeFilterNames,
-        activeEvent: state.eventPreview.activeEvent
+        activeEvent: state.activeEvent.activeEvent
     }), { setActiveEvent }
 )(Calendar)
