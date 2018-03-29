@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'
+import SignOutButton from './SignOutButton'
 
 const options = [
     {
@@ -38,6 +39,7 @@ class Menu extends React.Component {
                     </div>
                     <div id="authentication" className="authentication">
                         LOGOWANIE I TAK DALEJ
+                        <SignOutButton/>
                     </div>
                 </div>
 

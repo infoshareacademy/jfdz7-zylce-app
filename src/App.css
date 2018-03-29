@@ -333,3 +333,17 @@
     color: #ffffff;
     border-radius: 3px;
 }
+
+/*SignUp ana LogIn panel*/
+.auth-input{
+    border-radius: 3px;
+}
+
+.auth-input-name{
+    background-color: yellow;
+
+}
+
+.sig-up-form{
+    text-align: center;
+}

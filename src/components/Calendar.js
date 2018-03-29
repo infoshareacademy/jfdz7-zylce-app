@@ -128,8 +128,8 @@ export default connect(
         activeFilterNames: state.filtering.activeFilterNames,
         activeEvent: state.eventPreview.activeEvent
     }), { setActiveEvent }
-        events: state.events.data,
-        activeFilterNames: state.filtering.activeFilterNames,
-        newUserEvent: state.users.newEvent
-    }), {}
+    //     events: state.events.data,
+    //     activeFilterNames: state.filtering.activeFilterNames,
+    //     newUserEvent: state.users.newEvent
+    // }), {}
 )(Calendar)
