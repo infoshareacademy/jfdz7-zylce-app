@@ -4,14 +4,10 @@ import { NavLink } from 'react-router-dom'
 const options = [
     {
         path: '/',
-        label: 'Home',
+        label: 'Calendar',
         options: {
             exact: true
         }
-    },
-    {
-        path: '/calendar',
-        label: 'kalendarz'
     },
     {
         path: '/userCalendar',

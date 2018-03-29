@@ -1,11 +1,11 @@
 import React from 'react'
 import BigCalendar from 'react-big-calendar'
-import { connect } from 'react-redux'
 import moment from 'moment'
 import 'moment/locale/pl'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
+import {connect} from "react-redux";
+import {setActiveEvent} from "../state/eventPreview";
 
-import EventPreview from './EventPreview'
 
 moment.locale('pl');
 BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment));
@@ -41,21 +41,22 @@ class Calendar extends React.Component {
         selectedEvent: this.props.newUserEvent
     };
 
-    slotSelected = () => {
-        console.log('slot select')
-    };
-
     eventPreview = (event) => {
         let eventStartDate = event.start;
         let eventEndDate = event.end;
         let category = event.category;
+        let picture = event.picture;
         let paragraph = document.createElement('p');
         let title = document.createElement('h3');
+        let img = document.createElement('img');
+        let description = event.description;
         let dateOptions = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
         let timeOptions = {hour: 'numeric', minute: 'numeric'};
         document.getElementById('event-preview').classList.remove('hidden');
         document.getElementById('event-preview-title').appendChild(title).append(`${event.title}`);
         document.getElementById('event-preview-title').classList.add(`category-${category}`);
+        document.getElementById('event-preview-picture').appendChild(img).setAttribute('src', picture);
+        document.getElementById('event-preview-description').innerText = description
         document.getElementById('event-preview-date').appendChild(paragraph).innerText =
             `${eventStartDate.toLocaleDateString('pl-PL', dateOptions)}, ${eventStartDate.toLocaleTimeString('pl-PL', timeOptions)} - ${eventEndDate.toLocaleTimeString('pl-PL', timeOptions)}`;
 
@@ -76,6 +77,10 @@ class Calendar extends React.Component {
 
     };
 
+    slotSelected = () => {
+        console.log('slot select')
+    };
+
     render() {
         const min = new Date();
         min.setHours(8);
@@ -83,14 +88,14 @@ class Calendar extends React.Component {
         const max = new Date();
         max.setHours(23);
         max.setMinutes(57, 0, 0);
-        const { events, activeFilterNames } = this.props;
+        const { activeFilterNames } = this.props;
         return (
             <React.Fragment>
                 <div id="calendar" className="calendar">
                     <BigCalendar
                         messages={config.messages}
                         eventPropGetter={event => ({className: `category-${event.category} event-${event.id}`})}
-                        events={events.filter(event => activeFilterNames.length === 0
+                        events={(this.props.events.filter)(event => activeFilterNames.length === 0
                             ? true
                             : activeFilterNames.includes(event.category)
                         )}
@@ -106,11 +111,12 @@ class Calendar extends React.Component {
                         min={min}
                         max={max}
                         onSelectSlot={this.slotSelected}
-                        onSelectEvent={this.eventPreview}
+                        onSelectEvent={event => {
+                            this.props.setActiveEvent(event);
+                            this.eventPreview(event);
+                            }
+                        }
                     />
-                </div>
-                <div>
-                    <EventPreview eventPreview={this.eventPreview} />
                 </div>
             </React.Fragment>
         )
@@ -119,6 +125,9 @@ class Calendar extends React.Component {
 
 export default connect(
     state => ({
+        activeFilterNames: state.filtering.activeFilterNames,
+        activeEvent: state.eventPreview.activeEvent
+    }), { setActiveEvent }
         events: state.events.data,
         activeFilterNames: state.filtering.activeFilterNames,
         newUserEvent: state.users.newEvent

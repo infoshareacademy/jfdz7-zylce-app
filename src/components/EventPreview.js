@@ -1,14 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import {addEvent} from "../state/users"
-
 class EventPreview extends React.Component {
 
     showPopup = (event) => {
         event.preventDefault();
         document.getElementById('event-preview').classList.add('event-preview');
-        console.log('event select', event.title)
     };
 
     hidePopup = (event) => {
@@ -17,23 +14,33 @@ class EventPreview extends React.Component {
         document.getElementById('event-preview').classList.add('hidden');
         document.getElementById('event-preview-title').innerText = '';
         document.getElementById('event-preview-date').innerText = '';
+        document.getElementById('event-preview-picture').innerText = '';
     };
 
-    saveEventToUserEvents = (event) => {
-        event.preventDefault();
-        this.props.addEvent()
-    }
-
-
     render() {
+
         return (
             <React.Fragment>
+
+
                 <div id="event-preview" className="event-preview hidden" data-event-preview="event-preview">
                     <div className="event-preview-inner">
-                        <div id="event-preview-title" className="event-preview-title"></div>
-                        <div id="event-preview-date" className="event-preview-date"></div>
-                        <div id="event-preview-user-actions" className="event-preview-user-actions"></div>
+                        <div id="event-preview-title" className="event-preview-title">
+                        </div>
+                        <div id="event-preview-date" className="event-preview-date">
+
+                        </div>
+                        <div id="event-preview-dsc" className="event-preview-dsc">
+                            <div id="event-preview-picture" className="event-preview-picture">
+
+                            </div>
+                            <div id="event-preview-description" className="event-preview-description" />
+                        </div>
+                        <div id="event-preview-user-actions" className="event-preview-user-actions">
+
+                        </div>
                         <div id="event-preview-btns" className="event-preview-btns">
+                            <button onClick={() => console.log('zapisz')}>Zapisz wydarzenie</button>
                             <button onClick={this.saveEventToUserEvents}>Zapisz wydarzenie</button>
                             <button onClick={this.hidePopup}>Wróc do kalendarza wydarzeń</button>
                         </div>
@@ -41,10 +48,12 @@ class EventPreview extends React.Component {
                     </div>
                 </div>
                 {this.showPopup}
+
             </React.Fragment>
         )
     }
 }
 
 export default connect(state => ({
-}), { addEvent})(EventPreview);
+    activeEvent: state.eventPreview.activeEvent
+}), {})(EventPreview);
