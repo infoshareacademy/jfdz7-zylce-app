@@ -9,9 +9,6 @@ import {removeEvent} from "../../../state/users"
 
 
 class UserAgenda extends Component {
-    state = {
-        userEvents: {}
-    }
 
     handleRemoveClick = event => {
         const eventId = event.id

@@ -42,7 +42,7 @@ export const enableSync = () => dispatch => {
 
 
 const initialState = {
-    data: userEvents[0].userEvents,
+    data:[],
     newEvent: {
         id: '',
         category: '',
