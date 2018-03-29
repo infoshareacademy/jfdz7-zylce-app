@@ -4,7 +4,7 @@ import './setupFirebase';
 
 import events, {getEvents} from './state/events';
 import filtering from "./state/filtering";
-import eventPreview from "./state/eventPreview";
+import eventPreview from "./state/activeEvent";
 
 const reducer = combineReducers({
     events,

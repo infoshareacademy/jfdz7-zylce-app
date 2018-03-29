@@ -4,7 +4,7 @@ import moment from 'moment'
 import 'moment/locale/pl'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import {connect} from "react-redux";
-import {setActiveEvent} from "../state/eventPreview";
+import {setActiveEvent} from "../state/activeEvent";
 
 
 moment.locale('pl');
