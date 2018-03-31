@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import firebase from 'firebase';
 import UserEventFilter from './UserEventFilter'
-
-
 import {removeEvent} from "../../../state/users"
 
 
@@ -11,7 +9,7 @@ class UserAgenda extends Component {
 
     handleRemoveClick = event => {
         const eventId = event.target.dataset.eventId
-
+        console.log(eventId)
         this.props.removeEvent(eventId)
     }
 
@@ -24,26 +22,6 @@ class UserAgenda extends Component {
             <React.Fragment >
                 <h3>Moje wydarzenia</h3>
                 <UserEventFilter/>
-                {/*<ul className="user-events">*/}
-                    {/*{this.props.userAgendaFromState.map( event => {*/}
-                        {/*return <li key={event.id} className={`user-event-${event.category}`}>*/}
-                            {/*<div className={`user-agenda-title category-${event.category}`}>*/}
-                                {/*{event.title}*/}
-                                {/*<button className="user-event-delete-btn" onClick={()=>this.handleRemoveClick(event)}>Usuń</button>*/}
-                            {/*</div>*/}
-                            {/*<div className="user-event-description">*/}
-                                {/*<strong>Start:</strong> {event.start.toLocaleString('pl-PL', dateOptions)}, {event.start.toLocaleTimeString('pl-PL', timeOptions)}*/}
-                                {/*<span> </span>*/}
-                                {/*<strong>Koniec:</strong> {event.end.toLocaleString('pl-PL', dateOptions)}, {event.end.toLocaleTimeString('pl-PL', timeOptions)}*/}
-                                {/*<br/>*/}
-                                {/*<hr />*/}
-                                {/*<strong>Opis:</strong> {event.desc}*/}
-                            {/*</div>*/}
-                        {/*</li>*/}
-
-
-                    {/*})}*/}
-                {/*</ul>*/}
                 <ul className="user-events">
                     {this.props.userAgendaFromState.map( event => {
                         return(
@@ -52,9 +30,8 @@ class UserAgenda extends Component {
                                 {event.title}
                                 <button
                                     className="user-event-delete-btn"
-                                    data-task-id={event.id}
-                                    data-test-id="remove-event"
-                                    onClick={()=>this.handleRemoveClick(event)}
+                                    data-event-id={event.id}
+                                    onClick={this.handleRemoveClick}
                                 >Usuń
                                 </button>
                             </div>

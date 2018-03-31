@@ -4,49 +4,38 @@ import '../setupFirebase';
 
 
 // Action Types
-const REMOVE_EVENT = 'userView/REMOVE_EVENT';
 const ADD_EVENT = 'calendarView/ADD_EVENT';
-const SET_TASKS = 'userView/SET_TASKS'
+const SET_EVENTS = 'userView/SET_TASKS'
 
 // Action Creators
-
-// export const removeEvent = (eventId) => ({
-//     type: REMOVE_EVENT,
-//     eventId
-// }
-
-export const removeEvent = eventId => dispatch => {
-    const userUid = firebase.auth().currentUser.uid
-    dbRef = firebase.database().ref('/users/' + userUid + '/events')
-    console.log(dbRef)
-    // dbRef.child(taskId).remove()
-}
 
 export const addEvent = (event) => ({
     type: ADD_EVENT,
     event
 })
 
-const setTasks = tasks => ({
-    type: SET_TASKS,
-    tasks
+const setEvents = events => ({
+    type: SET_EVENTS,
+    events
 })
 
 let dbRef;
 
 export const enableSync = () => dispatch => {
     const userUid = firebase.auth().currentUser.uid
-     dbRef = firebase.database().ref('/users/' + userUid + '/events')
-
+    dbRef = firebase.database().ref('/users/' + userUid + '/events')
     dbRef.on('value', snapshot => {
         const value = snapshot.val()
-        const tasks = Object.entries(value || {}).map(([id, values]) => ({
+        const events = Object.entries(value || {}).map(([id, values]) => ({
             id,
             ...values
         }))
-
-        dispatch(setTasks(tasks))
+        dispatch(setEvents(events))
     })
+}
+
+export const removeEvent = taskId => dispatch => {
+    dbRef.child(taskId).remove()
 }
 
 
@@ -65,10 +54,10 @@ const initialState = {
 // Reducer
 export default (state = initialState, action = {}) => {
     switch (action.type) {
-        case SET_TASKS:
+        case SET_EVENTS:
             return {
                 ...state,
-                data: action.tasks
+                data: action.events
             }
         case ADD_EVENT:
             console.log(state.newEvent)
@@ -77,13 +66,6 @@ export default (state = initialState, action = {}) => {
             return {
                 data: addingNewEvent,
                 ...state,
-            }
-        case REMOVE_EVENT:
-            console.log('usuwam event usera!')
-            const updatedUserEventArray = state.data.filter( event => event.id !== action.eventId)
-            return {
-                ...state,
-                data: updatedUserEventArray
             }
         default:
             return state
