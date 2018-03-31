@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import firebase from 'firebase';
-import UserEventFilter from './UserEventFilter'
 import {removeEvent} from "../../../state/users"
-
 
 class UserAgenda extends Component {
 
     handleRemoveClick = event => {
         const eventId = event.target.dataset.eventId
-        console.log(eventId)
         this.props.removeEvent(eventId)
     }
 
@@ -17,11 +14,9 @@ class UserAgenda extends Component {
         let dateOptions = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
         let timeOptions = {hour: 'numeric', minute: 'numeric'};
 
-        console.log(this.props.userAgendaFromState)
         return (
             <React.Fragment >
                 <h3>Moje wydarzenia</h3>
-                <UserEventFilter/>
                 <ul className="user-events">
                     {this.props.userAgendaFromState.map( event => {
                         return(

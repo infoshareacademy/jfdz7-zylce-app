@@ -34,9 +34,13 @@ export const enableSync = () => dispatch => {
     })
 }
 
-export const removeEvent = taskId => dispatch => {
-    dbRef.child(taskId).remove()
+export const removeEvent = eventId => dispatch => {
+    dbRef.child(eventId).remove()
 }
+
+// export const removeEvent = taskId => dispatch => {
+//     dbRef.child(taskId).remove()
+// }
 
 
 const initialState = {
