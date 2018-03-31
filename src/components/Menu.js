@@ -1,10 +1,11 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
+import SignOutButton from './SignOutButton'
 
 const options = [
     {
         path: '/',
-        label: 'Calendar',
+        label: 'kalendarz',
         options: {
             exact: true
         }
@@ -12,6 +13,14 @@ const options = [
     {
         path: '/userCalendar',
         label: 'moje wydarzenia'
+    },
+    {
+        path: '/signIn',
+        label: 'signIn'
+    },
+    {
+        path: '/signUp',
+        label: 'signUp'
     },
 ];
 
@@ -37,7 +46,7 @@ class Menu extends React.Component {
                         ))}
                     </div>
                     <div id="authentication" className="authentication">
-                        LOGOWANIE I TAK DALEJ
+                        <SignOutButton />
                     </div>
                 </div>
 
