@@ -1,7 +1,61 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {addTask} from "../state/users"
+
+
+const initialState = {
+    id: '',
+    title: '',
+    description: '',
+    start: '',
+    end: '',
+    category: ''
+}
 
 class EventPreview extends React.Component {
+    state = initialState
+
+
+    saveEventToUserEvents = (event) => {
+
+        event.preventDefault()
+
+        // const { id, title, description, start, end, category } = this.state
+        const id = this.props.activeEvent.id
+        const title = this.props.activeEvent.title
+        const description = this.props.activeEvent.description
+        const czas = this.props.activeEvent.start
+        const start = czas.toString()
+        const end = this.props.activeEvent.end
+        const category = this.props.activeEvent.category
+        const picture = this.props.activeEvent.picture
+
+        this.props.addTask( id, title, description, start, end, category, picture )
+
+        this.setState(initialState)
+
+
+        // const id = this.props.activeEvent.id
+        // const title = this.props.activeEvent.title
+        // const description = this.props.activeEvent.description
+        // const start = this.props.activeEvent.start
+        // const end = this.props.activeEvent.end
+        // const category = this.props.activeEvent.category
+        //
+        console.log('id', id)
+        console.log('id', title)
+        console.log('id', description)
+        console.log('id', start)
+        console.log('id', end)
+        console.log('id', category)
+        //
+        // this.setState({
+        //     id: this.props.activeEvent.id,
+        //     title: this.props.activeEvent.title
+        //
+        // })
+        // console.log('state', this.state)
+    }
 
     showPopup = (event) => {
         event.preventDefault();
@@ -15,6 +69,7 @@ class EventPreview extends React.Component {
         document.getElementById('event-preview-title').innerText = '';
         document.getElementById('event-preview-date').innerText = '';
         document.getElementById('event-preview-picture').innerText = '';
+
     };
 
     render() {
@@ -40,7 +95,6 @@ class EventPreview extends React.Component {
 
                         </div>
                         <div id="event-preview-btns" className="event-preview-btns">
-                            <button onClick={() => console.log('zapisz')}>Zapisz wydarzenie</button>
                             <button onClick={this.saveEventToUserEvents}>Zapisz wydarzenie</button>
                             <button onClick={this.hidePopup}>Wróc do kalendarza wydarzeń</button>
                         </div>
@@ -56,4 +110,4 @@ class EventPreview extends React.Component {
 
 export default connect(state => ({
     activeEvent: state.eventPreview.activeEvent
-}), {})(EventPreview);
+}), {addTask})(EventPreview);

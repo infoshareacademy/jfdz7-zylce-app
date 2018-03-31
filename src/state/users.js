@@ -36,11 +36,29 @@ export const enableSync = () => dispatch => {
 
 export const removeEvent = eventId => dispatch => {
     dbRef.child(eventId).remove()
+    console.log(eventId)
 }
 
-// export const removeEvent = taskId => dispatch => {
-//     dbRef.child(taskId).remove()
-// }
+export const addTask = (
+    id,
+    title,
+    description,
+    start,
+    end,
+    category,
+    picture
+
+) => dispatch => {
+    dbRef.push({
+        id: id,
+        title: title,
+        description: description,
+        category: category,
+        start: start,
+        end: end,
+        picture: picture
+    }).update({id: this.})
+}
 
 
 const initialState = {
@@ -63,14 +81,14 @@ export default (state = initialState, action = {}) => {
                 ...state,
                 data: action.events
             }
-        case ADD_EVENT:
-            console.log(state.newEvent)
-            const addingNewEvent = state.data.concat(state.newEvent)
-
-            return {
-                data: addingNewEvent,
-                ...state,
-            }
+        // case ADD_EVENT:
+        //     console.log(state.newEvent)
+        //     const addingNewEvent = state.data.concat(state.newEvent)
+        //
+        //     return {
+        //         data: addingNewEvent,
+        //         ...state,
+        //     }
         default:
             return state
     }

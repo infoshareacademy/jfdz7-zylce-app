@@ -59,22 +59,6 @@ class Calendar extends React.Component {
         document.getElementById('event-preview-description').innerText = description
         document.getElementById('event-preview-date').appendChild(paragraph).innerText =
             `${eventStartDate.toLocaleDateString('pl-PL', dateOptions)}, ${eventStartDate.toLocaleTimeString('pl-PL', timeOptions)} - ${eventEndDate.toLocaleTimeString('pl-PL', timeOptions)}`;
-
-        //add user event to state
-        console.log(this.state.selectedEvent)
-        const userEvent = {
-                id: Date.now().toString(32),
-                title: event.title,
-                category: event.category,
-                start: event.start,
-                end: event.end
-            }
-
-        this.setState({
-            selectedEvent: this.state.selectedEvent = userEvent
-        })
-        console.log(this.state.selectedEvent)
-
     };
 
     slotSelected = () => {
