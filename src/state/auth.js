@@ -37,7 +37,13 @@ export const signUpWithEmail = (email, password, userData) => dispatch => {
 
 // Sign In
 export const signInWithEmail = (email, password) => dispatch => {
-    auth.signInWithEmailAndPassword(email, password);
+    auth.signInWithEmailAndPassword(email, password)
+        .then(user => {
+            firebase
+                .database()
+                .ref('/users/' + user.uid)
+                .update({lastVisit: Date.now()})
+        });
 };
 
 
@@ -48,7 +54,7 @@ export const signOut = () =>
 
 const initialState = {
     user: null
-}
+};
 
 export default (state = initialState, action = {}) => {
     switch (action.type) {

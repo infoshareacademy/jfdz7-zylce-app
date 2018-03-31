@@ -22,6 +22,12 @@ export const enableSync = () => dispatch => {
 
 
 const initialState = {
+    user: {
+        firstName: '',
+        lastName: '',
+        joinedAt: '',
+        lastVisit: ''
+    }
 };
 
 // Reducer

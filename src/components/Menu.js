@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import SignOutButton from './SignOutButton'
 
@@ -46,6 +47,8 @@ class Menu extends React.Component {
                         ))}
                     </div>
                     <div id="authentication" className="authentication">
+                        Cześć {this.props.user.firstName}!
+                        Ostatnie logowanie: {this.props.user.lastVisit}
                         <SignOutButton />
                     </div>
                 </div>
@@ -55,4 +58,7 @@ class Menu extends React.Component {
     }
 }
 
-export default Menu;
+export default connect(
+    state => ({
+    user: state.userData.user
+}), {})(Menu);
