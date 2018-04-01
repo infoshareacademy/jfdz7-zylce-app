@@ -13,6 +13,7 @@
     box-shadow: 1px 1px 18px #0e5c90;
     transition: all ease .5s;
     position: fixed;
+    height: 50px;
     width: 100%;
     top: 0;
     right: 0;
@@ -24,19 +25,64 @@
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+    height: inherit;
     display: flex;
+    align-items: center;
     justify-content: space-between;
 }
 
 .authentication {
     width: 40%;
-    border: 1px solid green;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
+.logged-user-info {
+    display: flex;
+    flex-wrap: wrap;
+    color: #4f2f4c;
+    font-size: 15px;
+    flex-direction: column;
+}
+
+.authentication .logged-user-welcome {
+    display: block;
+
+    color: #4f2f4c;
+    font-size: 17px;
+}
+
+.authentication .last-visit-info {
+    display: block;
+    font-size: 10px;
+}
+
+.authentication .sign-out-btn {
+    display: flex;
+}
+
+.authentication .sign-out-btn button{
+    padding: 10px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    width: 120px;
+    color: #4f2f4c;
+    background-color: white;
+    cursor: pointer;
+    font-family: sans-serif;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border: 1px #ff0080;
+    border-radius: 5px;
+    opacity: 0.65;
+    outline: none;
 }
 
 .menu-list {
     width: 60%;
     padding: 0;
-    font-size: 14px;
     text-transform: uppercase;
 }
 
@@ -48,6 +94,7 @@
 
 .menu-list a {
     color: #4f2f4c;
+    font-size: 16px;
     text-decoration: none;
     text-transform: uppercase;
 }
@@ -98,7 +145,7 @@
 
 .events-filter .filter-buttons .show-all-events-btn {
     background-color: white;
-    color: #b8b8b8
+    color: #929292
 }
 
 .events-filter button {
@@ -280,6 +327,89 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     border: 1px solid #888888;
+    border-radius: 5px;
+    opacity: 0.65;
+    outline: none;
+}
+
+.sign-form {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    min-width: 200px;
+    width: 100%;
+    max-width: 300px;
+    padding-top: 25vh;
+}
+
+.sign-form form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+    min-width: 200px;
+}
+
+.sign-form .sign-info {
+    font-size: 17px;
+}
+
+.sign-form .sign-input input{
+    width: 100%;
+    margin-bottom: 20px;
+    border: 1px solid #b8b8b8;
+    border-radius: 5px;
+    outline: none;
+    padding: 5px;
+}
+
+.sign-form .sign-input input:focus{
+    background-color: rgba(0, 8, 255, 0.07);
+}
+
+.sign-form .sign-in-button {
+    margin: 0 auto;
+}
+
+.sign-form .sign-in-button button {
+    padding: 10px;
+    width: 100%;
+    min-width: 200px;
+    color: #4f2f4c;
+    background-color: #b8b8b8;
+    cursor: pointer;
+    font-family: sans-serif;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border: 1px #ff0080;
+    border-radius: 5px;
+    opacity: 0.65;
+    outline: none;
+}
+
+.sign-join-us {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    min-width: 200px;
+    width: 100%;
+    max-width: 300px;
+    padding-top: 50px;
+}
+
+.sign-join-us button {
+    padding: 10px;
+    margin: 5px;
+    width: 100%;
+    min-width: 200px;
+    color: #4f2f4c;
+    background-color: #b8b8b8;
+    cursor: pointer;
+    font-family: sans-serif;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border: 1px #ff0080;
     border-radius: 5px;
     opacity: 0.65;
     outline: none;

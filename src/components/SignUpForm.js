@@ -32,25 +32,42 @@ class SignUpForm extends React.Component {
     };
 
     renderInput = fieldName => {
-        return (
-            <input
-            name={fieldName}
-            onChange={this.handleInputChange}
-            />
-        )
+        if (fieldName === 'password') {
+            return (<div className="sign-input">
+                <input
+                    name={fieldName}
+                    onChange={this.handleInputChange}
+                    type={fieldName}
+                />
+            </div>)
+        } else {
+            return (<div className="sign-input">
+                <input
+                    name={fieldName}
+                    onChange={this.handleInputChange}
+                    type="text"
+                />
+            </div>)
+        }
     };
 
 
     render() {
         return (
+            <div className="sign-form">
             <form onSubmit={this.onSubmit}>
                 {this.state.error && <p>{this.state.error.message}</p>}
-                <div>imię: {this.renderInput('firstName')}</div>
-                <div>nazwisko: {this.renderInput('lastName')}</div>
-                <div>email: {this.renderInput('email')}</div>
-                <div>hasło: {this.renderInput('password')}</div>
-                <button type='submit'> dołącz do zaplanuj.to </button>
+                <div className="sign-info">imię</div>
+                <div>{this.renderInput('firstName')}</div>
+                <div className="sign-info">nazwisko</div>
+                <div>{this.renderInput('lastName')}</div>
+                <div className="sign-info">email</div>
+                <div>{this.renderInput('email')}</div>
+                <div className="sign-info">hasło</div>
+                <div>{this.renderInput('password')}</div>
+                <div className="sign-in-button"><button type='submit'> dołącz do zaplanuj.to </button></div>
             </form>
+            </div>
         );
     }
 }

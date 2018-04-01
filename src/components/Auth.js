@@ -7,7 +7,6 @@ class Auth extends Component {
     render() {
         return this.props.user === null ? (
             <div>
-                <SignUpForm />
                 <SignInForm />
             </div>
         ) : (

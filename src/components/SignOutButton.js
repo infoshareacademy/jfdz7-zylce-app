@@ -1,10 +1,12 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { signOut } from '../state/auth'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { signOut } from '../state/auth';
 
 class SignOutButton extends Component {
     render() {
-        return <button onClick={() => this.props.signOut()}>Wyloguj się</button>
+        return <div id="sign-out-btn" className="sign-out-btn">
+            <button onClick={() => this.props.signOut()}>Wyloguj się</button>
+        </div>
     }
 }
 
