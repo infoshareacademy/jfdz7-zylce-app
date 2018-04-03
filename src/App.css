@@ -191,14 +191,11 @@
 
 .event-preview {
     width: 100%;
-    height: auto;
+    height: 150vh;
     margin: 5px auto;
-    position: fixed;
+    position: absolute;
     z-index: 88;
-    right: 0;
     top: 0;
-    left: 0;
-    bottom: 0;
     background: rgba(255, 255, 255, 0.85);
 }
 
@@ -207,7 +204,7 @@
     min-height: 200px;
     width: 90%;
     position: absolute;
-    top: 50%;
+    top: 300px;
     left: 50%;
     transform:translate(-50%, -50%);
     box-shadow: 2px 2px 4px #0e5c90,
@@ -420,7 +417,7 @@
     justify-content: center;
     margin: 0 auto;
     min-width: 200px;
-    width: 100%;
+    width: 95%;
     max-width: 300px;
     padding-top: 50px;
 }
@@ -448,10 +445,10 @@
 .sign-by-socials {
     margin: 0 auto;
     min-width: 200px;
-    width: 100%;
+    width: 95%;
     max-width: 300px;
     font-size: 13px;
-    padding: 5px 15px 25px 25px;
+    padding-bottom: 25px;
 }
 
 .sign-by-socials a {
@@ -467,15 +464,15 @@
 
 .sign-up-modal {
     width: 100%;
-    height: auto;
+    height: 200vh;
     margin: 0 auto;
-    position: fixed;
+    position: absolute;
     z-index: 88;
     right: 0;
     top: 0;
     left: 0;
     bottom: 0;
-    background: #fff;
+    background-color: #fff;
 }
 
 .sign-up-modal .sign-up-modal-inner {
