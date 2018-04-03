@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { signInWithEmail, signInWithFb } from "../state/auth";
+import moment from "moment/moment";
 
 class SignIn extends React.Component {
     state = {
@@ -24,7 +25,7 @@ class SignIn extends React.Component {
     handleInputChange = ({ target: { name, value } }) => {
         this.setState({
             [name]: value,
-            lastVisit: Date.now(),
+            lastVisit: moment().unix(),
         })
     };
 
@@ -63,7 +64,7 @@ class SignIn extends React.Component {
                 </div>
                 <div className="sign-join-us">
                     <div>Nie masz konta? </div>
-                    <div className="sign-up-button"> <button type='submit' onClick={this.handleJoinUs}> dołącz do zaplanuj.to!</button></div>
+                    <div className="sign-up-button"><button type='submit' onClick={this.handleJoinUs}> dołącz do zaplanuj.to!</button></div>
                     <button type='submit' onClick={this.props.signInWithFb}> fb!</button>
                 </div>
             </React.Fragment>

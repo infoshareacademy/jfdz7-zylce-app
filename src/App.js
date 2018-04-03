@@ -3,7 +3,7 @@ import { Route, withRouter } from 'react-router-dom';
 
 
 import './App.css';
-import Auth from './components/Auth';
+
 import Main from './components/Menu';
 import CalendarView from './components/views/CalendarView';
 import UserView from './components/views/UserView/UserView';
@@ -13,10 +13,10 @@ import SignUp from "./components/SignUpForm";
 
 
 class App extends Component {
+
   render() {
     return (
       <React.Fragment>
-          <Auth >
               <Main />
               <div className='container'>
                   <div className="content">
@@ -27,7 +27,6 @@ class App extends Component {
                   </div>
                   <Footer/>
               </div>
-          </Auth>
       </React.Fragment>
     );
   }

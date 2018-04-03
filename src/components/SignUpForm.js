@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { signUpWithEmail} from '../state/auth'
+import moment from "moment/moment";
 
 class SignUpForm extends React.Component {
     state = {
@@ -26,8 +27,9 @@ class SignUpForm extends React.Component {
         console.log(this.state);
         this.setState({
             [name]: value,
-            joinedAt: Date.now(),
-            role: 'user'
+            joinedAt: moment().unix(),
+            role: 'user',
+            displayName: this.state.firstName + ' ' + this.state.lastName,
         })
     };
 

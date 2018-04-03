@@ -5,15 +5,18 @@ import { Provider } from 'react-redux'
 import registerServiceWorker from './registerServiceWorker';
 
 import './index.css';
+import Auth from './components/Auth';
 import App from './App';
 import store from "./store";
 
 
 ReactDOM.render(
     <Provider store={store}>
-        <Router>
-            <App />
-        </Router>
+        <Auth >
+            <Router>
+                <App />
+            </Router>
+        </Auth>
     </Provider>,
     document.getElementById('root')
 );

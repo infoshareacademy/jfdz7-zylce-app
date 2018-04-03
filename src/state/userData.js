@@ -9,17 +9,26 @@ const setUserData = user => ({
 });
 
 let dbRef;
+let callback;
 
 export const enableSync = () => dispatch => {
     const userUid = firebase.auth().currentUser.uid;
+
     dbRef = firebase.database().ref('/users/' + userUid);
 
-    dbRef.on('value', snapshot => {
-        const values = {...snapshot.val(), id: userUid };
-        dispatch(setUserData(values));
-    });
-};
+    callback = snapshot => {
+        const value = snapshot.val();
+        const user = {...value, id: userUid };
 
+        dispatch(setUserData(user))
+    }
+
+    dbRef.on('value', callback)
+}
+
+export const disableSync = () => dispatch => {
+    dbRef.off('value', callback)
+};
 
 const initialState = {
     user: {

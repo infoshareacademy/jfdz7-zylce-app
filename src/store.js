@@ -7,7 +7,7 @@ import events, {getEvents} from './state/events';
 import filtering from "./state/filtering";
 import activeEvent from "./state/activeEvent";
 import auth, {setUser} from "./state/auth";
-import userData, {enableSync} from "./state/userData";
+import userData, {enableSync, disableSync} from "./state/userData";
 
 
 const reducer = combineReducers({
@@ -28,7 +28,7 @@ firebase.auth().onAuthStateChanged(user => {
     if (user !== null) {
         store.dispatch(enableSync())
     } else {
-
+        store.dispatch(disableSync())
     }
     store.dispatch(setUser(user))
 });

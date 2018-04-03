@@ -1,5 +1,6 @@
-import { auth, database } from '../setupFirebase';
+import { auth, database, provider } from '../setupFirebase';
 import firebase from 'firebase';
+import moment from 'moment';
 
 const SET_USER = 'auth/SET_USER';
 
@@ -32,33 +33,24 @@ export const signUpWithEmail = (email, password, userData) => dispatch => {
         });
 };
 
+export const signInWithFb = () => dispatch => {
+    let result = auth.signInWithPopup(provider);
+    return result
+        .then(() => {
+            firebase
+                .database()
+                .ref('/users/' + auth.currentUser.uid + '/')
+                .update({
+                        displayName: auth.currentUser.displayName,
+                        role: 'user',
+                        joinedAt: moment(auth.currentUser.createdAt).unix(),
+                        lastVisit: moment().unix()
+                })
 
-export const signInWithFb = () => {
-    let provider = new firebase.auth.FacebookAuthProvider();
-    let userEmail = provider.addScope('email');
+        })
 
-    provider.setCustomParameters({
-        'display': 'popup'
-    });
 
-    firebase.auth().signInWithPopup(provider).then(function(result) {
-        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-        var token = result.credential.accessToken;
-        // The signed-in user info.
-        var user = result.user;
-        // ...
-    }).catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // The email of the user's account used.
-        var email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
-        var credential = error.credential;
-        // ...
-    });
-
-}
+};
 
 // Sign In
 export const signInWithEmail = (email, password) => dispatch => {
@@ -67,14 +59,14 @@ export const signInWithEmail = (email, password) => dispatch => {
             firebase
                 .database()
                 .ref('/users/' + user.uid)
-                .update({lastVisit: Date.now()})
+                .update({lastVisit: moment().unix()})
         });
 };
 
 
 
 // Sign out
-export const signOut = () =>
+export const signOut = () => dispatch =>
     auth.signOut();
 
 const initialState = {
