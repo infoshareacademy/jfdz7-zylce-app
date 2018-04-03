@@ -69,18 +69,16 @@ export const addTask = (
     let startEvent = start;
     let endEvent = end;
 
-
-
-    console.log(`Czas imprezy to: ${startEvent.toLocaleDateString('pl-PL', dateOptions)} - ${startEvent.toLocaleTimeString('pl-PL', timeOptions)}`)
-
     dbRef.push({
         title: title,
         description: description,
         category: category,
-        start: `${startEvent.toLocaleDateString('pl-PL', dateOptions)} - ${startEvent.toLocaleTimeString('pl-PL', timeOptions)}`,
-        end: `${endEvent.toLocaleDateString('pl-PL', dateOptions)} - ${endEvent.toLocaleTimeString('pl-PL', timeOptions)}`,
+        start: start,
+        end: end,
+        koniec: endEvent.toString(),
+        eventStart: `${startEvent.toLocaleDateString('pl-PL', dateOptions)} - ${startEvent.toLocaleTimeString('pl-PL', timeOptions)}`,
+        eventEnd: `${endEvent.toLocaleDateString('pl-PL', dateOptions)} - ${endEvent.toLocaleTimeString('pl-PL', timeOptions)}`,
         picture: picture,
-        xxxxx: start
     })
 };
 

@@ -3,11 +3,22 @@ import {connect} from 'react-redux';
 import {removeEvent} from "../../../state/users"
 
 import moment from 'moment'
-import 'moment/locale/pl'
 moment.locale('pl');
 
 
 class UserAgenda extends Component {
+    translateCategoryName = (categoryName) => {
+        switch(categoryName) {
+            case 'cinema':
+                return 'Kino';
+            case 'theatre':
+                return 'Teatr';
+            case 'concert':
+                return 'Koncert';
+            default:
+                return categoryName
+        }
+    };
 
     handleRemoveClick = event => {
         const eventId = event.target.dataset.eventId
@@ -26,7 +37,7 @@ class UserAgenda extends Component {
                         return(
                         <li key={event.id}>
                             <div className={`user-agenda-title category-${event.category}`}>
-                                {event.title}
+                                {event.title} ({this.translateCategoryName(event.category)})
                                 <button
                                     className="user-event-delete-btn"
                                     data-event-id={event.id}
@@ -36,9 +47,9 @@ class UserAgenda extends Component {
                             </div>
                             <div>
                                 <div className="user-event-date">
-                                    <strong>Start:</strong> {event.start},
+                                    <strong>Start:</strong> {event.eventStart},
                                     <span> </span>
-                                    <strong>Koniec:</strong> {event.end}
+                                    <strong>Koniec:</strong> {event.eventEnd}
                                     <hr />
                                 </div>
                                 <div className="user-event-description">
