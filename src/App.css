@@ -414,3 +414,53 @@
     opacity: 0.65;
     outline: none;
 }
+
+.sign-up-modal {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    position: fixed;
+    z-index: 88;
+    right: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background: #fff;
+}
+
+.sign-up-modal .sign-up-modal-inner {
+    max-width: 700px;
+    min-height: 200px;
+    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+    box-shadow: 2px 2px 4px #b8b8b8,
+    -2px 2px 4px #b8b8b8,
+    -2px -2px 4px #b8b8b8;
+    border-radius: 10px;
+    background-color: #ffffff;;
+}
+
+.close-sign-up-modal {
+    width: 32px;
+    height: 30px;
+    padding-top: 4px;
+    display: inline-block;
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    transform: translate(50%, -50%);
+    border-radius: 50%;
+    background: #d7d7d7;
+    font-size: 20px;
+    text-decoration: none;
+    text-align: center;
+    text-shadow: 1px 1px 1px #9c9c9c,
+    -1px -1px 1px #9c9c9c,
+    1px -1px 1px #9c9c9c,
+    -1px 1px 1px #9c9c9c;
+    line-height: 100%;
+    color: #ffffff;
+}

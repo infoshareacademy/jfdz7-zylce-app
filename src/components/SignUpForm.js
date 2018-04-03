@@ -56,6 +56,8 @@ class SignUpForm extends React.Component {
 
     render() {
         return (
+            <div className="sign-up-modal">
+                <div className="sign-up-inner">
             <div className="sign-form">
             <form onSubmit={this.onSubmit}>
                 {this.state.error && <p>{this.state.error.message}</p>}
@@ -69,6 +71,9 @@ class SignUpForm extends React.Component {
                 <div>{this.renderInput('password')}</div>
                 <div className="sign-in-button"><button type='submit'> dołącz do zaplanuj.to </button></div>
             </form>
+            </div>
+                    <a id="close-sign-up-modal" className="close-sign-up-modal" onClick={this.hidePopup} href=''>x</a>
+                </div>
             </div>
         );
     }

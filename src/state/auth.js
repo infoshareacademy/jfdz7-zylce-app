@@ -3,6 +3,7 @@ import firebase from 'firebase';
 import moment from 'moment';
 
 const SET_USER = 'auth/SET_USER';
+const TOGGLE_FORM = 'auth/TOGGLE_FORM';
 
 export const setUser = user => ({
     type: SET_USER,
@@ -69,8 +70,13 @@ export const signInWithEmail = (email, password) => dispatch => {
 export const signOut = () => dispatch =>
     auth.signOut();
 
+export const toggleForm = () => ({
+    type: TOGGLE_FORM
+});
+
 const initialState = {
-    user: null
+    user: null,
+    showSignUpForm: false
 };
 
 export default (state = initialState, action = {}) => {
@@ -80,6 +86,11 @@ export default (state = initialState, action = {}) => {
                 ...state,
                 user: action.user
             };
+        case TOGGLE_FORM:
+            return {
+                ...state,
+                showSignUpForm: !state.showSignUpForm
+            }
         default:
             return state
     }
