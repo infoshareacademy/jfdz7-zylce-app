@@ -1,5 +1,7 @@
-import { auth, database, provider } from '../setupFirebase';
 import moment from 'moment';
+
+import { auth, database, facebookProvider, googleProvider } from '../setupFirebase';
+
 
 const SET_USER = 'auth/SET_USER';
 const TOGGLE_FORM = 'auth/TOGGLE_FORM';
@@ -23,7 +25,7 @@ export const signUpWithEmail = (email, password, userData) => dispatch => {
 };
 
 export const signInWithFb = () => dispatch => {
-    let result = auth.signInWithPopup(provider);
+    let result = auth.signInWithPopup(facebookProvider);
     return result
         .then(() => {
             database
@@ -34,6 +36,22 @@ export const signInWithFb = () => dispatch => {
                         lastName: (auth.currentUser.displayName).split(" ")[1],
                         role: 'user',
                         joinedAt: moment(auth.currentUser.createdAt).unix(),
+                })
+        })
+};
+
+export const signInWithGoogle = () => dispatch => {
+    let result = auth.signInWithPopup(googleProvider);
+    return result
+        .then(() => {
+            database
+                .ref('/users/' + auth.currentUser.uid + '/')
+                .update({
+                    displayName: auth.currentUser.displayName,
+                    firstName: (auth.currentUser.displayName).split(" ")[0],
+                    lastName: (auth.currentUser.displayName).split(" ")[1],
+                    role: 'user',
+                    joinedAt: moment(auth.currentUser.createdAt).unix(),
                 })
         })
 };

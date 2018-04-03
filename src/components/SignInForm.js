@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { signInWithEmail, signInWithFb } from "../state/auth";
+import { signInWithEmail, signInWithFb, signInWithGoogle } from "../state/auth";
 import SignUpFormToggleButton from "./SignUpFormToggleButton";
 
 class SignIn extends React.Component {
@@ -58,12 +58,15 @@ class SignIn extends React.Component {
                     </form>
                 </div>
                 <div className="sign-join-us">
+                    nie masz konta?
                     <SignUpFormToggleButton />
-                    <button type='submit' onClick={this.props.signInWithFb}> lub zaloguj się przez Facebook</button>
+                </div>
+                <div className="sign-by-socials">
+                    możesz również zalogować się używając swojego konta <a href onClick={this.props.signInWithFb}> Facebook </a> lub <a href onClick={this.props.signInWithGoogle}> Google </a>
                 </div>
             </React.Fragment>
         )
     }
 }
 
-export default connect(null, {signInWithEmail, signInWithFb})(SignIn)
+export default connect(null, {signInWithEmail, signInWithFb, signInWithGoogle })(SignIn)
