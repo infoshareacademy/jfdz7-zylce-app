@@ -41,7 +41,7 @@ class EventPreview extends React.Component {
                         </div>
                         <div id="event-preview-btns" className="event-preview-btns">
                             <button onClick={() => console.log('zapisz')}>Zapisz wydarzenie</button>
-                            <button onClick={this.hidePopup}>Wróc do kalendarza wydarzeń</button>
+                            <button onClick={this.hidePopup}>Wróc do kalendarza</button>
                         </div>
                         <a id="close-event-preview" className="close-event-preview" onClick={this.hidePopup} href=''>x</a>
                     </div>
