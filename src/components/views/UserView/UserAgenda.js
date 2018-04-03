@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import firebase from 'firebase';
 import {removeEvent} from "../../../state/users"
 
 class UserAgenda extends Component {

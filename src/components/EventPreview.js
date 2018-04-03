@@ -4,7 +4,6 @@ import {addTask} from "../state/users"
 
 
 const initialState = {
-    id: '',
     title: '',
     description: '',
     start: '',
@@ -15,46 +14,20 @@ const initialState = {
 class EventPreview extends React.Component {
     state = initialState
 
-
     saveEventToUserEvents = (event) => {
 
         event.preventDefault()
 
-        // const { id, title, description, start, end, category } = this.state
-        const id = this.props.activeEvent.id
         const title = this.props.activeEvent.title
         const description = this.props.activeEvent.description
-        const czas = this.props.activeEvent.start
-        const start = czas.toString()
+        const start = this.props.activeEvent.start
         const end = this.props.activeEvent.end
         const category = this.props.activeEvent.category
         const picture = this.props.activeEvent.picture
 
-        this.props.addTask( id, title, description, start, end, category, picture )
+        this.props.addTask( title, description, start, end, category, picture )
 
         this.setState(initialState)
-
-
-        // const id = this.props.activeEvent.id
-        // const title = this.props.activeEvent.title
-        // const description = this.props.activeEvent.description
-        // const start = this.props.activeEvent.start
-        // const end = this.props.activeEvent.end
-        // const category = this.props.activeEvent.category
-        //
-        console.log('id', id)
-        console.log('id', title)
-        console.log('id', description)
-        console.log('id', start)
-        console.log('id', end)
-        console.log('id', category)
-        //
-        // this.setState({
-        //     id: this.props.activeEvent.id,
-        //     title: this.props.activeEvent.title
-        //
-        // })
-        // console.log('state', this.state)
     }
 
     showPopup = (event) => {
