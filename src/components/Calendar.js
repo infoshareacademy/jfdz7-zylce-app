@@ -1,10 +1,11 @@
-import React from 'react'
-import BigCalendar from 'react-big-calendar'
-import moment from 'moment'
-import 'moment/locale/pl'
-import 'react-big-calendar/lib/css/react-big-calendar.css'
+import React from 'react';
+import BigCalendar from 'react-big-calendar';
+import moment from 'moment';
+import 'moment/locale/pl';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
 import {connect} from "react-redux";
-import {setActiveEvent} from "../state/eventPreview";
+
+import {setActiveEvent} from "../state/activeEvent";
 
 
 moment.locale('pl');
@@ -34,7 +35,7 @@ const config = {
         time: 'Czas',
         event: 'Wydarzenie'},
     views: ['month', 'week', 'day'],
-}
+};
 
 class Calendar extends React.Component {
     state = {
@@ -56,7 +57,7 @@ class Calendar extends React.Component {
         document.getElementById('event-preview-title').appendChild(title).append(`${event.title}`);
         document.getElementById('event-preview-title').classList.add(`category-${category}`);
         document.getElementById('event-preview-picture').appendChild(img).setAttribute('src', picture);
-        document.getElementById('event-preview-description').innerText = description
+        document.getElementById('event-preview-description').innerText = description;
         document.getElementById('event-preview-date').appendChild(paragraph).innerText =
             `${eventStartDate.toLocaleDateString('pl-PL', dateOptions)}, ${eventStartDate.toLocaleTimeString('pl-PL', timeOptions)} - ${eventEndDate.toLocaleTimeString('pl-PL', timeOptions)}`;
     };
@@ -110,7 +111,7 @@ class Calendar extends React.Component {
 export default connect(
     state => ({
         activeFilterNames: state.filtering.activeFilterNames,
-        activeEvent: state.eventPreview.activeEvent
+        activeEvent: state.activeEvent.activeEvent
     }), { setActiveEvent }
     //     events: state.events.data,
     //     activeFilterNames: state.filtering.activeFilterNames,

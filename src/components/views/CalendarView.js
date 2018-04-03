@@ -4,7 +4,7 @@ import moment from 'moment'
 import {connect} from "react-redux";
 
 import FilterControls from '../FilterControls'
-import {setActiveEvent} from "../../state/eventPreview";
+import {setActiveEvent} from "../../state/activeEvent";
 import EventPreview from '../EventPreview'
 
 class CalendarView extends Component {

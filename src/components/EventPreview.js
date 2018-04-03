@@ -1,3 +1,5 @@
+import React from 'react';
+import {connect} from 'react-redux';
 import React from 'react'
 import {connect} from 'react-redux'
 import {addTask} from "../state/users"
@@ -76,12 +78,13 @@ class EventPreview extends React.Component {
                     </div>
                 </div>
                 {this.showPopup}
-
             </React.Fragment>
         )
     }
 }
 
 export default connect(state => ({
+    activeEvent: state.activeEvent.activeEvent
+}), {})(EventPreview)
     activeEvent: state.eventPreview.activeEvent
 }), {addTask})(EventPreview);
