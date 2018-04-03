@@ -430,7 +430,7 @@
     width: 100%;
     max-width: 300px;
     font-size: 13px;
-    padding-bottom: 25px;
+    padding: 5px 15px 25px 25px;
 }
 
 .sign-by-socials a {
