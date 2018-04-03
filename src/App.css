@@ -329,12 +329,16 @@
     border: 1px solid #fff;
 
 }
+.user-event-date{
+    padding: 5px;
+}
 
 .user-filter-btn{
     padding: 5px 5px;
     color: #ffffff;
     border-radius: 3px;
 }
+
 
 .user-event-poster{
     width: 75px;

@@ -1,6 +1,11 @@
 import firebase from 'firebase';
 import '../setupFirebase';
 
+import moment from 'moment'
+moment.locale('pl');
+
+
+
 
 // Action Types
 const ADD_EVENT = 'calendarView/ADD_EVENT';
@@ -55,14 +60,27 @@ export const addTask = (
     category,
     picture
 
+
+
 ) => dispatch => {
+    let dateOptions = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
+    let timeOptions = {hour: 'numeric', minute: 'numeric'};
+
+    let startEvent = start;
+    let endEvent = end;
+
+
+
+    console.log(`Czas imprezy to: ${startEvent.toLocaleDateString('pl-PL', dateOptions)} - ${startEvent.toLocaleTimeString('pl-PL', timeOptions)}`)
+
     dbRef.push({
         title: title,
         description: description,
         category: category,
-        start: start,
-        end: end,
-        picture: picture
+        start: `${startEvent.toLocaleDateString('pl-PL', dateOptions)} - ${startEvent.toLocaleTimeString('pl-PL', timeOptions)}`,
+        end: `${endEvent.toLocaleDateString('pl-PL', dateOptions)} - ${endEvent.toLocaleTimeString('pl-PL', timeOptions)}`,
+        picture: picture,
+        xxxxx: start
     })
 };
 

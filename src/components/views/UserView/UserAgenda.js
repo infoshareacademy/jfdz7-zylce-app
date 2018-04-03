@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {removeEvent} from "../../../state/users"
 
+import moment from 'moment'
+import 'moment/locale/pl'
+moment.locale('pl');
+
+
 class UserAgenda extends Component {
 
     handleRemoveClick = event => {
@@ -30,16 +35,17 @@ class UserAgenda extends Component {
                                 </button>
                             </div>
                             <div>
-                                <strong>Start:</strong> {event.start},
-                                <span> </span>
-                                <strong>Koniec:</strong> {event.end}
-                                <br/>
-                                <hr />
+                                <div className="user-event-date">
+                                    <strong>Start:</strong> {event.start},
+                                    <span> </span>
+                                    <strong>Koniec:</strong> {event.end}
+                                    <hr />
+                                </div>
                                 <div className="user-event-description">
                                     <span> <strong>Opis:</strong> {event.description}</span>
                                     <img className="user-event-poster" src={event.picture}/>
                                 </div>
-                                </div>
+                            </div>
                         </li>)
                     })}
                 </ul>

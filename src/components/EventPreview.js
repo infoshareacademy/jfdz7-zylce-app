@@ -28,6 +28,7 @@ class EventPreview extends React.Component {
         this.props.addTask( title, description, start, end, category, picture )
 
         this.setState(initialState)
+        this.hidePopup(event)
     }
 
     showPopup = (event) => {
