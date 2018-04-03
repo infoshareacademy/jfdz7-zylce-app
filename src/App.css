@@ -362,15 +362,14 @@
 
 .sign-form .sign-input input{
     width: inherit;
-    border: 1px solid #0e5c90;
+    border: 2px solid #0e5c90;
     border-radius: 5px;
     outline: none;
-    padding: 5px;
+    padding: 8px;
 }
 
 .sign-form .sign-input input:focus{
     background-color: rgba(14, 92, 144, 0.07);
-    border-width: 1.5px;
 }
 
 .sign-form .sign-in-button {

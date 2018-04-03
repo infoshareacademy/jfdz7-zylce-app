@@ -41,7 +41,7 @@ class Menu extends React.Component {
                     <div id="authentication" className="authentication">
                         <div id="logged-user-info" className="logged-user-info">
                             <div id="logged-user-welcome" className="logged-user-welcome">
-                                Cześć {this.props.user.firstName}!
+                                Cześć{' ' + this.props.user.firstName}!
                                 </div>
                             <div id="last-visit-info" className="last-visit-info">
                                 Ostatnie logowanie: {(moment(this.props.user.lastVisit*1000).format('L'))}, {(moment(this.props.user.lastVisit*1000).format('HH:mm:ss'))}
