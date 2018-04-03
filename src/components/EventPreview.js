@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {addTask} from "../state/users";
+import {addEventToUserEvents} from "../state/users";
 import {removeEvent} from "../state/users"
 
 
@@ -27,7 +27,7 @@ class EventPreview extends React.Component {
         const category = this.props.activeEvent.category
         const picture = this.props.activeEvent.picture
 
-        this.props.addTask( title, description, start, end, category, picture )
+        this.props.addEventToUserEvents( title, description, start, end, category, picture )
 
         this.setState(initialState)
         this.hidePopup(event)
@@ -35,7 +35,7 @@ class EventPreview extends React.Component {
 
     removeEventFromUserEvents = (event) => {
         event.preventDefault()
-        
+
         console.log('cos chce usunac!')
         console.log(this.props.activeEvent.id)
         this.props.removeEvent(this.props.activeEvent.id)
@@ -47,6 +47,7 @@ class EventPreview extends React.Component {
     showPopup = (event) => {
         event.preventDefault();
         document.getElementById('event-preview').classList.add('event-preview');
+
     };
 
     hidePopup = (event) => {
@@ -97,5 +98,5 @@ class EventPreview extends React.Component {
 
 export default connect(state => ({
     activeEvent: state.activeEvent.activeEvent
-}), {addTask, removeEvent})(EventPreview)
+}), {addEventToUserEvents, removeEvent})(EventPreview)
 

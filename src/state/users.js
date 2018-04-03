@@ -13,10 +13,10 @@ const SET_EVENTS = 'userView/SET_TASKS';
 
 // Action Creators
 
-export const addEvent = (event) => ({
-    type: ADD_EVENT,
-    event
-});
+// export const addEvent = (event) => ({
+//     type: ADD_EVENT,
+//     event
+// });
 
 const setEvents = events => ({
     type: SET_EVENTS,
@@ -53,7 +53,7 @@ export const removeEvent = eventId => dispatch => {
     console.log(eventId)
 };
 
-export const addTask = (
+export const addEventToUserEvents = (
     title,
     description,
     start,
