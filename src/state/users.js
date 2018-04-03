@@ -26,10 +26,11 @@ const setEvents = events => ({
 let dbRef;
 let callback;
 
-export const enableSync = () => dispatch => {
+export const enableUserSync = () => dispatch => {
     const userUid = firebase.auth().currentUser.uid;
 
     dbRef = firebase.database().ref('/users/' + userUid + '/events');
+
     callback = snapshot => {
         const value = snapshot.val();
         const events = Object.entries(value || {}).map(([id, values]) => ({
@@ -75,7 +76,6 @@ export const addTask = (
         category: category,
         start: start,
         end: end,
-        koniec: endEvent.toString(),
         eventStart: `${startEvent.toLocaleDateString('pl-PL', dateOptions)} - ${startEvent.toLocaleTimeString('pl-PL', timeOptions)}`,
         eventEnd: `${endEvent.toLocaleDateString('pl-PL', dateOptions)} - ${endEvent.toLocaleTimeString('pl-PL', timeOptions)}`,
         picture: picture,

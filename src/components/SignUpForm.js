@@ -1,59 +1,83 @@
-import React, { Component } from 'react'
+import React from 'react';
 import { connect } from 'react-redux'
-import { signUp } from '../state/auth'
+import moment from "moment/moment";
 
-class SignUpForm extends Component {
+import { signUpWithEmail, toggleForm} from '../state/auth'
+
+class SignUpForm extends React.Component {
+
     state = {
-        email: '',
-        password: '',
         firstName: '',
         lastName: '',
-    }
+        email: '',
+        password: '',
+        error: null
+    };
 
-    handleSubmit = event => {
-        event.preventDefault()
+    onSubmit = event => {
+        event.preventDefault();
+        console.log(this.state);
+        const { email, password, error, ...userData } = this.state;
 
-        this.props.signUp(
-            this.state.email,
-            this.state.password,
-            this.state.firstName,
-            this.state.lastName,
-            )
+        this.props
+            .signUpWithEmail(email, password, userData)
             .catch(error => this.setState({ error }))
-    }
+    };
 
-    handleChange = ({ target: { name, value } }) => {
+    handleInputChange = ({ target: { name, value } }) => {
+        console.log(value);
+        console.log(this.state);
         this.setState({
-            [name]: value
+            [name]: value,
+            joinedAt: moment().unix(),
+            lastVisit: moment().unix(),
+            role: 'user',
+            displayName: this.state.firstName + ' ' + this.state.lastName,
         })
-    }
+    };
 
-    renderInput(fieldName, type = 'text') {
-        return (
-            <input
-                className="auth-input"
-                name={fieldName}
-                value={this.state[fieldName]}
-                type={type}
-                onChange={this.handleChange}
-            />
-        )
-    }
+    renderInput = fieldName => {
+        if (fieldName === 'password') {
+            return (<div className="sign-input">
+                <input
+                    name={fieldName}
+                    onChange={this.handleInputChange}
+                    type={fieldName}
+                />
+            </div>)
+        } else {
+            return (<div className="sign-input">
+                <input
+                    name={fieldName}
+                    onChange={this.handleInputChange}
+                    type="text"
+                />
+            </div>)
+        }
+    };
 
     render() {
         return (
-            <div>
-            <form onSubmit={this.handleSubmit} className="sig-up-form">
-                <h2>Zapisz się do nas</h2>
-                {this.state.error && <p>{this.state.error.message}</p>}
-                <div>Email: {this.renderInput('email')}</div>
-                <div>Hasło: {this.renderInput('password', 'password')}</div>
-                <div>Imię: {this.renderInput('firstName')}</div>
-                <div>Nazwisko: {this.renderInput('lastName')}</div>
-                <button>Zarejestruj się</button>
-            </form>
+            <div className="sign-up-modal">
+                <div className="sign-up-inner">
+                    <div className="sign-form">
+                        <form onSubmit={this.onSubmit}>
+                            {this.state.error && <p>{this.state.error.message}</p>}
+                            <div className="sign-info">imię</div>
+                            <div>{this.renderInput('firstName')}</div>
+                            <div className="sign-info">nazwisko</div>
+                            <div>{this.renderInput('lastName')}</div>
+                            <div className="sign-info">email</div>
+                            <div>{this.renderInput('email')}</div>
+                            <div className="sign-info">hasło</div>
+                            <div>{this.renderInput('password')}</div>
+                            <div className="sign-in-button"><button type='submit'> dołącz do zaplanuj.to </button></div>
+                        </form>
+                    </div>
+                    <a id="close-sign-up-modal" className="close-sign-up-modal" onClick={this.props.toggleForm} href=''>x</a>
+                </div>
             </div>
-        )
+        );
     }
 }
-export default connect(null, { signUp })(SignUpForm)
+export default connect(null, {signUpWithEmail, toggleForm})(SignUpForm)

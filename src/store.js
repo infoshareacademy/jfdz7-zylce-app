@@ -9,9 +9,8 @@ import activeEvent from "./state/activeEvent";
 import auth, {setUser} from "./state/auth";
 import userData, {enableSync, disableSync} from "./state/userData";
 
-import eventPreview from "./state/eventPreview";
-import users, {enableSync} from './state/users';
-import auth, {setUser} from './state/auth';
+import eventPreview from "./state/activeEvent";
+import users, {enableUserSync} from './state/users';
 
 
 const reducer = combineReducers({
@@ -19,11 +18,11 @@ const reducer = combineReducers({
     filtering,
     activeEvent,
     auth,
-    userData
+    userData,
     eventPreview,
-    filtering,
     users,
-    auth
+    enableUserSync
+
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -35,6 +34,7 @@ store.dispatch(getEvents());
 firebase.auth().onAuthStateChanged(user => {
     if (user !== null) {
         store.dispatch(enableSync())
+        store.dispatch(enableUserSync())
     } else {
         store.dispatch(disableSync())
     }
