@@ -593,6 +593,20 @@
     .authentication .last-visit-info {
         display: none;
     }
+
+    .rbc-toolbar-label {
+        order: -1;
+        font-size: 13px;
+    }
+
+    .rbc-toolbar {
+        padding-top: 20px;
+        flex-flow: column;
+    }
+
+    .rbc-event-content, .rbc-header span, .rbc-date-cell a, .rbc-toolbar button{
+        font-size: 9px;
+    }
 }
 
 @media (max-width: 800px) {
