@@ -34,9 +34,12 @@ class EventPreview extends React.Component {
     }
 
     removeEventFromUserEvents = (event) => {
+        event.preventDefault()
+        
         console.log('cos chce usunac!')
         console.log(this.props.activeEvent.id)
         this.props.removeEvent(this.props.activeEvent.id)
+        this.hidePopup(event)
 
 
     }
