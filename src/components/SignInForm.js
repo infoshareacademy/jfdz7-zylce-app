@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
 import { signInWithEmail, signInWithFb } from "../state/auth";
-import moment from "moment/moment";
 import SignUpFormToggleButton from "./SignUpFormToggleButton";
 
 class SignIn extends React.Component {
+
     state = {
         email: '',
         password: ''
@@ -17,16 +18,9 @@ class SignIn extends React.Component {
             .signInWithEmail(this.state.email, this.state.password)
     };
 
-    handleJoinUs = event => {
-        event.preventDefault();
-
-
-    };
-
     handleInputChange = ({ target: { name, value } }) => {
         this.setState({
             [name]: value,
-            lastVisit: moment().unix(),
         })
     };
 
@@ -64,13 +58,12 @@ class SignIn extends React.Component {
                     </form>
                 </div>
                 <div className="sign-join-us">
-                    <div>Nie masz konta? </div>
                     <SignUpFormToggleButton />
-                    <button type='submit' onClick={this.props.signInWithFb}> fb!</button>
+                    <button type='submit' onClick={this.props.signInWithFb}> lub zaloguj się przez Facebook</button>
                 </div>
             </React.Fragment>
         )
     }
 }
 
-export default connect(null, {signInWithEmail, signInWithFb})(SignIn);
+export default connect(null, {signInWithEmail, signInWithFb})(SignIn)

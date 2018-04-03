@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import { toggleForm} from "../state/auth";
 import SignUpForm from './SignUpForm';
 
 export class SignUpFormToggleButton extends Component {
+
     state = {
         showSignUpForm: false
     };

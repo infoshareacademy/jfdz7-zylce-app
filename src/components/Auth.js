@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-import SignInForm from './SignInForm'
+import SignInForm from './SignInForm';
 
 class Auth extends Component {
     render() {

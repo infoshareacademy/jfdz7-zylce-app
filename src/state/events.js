@@ -1,18 +1,15 @@
-import firebase from 'firebase';
-import '../setupFirebase';
-
+import {database} from '../setupFirebase';
 
 let dbRef;
 let callback;
 
 export const getEvents = () => dispatch => {
-    dbRef = firebase.database().ref('events/');
+    dbRef = database.ref('events/');
     callback = snapshot => {
         const value = snapshot.val();
         dispatch({ type: 'SET_EVENTS', data: value });
     };
     dbRef.on('value', callback);
-
 };
 
 const initialState = {
@@ -25,11 +22,10 @@ export default (state = initialState, action = {}) => {
             return {
                 ...state,
                 data: action.data
-            }
+            };
         default:
         {
             return state
         }
     }
-
 }

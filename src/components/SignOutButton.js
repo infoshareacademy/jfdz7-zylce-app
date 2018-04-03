@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
 import { signOut } from '../state/auth';
 
 class SignOutButton extends React.Component {

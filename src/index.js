@@ -9,7 +9,6 @@ import Auth from './components/Auth';
 import App from './App';
 import store from "./store";
 
-
 ReactDOM.render(
     <Provider store={store}>
         <Auth >

@@ -387,7 +387,17 @@
     outline: none;
 }
 
+.sign-form .sign-in-button button:hover {
+    color: #31212e;
+    background-color: #909090;
+}
+
 .sign-join-us {
+    font-family: sans-serif;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #4f2f4c;
+    font-size: 13px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -399,17 +409,14 @@
 }
 
 .sign-join-us button {
-    padding: 10px;
-    margin: 5px;
-    width: 100%;
-    min-width: 200px;
+    display: flex;
+    margin: 0 auto;
     color: #4f2f4c;
-    background-color: #b8b8b8;
+    font-size: 13px;
+    background-color: #fff;
     cursor: pointer;
     font-family: sans-serif;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    border: 1px #ff0080;
+    border: none;
     border-radius: 5px;
     opacity: 0.65;
     outline: none;
