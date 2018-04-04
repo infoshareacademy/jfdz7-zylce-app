@@ -11,6 +11,7 @@ import userData, {enableSync, disableSync} from "./state/userData";
 
 import eventPreview from "./state/activeEvent";
 import users, {enableUserSync} from './state/users';
+import {enableFavSync} from './state/favorites';
 
 
 const reducer = combineReducers({
@@ -21,7 +22,8 @@ const reducer = combineReducers({
     userData,
     eventPreview,
     users,
-    enableUserSync
+    enableUserSync,
+    enableFavSync
 
 });
 
@@ -35,6 +37,7 @@ firebase.auth().onAuthStateChanged(user => {
     if (user !== null) {
         store.dispatch(enableSync())
         store.dispatch(enableUserSync())
+        store.dispatch(enableFavSync())
     } else {
         store.dispatch(disableSync())
     }
