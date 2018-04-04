@@ -1,5 +1,5 @@
-import React from 'react'
-import {connect} from 'react-redux'
+import React from 'react';
+import {connect} from 'react-redux';
 
 class EventPreview extends React.Component {
 
@@ -41,13 +41,12 @@ class EventPreview extends React.Component {
                         </div>
                         <div id="event-preview-btns" className="event-preview-btns">
                             <button onClick={() => console.log('zapisz')}>Zapisz wydarzenie</button>
-                            <button onClick={this.hidePopup}>Wróc do kalendarza wydarzeń</button>
+                            <button onClick={this.hidePopup}>Wróc do kalendarza</button>
                         </div>
                         <a id="close-event-preview" className="close-event-preview" onClick={this.hidePopup} href=''>x</a>
                     </div>
                 </div>
                 {this.showPopup}
-
             </React.Fragment>
         )
     }
@@ -55,4 +54,4 @@ class EventPreview extends React.Component {
 
 export default connect(state => ({
     activeEvent: state.activeEvent.activeEvent
-}), {})(EventPreview);
+}), {})(EventPreview)

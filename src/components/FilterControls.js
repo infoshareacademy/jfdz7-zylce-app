@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { toggleFilter, deactivateFilter } from '../state/filtering'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { toggleFilter, deactivateFilter } from '../state/filtering';
 
 class FilterControls extends Component {
-
 
     translateCategoryName = (categoryName) => {
         switch(categoryName) {
@@ -47,7 +47,6 @@ class FilterControls extends Component {
     };
 
     render() {
-
         return (
             <div className="events-filter">
                 <div className="filter-message">
