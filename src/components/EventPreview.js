@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import {addEventToUserEvents} from "../state/users";
 import {removeEvent} from "../state/users";
-import {toggleTaskFav} from '../state/favorites';
+import {toggleAddRemoveEvent} from '../state/favorites';
 
 const initialState = {
     title: '',
@@ -36,7 +36,7 @@ class EventPreview extends React.Component {
         this.setState(initialState);
         this.hidePopup(event)
 
-        this.props.toggleTaskFav(eventId, title, description, start, end, category, picture)
+        this.props.toggleAddRemoveEvent(eventId, title, description, start, end, category, picture)
     }
 
     removeEventFromUserEvents = (event) => {
@@ -101,5 +101,5 @@ class EventPreview extends React.Component {
 
 export default connect(state => ({
     activeEvent: state.activeEvent.activeEvent
-}), {addEventToUserEvents, removeEvent, toggleTaskFav})(EventPreview)
+}), {addEventToUserEvents, removeEvent, toggleAddRemoveEvent})(EventPreview)
 

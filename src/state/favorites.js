@@ -3,7 +3,7 @@ import firebase from "firebase";
 let dbRef
 let callback
 
-export const enableFavSync = () => dispatch => {
+export const enableAddRemoveSync = () => dispatch => {
     const userUid = firebase.auth().currentUser.uid
 
     dbRef = firebase.database().ref('/users/' + userUid + '/events')
@@ -16,12 +16,15 @@ export const enableFavSync = () => dispatch => {
     dbRef.on('value', callback)
 }
 
-export const disableFavSync = () => dispatch => {
+export const disableAddRemoveSync = () => dispatch => {
     dbRef.off('value', callback)
 }
 
-export const toggleTaskFav = (taskId, title, description, start, end, category, picture) => dispatch => {
-    const childRef = dbRef.child(taskId)
+export const toggleAddRemoveEvent = (eventId, title, description, start, end, category, picture) => dispatch => {
+    const childRef = dbRef.child(eventId)
+    const mainRef = firebase.database().ref('/events/' + eventId + '/toggle/')
+
+    console.log('main: ', mainRef)
 
     let dateOptions = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
     let timeOptions = {hour: 'numeric', minute: 'numeric'};
@@ -34,19 +37,21 @@ export const toggleTaskFav = (taskId, title, description, start, end, category, 
             // childRef.set(null)
             // childRef.remove()
             childRef.set(null)
+            mainRef.set(null)
             dbRef.remove()
             console.log('usuwam z bazy')
 
         } else {
-            dbRef.set(true)
+
             dbRef.push({
                 title: title,
                 description: description,
                 eventStart: `${startEvent.toLocaleDateString('pl-PL', dateOptions)} - ${startEvent.toLocaleTimeString('pl-PL', timeOptions)}`,
                 eventEnd: `${endEvent.toLocaleDateString('pl-PL', dateOptions)} - ${endEvent.toLocaleTimeString('pl-PL', timeOptions)}`,
                 category: category,
-                picture: picture
+                picture: picture,
             })
+            mainRef.set(true)
             console.log('dodaje do bazy')
         }
     })
