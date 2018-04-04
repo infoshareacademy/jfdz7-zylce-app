@@ -16,7 +16,7 @@ export const enableFavSync = () => dispatch => {
     dbRef.on('value', callback)
 }
 
-export const disableSync = () => dispatch => {
+export const disableFavSync = () => dispatch => {
     dbRef.off('value', callback)
 }
 
@@ -31,13 +31,15 @@ export const toggleTaskFav = (taskId, title, description, start, end, category, 
 
     childRef.once('value', snapshot => {
         if (snapshot.val()) {
+            // childRef.set(null)
+            // childRef.remove()
             childRef.set(null)
-            childRef.remove()
+            dbRef.remove()
             console.log('usuwam z bazy')
 
         } else {
-            childRef.set(true)
-            childRef.push({
+            dbRef.set(true)
+            dbRef.push({
                 title: title,
                 description: description,
                 eventStart: `${startEvent.toLocaleDateString('pl-PL', dateOptions)} - ${startEvent.toLocaleTimeString('pl-PL', timeOptions)}`,

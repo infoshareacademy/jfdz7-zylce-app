@@ -61,11 +61,6 @@ class EventPreview extends React.Component {
         document.getElementById('event-preview-title').innerText = '';
         document.getElementById('event-preview-date').innerText = '';
         document.getElementById('event-preview-picture').innerText = '';
-
-        const eventId = this.props.activeEvent.id;
-        const eventId2 = this.props.activeEvent.eventId;
-        console.log('event ID: ', eventId);
-        console.log('event ID2: ', eventId2);
     };
 
     render() {

@@ -11,7 +11,7 @@ import userData, {enableSync, disableSync} from "./state/userData";
 
 import eventPreview from "./state/activeEvent";
 import users, {enableUserSync} from './state/users';
-import {enableFavSync} from './state/favorites';
+import {enableFavSync, disableFavSync} from './state/favorites';
 
 
 const reducer = combineReducers({
@@ -23,7 +23,8 @@ const reducer = combineReducers({
     eventPreview,
     users,
     enableUserSync,
-    enableFavSync
+    enableFavSync,
+    disableFavSync
 
 });
 
