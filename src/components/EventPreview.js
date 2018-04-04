@@ -18,27 +18,27 @@ class EventPreview extends React.Component {
 
     saveEventToUserEvents = (event) => {
 
-        event.preventDefault()
+        event.preventDefault();
 
-        const title = this.props.activeEvent.title
-        const description = this.props.activeEvent.description
-        const start = this.props.activeEvent.start
-        const end = this.props.activeEvent.end
-        const category = this.props.activeEvent.category
-        const picture = this.props.activeEvent.picture
+        const title = this.props.activeEvent.title;
+        const description = this.props.activeEvent.description;
+        const start = this.props.activeEvent.start;
+        const end = this.props.activeEvent.end;
+        const category = this.props.activeEvent.category;
+        const picture = this.props.activeEvent.picture;
+        const eventId = this.props.activeEvent.id
 
-        this.props.addEventToUserEvents( title, description, start, end, category, picture )
 
-        this.setState(initialState)
+        this.props.addEventToUserEvents( title, description, start, end, category, picture, eventId )
+
+        this.setState(initialState);
         this.hidePopup(event)
     }
 
     removeEventFromUserEvents = (event) => {
-        event.preventDefault()
+        event.preventDefault();
 
-        console.log('cos chce usunac!')
-        console.log(this.props.activeEvent.id)
-        this.props.removeEvent(this.props.activeEvent.id)
+        this.props.removeEvent(this.props.activeEvent.id);
         this.hidePopup(event)
 
 
@@ -47,6 +47,7 @@ class EventPreview extends React.Component {
     showPopup = (event) => {
         event.preventDefault();
         document.getElementById('event-preview').classList.add('event-preview');
+
     };
 
     hidePopup = (event) => {
@@ -56,6 +57,11 @@ class EventPreview extends React.Component {
         document.getElementById('event-preview-title').innerText = '';
         document.getElementById('event-preview-date').innerText = '';
         document.getElementById('event-preview-picture').innerText = '';
+
+        const eventId = this.props.activeEvent.id;
+        const eventId2 = this.props.activeEvent.eventId;
+        console.log('event ID: ', eventId);
+        console.log('event ID2: ', eventId2);
     };
 
     render() {

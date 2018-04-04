@@ -59,7 +59,8 @@ export const addEventToUserEvents = (
     start,
     end,
     category,
-    picture
+    picture,
+    eventId
 
 
 
@@ -79,6 +80,7 @@ export const addEventToUserEvents = (
         eventStart: `${startEvent.toLocaleDateString('pl-PL', dateOptions)} - ${startEvent.toLocaleTimeString('pl-PL', timeOptions)}`,
         eventEnd: `${endEvent.toLocaleDateString('pl-PL', dateOptions)} - ${endEvent.toLocaleTimeString('pl-PL', timeOptions)}`,
         picture: picture,
+        eventId: eventId
     })
 };
 
