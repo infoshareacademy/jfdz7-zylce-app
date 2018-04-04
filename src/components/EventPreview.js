@@ -47,7 +47,6 @@ class EventPreview extends React.Component {
     showPopup = (event) => {
         event.preventDefault();
         document.getElementById('event-preview').classList.add('event-preview');
-
     };
 
     hidePopup = (event) => {
@@ -57,7 +56,6 @@ class EventPreview extends React.Component {
         document.getElementById('event-preview-title').innerText = '';
         document.getElementById('event-preview-date').innerText = '';
         document.getElementById('event-preview-picture').innerText = '';
-
     };
 
     render() {
