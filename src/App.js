@@ -9,6 +9,7 @@ import UserView from './components/views/UserView/UserView';
 import Footer from './components/views/Foooter/Footer';
 import SignIn from "./components/SignInForm";
 import SignUp from "./components/SignUpForm";
+import AdminPanel from "./components/AdminPanel";
 
 
 class App extends Component {
@@ -23,8 +24,10 @@ class App extends Component {
                       <Route path="/userCalendar" component={UserView} />
                       <Route path="/signIn" component={SignIn} />
                       <Route path="/signUp" component={SignUp} />
+                      <Route path="/adminPanel" component={AdminPanel} />
                   </div>
                   <Footer/>
+
               </div>
       </React.Fragment>
     );

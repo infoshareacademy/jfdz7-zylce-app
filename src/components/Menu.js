@@ -19,24 +19,45 @@ const options = [
     },
 ];
 
-const defaultOptions = {};
+
 
 class Menu extends React.Component {
+
+    isAdmin = () => {
+        console.log(this.props.user.role)
+        return (this.props.user.role === 'admin')
+    };
+
+    renderAdminPanelButton = () => {
+        if (this.isAdmin()) {
+            return (
+                <button >
+                    <NavLink to='/adminPanel'>
+                        mój kalendarz
+                    </NavLink>
+                </button>
+            )
+        }
+    }
+
     render() {
         return (
             <div className='header'>
                 <div id='menu' className='menu'>
                     <div className="menu-list">
-                        {options.map((option, index) => (
-                            <button key={index}>
-                                <NavLink
-                                    exact={(option.options || defaultOptions).exact}
-                                    to={option.path}
-                                >
-                                    {option.label}
-                                </NavLink>
-                            </button>
-                        ))}
+                        <button>
+                            <NavLink exact to='/'>
+                                kalendarz
+                            </NavLink>
+                        </button>
+                        <button>
+                            <NavLink to='/userCalendar'>
+                                mój kalendarz
+                            </NavLink>
+                        </button>
+                        {this.renderAdminPanelButton()}
+
+
                     </div>
                     <div id="authentication" className="authentication">
                         <div id="logged-user-info" className="logged-user-info">
