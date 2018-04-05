@@ -1,11 +1,15 @@
 import React from 'react';
 import {connect} from "react-redux";
 
+import { getUsersData } from '../state/adminData';
+
 class AdminPanel extends React.Component {
 
     componentDidMount = () => {
-        if (this.props.user.role !== 'admin') {
-            this.props.history.push('/')
+        if (this.props.user.role === 'admin') {
+            this.props.getUsersData();
+        } else {
+            this.props.history.push('/');
         }
     };
 
@@ -23,4 +27,4 @@ class AdminPanel extends React.Component {
 export default connect(
     state => ({
         user: state.userData.user
-    }), {})(AdminPanel);
+    }), {getUsersData})(AdminPanel);

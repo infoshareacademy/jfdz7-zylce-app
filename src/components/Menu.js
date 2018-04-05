@@ -5,22 +5,6 @@ import moment from 'moment';
 
 import SignOutButton from './SignOutButton';
 
-const options = [
-    {
-        path: '/',
-        label: 'kalendarz',
-        options: {
-            exact: true
-        }
-    },
-    {
-        path: '/userCalendar',
-        label: 'moje wydarzenia'
-    },
-];
-
-
-
 class Menu extends React.Component {
 
     isAdmin = () => {

@@ -8,6 +8,7 @@ import filtering from "./state/filtering";
 import activeEvent from "./state/activeEvent";
 import auth, {setUser} from "./state/auth";
 import userData, {enableSync, disableSync} from "./state/userData";
+import adminData  from "./state/adminData";
 
 
 const reducer = combineReducers({
@@ -15,7 +16,8 @@ const reducer = combineReducers({
     filtering,
     activeEvent,
     auth,
-    userData
+    userData,
+    adminData
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -26,11 +28,12 @@ store.dispatch(getEvents());
 
 firebase.auth().onAuthStateChanged(user => {
     if (user !== null) {
-        store.dispatch(enableSync())
+        store.dispatch(enableSync());
+        // store.dispatch(setCurrentUserRole());
     } else {
-        store.dispatch(disableSync())
+        store.dispatch(disableSync());
     }
-    store.dispatch(setUser(user))
+    store.dispatch(setUser(user));
 });
 
 export default store;
