@@ -49,9 +49,9 @@ export const disableSync = () => dispatch => {
 export const toggleBtnName = (eventId, userEvents) => {
 
     const convEventId = parseInt(eventId)
-
-    function isBigEnough(element) {
-        return (convEventId === element);
+    
+    let isMatchtoId = (element) => {
+        return (convEventId === element)
     }
 
     let eventsIdArray = userEvents.map( event => {
@@ -59,7 +59,7 @@ export const toggleBtnName = (eventId, userEvents) => {
     })
     console.log(convEventId)
     console.log(eventsIdArray)
-    let isEventAdd = eventsIdArray.some(isBigEnough);
+    let isEventAdd = eventsIdArray.some(isMatchtoId);
 
     console.log(isEventAdd)
 
