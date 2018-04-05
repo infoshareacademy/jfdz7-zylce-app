@@ -20,7 +20,6 @@ export class SignUpFormToggleButton extends Component {
                     {this.props.showSignUpForm && (
                         <SignUpForm/>
                     )}
-                    {console.log(this.props)}
                 </div>
             </React.Fragment>
         )

@@ -29,7 +29,6 @@ store.dispatch(getEvents());
 firebase.auth().onAuthStateChanged(user => {
     if (user !== null) {
         store.dispatch(enableSync());
-        // store.dispatch(setCurrentUserRole());
     } else {
         store.dispatch(disableSync());
     }

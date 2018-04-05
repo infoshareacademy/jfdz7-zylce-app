@@ -8,7 +8,6 @@ import SignOutButton from './SignOutButton';
 class Menu extends React.Component {
 
     isAdmin = () => {
-        console.log(this.props.user.role)
         return (this.props.user.role === 'admin')
     };
 
@@ -22,7 +21,7 @@ class Menu extends React.Component {
                 </button>
             )
         }
-    }
+    };
 
     render() {
         return (
@@ -40,16 +39,18 @@ class Menu extends React.Component {
                             </NavLink>
                         </button>
                         {this.renderAdminPanelButton()}
-
-
                     </div>
                     <div id="authentication" className="authentication">
                         <div id="logged-user-info" className="logged-user-info">
                             <div id="logged-user-welcome" className="logged-user-welcome">
-                                Cześć{' ' + this.props.user.firstName}!
+                                Cześć{this.props.user.firstName.length>0 ? ' ' + this.props.user.firstName : ''}!
                                 </div>
                             <div id="last-visit-info" className="last-visit-info">
-                                Ostatnie logowanie: {(moment(this.props.user.lastVisit*1000).format('L'))}, {(moment(this.props.user.lastVisit*1000).format('HH:mm:ss'))}
+                                {this.props.user.lastVisit.length===0 ? ''
+                                    : `Ostatnie logowanie: ${
+                                    (moment(this.props.user.lastVisit*1000).format('L'))}, ${(moment(this.props.user.lastVisit*1000).format('HH:mm:ss'))}`
+                                }
+
                             </div>
                         </div>
                         <SignOutButton />
