@@ -358,7 +358,7 @@
 }
 
 .user-events > li {
-    border: 2px solid #b8b8b8;
+    border: 2px solid #0e5c90;
     border-radius: 5px;
     margin-bottom: 5px;
 }
@@ -399,17 +399,11 @@
     padding: 5px;
 }
 
-.user-filter-btn{
-    padding: 5px 5px;
-    color: #ffffff;
-    border-radius: 3px;
-}
-
 
 .user-event-poster{
     width: 75px;
     height: 100px;
-    border: 2px solid #b8b8b8;
+    border: 2px solid #0e5c90;
 }
 
 /*SignUp ana LogIn panel*/

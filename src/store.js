@@ -10,8 +10,8 @@ import auth, {setUser} from "./state/auth";
 import userData, {enableSync, disableSync} from "./state/userData";
 
 import eventPreview from "./state/activeEvent";
-import users, {enableUserSync} from './state/users';
-import {enableAddRemoveSync, disableAddRemoveSync} from './state/favorites';
+import users, {enableUserSync } from './state/users';
+import {enableAddRemoveSync, disableAddRemoveSync} from './state/toggleAddRemoveUserEvents';
 
 
 const reducer = combineReducers({

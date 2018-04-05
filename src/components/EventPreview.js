@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import {addEventToUserEvents} from "../state/users";
 import {removeEvent} from "../state/users";
-import {toggleAddRemoveEvent} from '../state/favorites';
+import {toggleAddRemoveEvent} from '../state/toggleAddRemoveUserEvents';
 
 const initialState = {
     title: '',
@@ -20,8 +20,6 @@ class EventPreview extends React.Component {
 
         event.preventDefault();
 
-
-
         const title = this.props.activeEvent.title;
         const description = this.props.activeEvent.description;
         const start = this.props.activeEvent.start;
@@ -29,10 +27,6 @@ class EventPreview extends React.Component {
         const category = this.props.activeEvent.category;
         const picture = this.props.activeEvent.picture;
         const eventId = this.props.activeEvent.id
-
-
-
-        // this.props.addEventToUserEvents( title, description, start, end, category, picture, eventId )
 
         this.setState(initialState);
         this.hidePopup(event)

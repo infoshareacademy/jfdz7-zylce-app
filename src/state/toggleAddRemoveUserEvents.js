@@ -21,12 +21,10 @@ export const disableAddRemoveSync = () => dispatch => {
 }
 
 export const toggleAddRemoveEvent = (eventId, title, description, start, end, category, picture) => dispatch => {
-    const childRef = dbRef.child(eventId)
-    const mainRef = firebase.database().ref('/events/' + eventId + '/userEvent/')
 
+    const childRef = dbRef.child(eventId)
     let dateOptions = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
     let timeOptions = {hour: 'numeric', minute: 'numeric'};
-
     let startEvent = start;
     let endEvent = end;
 
@@ -34,13 +32,9 @@ export const toggleAddRemoveEvent = (eventId, title, description, start, end, ca
         if (snapshot.val()) {
             childRef.remove()
             childRef.set(null)
-            mainRef.set(null)
-            dbRef.remove()
-            console.log('usuwam z bazy')
-
         } else {
-
-            dbRef.push({
+            childRef.push({id: eventId})
+            childRef.update({
                 title: title,
                 description: description,
                 eventStart: `${startEvent.toLocaleDateString('pl-PL', dateOptions)} - ${startEvent.toLocaleTimeString('pl-PL', timeOptions)}`,
@@ -48,8 +42,6 @@ export const toggleAddRemoveEvent = (eventId, title, description, start, end, ca
                 category: category,
                 picture: picture,
             })
-             // mainRef.set(true)
-            console.log('dodaje do bazy')
         }
     })
 }
