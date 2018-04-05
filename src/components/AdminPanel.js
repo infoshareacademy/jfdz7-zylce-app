@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
+import moment from 'moment';
 
 import { getUsersData } from '../state/adminData';
 
@@ -15,10 +16,30 @@ class AdminPanel extends React.Component {
 
     render() {
         return (
-            <div>
-            <h1>Użytkownicy</h1>
-                {this.props.usersData.map(user=>(<p>{user.displayName}</p>))}
-            </div>
+                <div className="users-table">
+                    <table>
+                        <caption>Użytkownicy zaplanuj.to</caption>
+                        <tr>
+                            <th>imię i nazwisko</th>
+                            <th>pierwsza wizyta</th>
+                            <th>ostatnia wizyta</th>
+                        </tr>
+                        {this.props.usersData.map((user, idx)=>(
+                            <tr key={idx}>
+                                <td>
+                                    {user.displayName}
+                                </td>
+                                <td>
+                                    {moment(user.joinedAt*1000).format('L')}, {moment(user.joinedAt*1000).format('HH:mm:ss')}
+                                </td>
+                                <td>
+                                    {user.online ? `obecnie` :
+                                        `${moment(user.lastVisit*1000).format('L')}, ${moment(user.lastVisit*1000).format('HH:mm:ss')}`}
+                                </td>
+                            </tr>))}
+
+                    </table>
+                </div>
         )
     }
 }

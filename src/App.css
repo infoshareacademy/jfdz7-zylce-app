@@ -513,7 +513,22 @@
     color: #ffffff;
 }
 
+.users-table table {
+    border: 3px solid #0e3868;
+    border-radius: 5px;
+}
 
+.users-table tr {
+    border: 3px solid #0e3868;
+    margin: 0;
+    padding: 0;
+}
+
+.users-table td {
+    border-top: 3px solid #0e3868;
+    margin: 0;
+    padding: 8px;
+}
 
 
 @media (max-width: 400px) {
