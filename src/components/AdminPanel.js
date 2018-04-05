@@ -16,9 +16,8 @@ class AdminPanel extends React.Component {
     render() {
         return (
             <div>
-            <h1>Widok tylko dla Admina</h1>
-            <h2>Widok tylko dla Admina</h2>
-            <h2>Widok tylko dla Admina</h2>
+            <h1>Użytkownicy</h1>
+                {this.props.usersData.map(user=>(<p>{user.displayName}</p>))}
             </div>
         )
     }
@@ -26,5 +25,8 @@ class AdminPanel extends React.Component {
 
 export default connect(
     state => ({
-        user: state.userData.user
+        user: state.userData.user,
+        usersData: Object.entries(
+            state.adminData.usersData
+        ).map(([id, values]) => ({ id, ...values}))
     }), {getUsersData})(AdminPanel);

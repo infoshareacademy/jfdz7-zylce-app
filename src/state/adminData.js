@@ -4,7 +4,7 @@ let dbRef;
 let callback;
 
 export const getUsersData = () => dispatch => {
-        dbRef = database.ref('users/');
+        dbRef = database.ref('users');
         callback = snapshot => {
             const value = snapshot.val();
             dispatch({type: 'SET_USERS_DATA', data: value});
