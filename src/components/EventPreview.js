@@ -31,6 +31,7 @@ class EventPreview extends React.Component {
         const eventId = this.props.activeEvent.id
 
 
+
         // this.props.addEventToUserEvents( title, description, start, end, category, picture, eventId )
 
         this.setState(initialState);
@@ -87,7 +88,6 @@ class EventPreview extends React.Component {
                         </div>
                         <div id="event-preview-btns" className="event-preview-btns">
                             <button onClick={this.saveEventToUserEvents}>Dodaj/Usuń wydarzenie</button>
-                            {/*<button onClick={this.removeEventFromUserEvents}>Usuń wyd.</button>*/}
                             <button onClick={this.hidePopup}>Wróc do kalendarza wydarzeń</button>
                         </div>
                         <a id="close-event-preview" className="close-event-preview" onClick={this.hidePopup} href=''>x</a>

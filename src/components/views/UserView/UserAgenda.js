@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+
 import {removeEvent} from "../../../state/users"
 
 import moment from 'moment'
@@ -26,14 +27,23 @@ class UserAgenda extends Component {
     }
 
     render() {
+        const { activeFilterNames } = this.props
+
         let dateOptions = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
         let timeOptions = {hour: 'numeric', minute: 'numeric'};
 
         return (
             <React.Fragment >
-                <h3>Moje wydarzenia</h3>
+                <h3>Lista dodanych wydarzeń</h3>
                 <ul className="user-events">
-                    {this.props.userAgendaFromState.map( event => {
+                    {this.props.userAgendaFromState
+                        .filter(
+                            task =>
+                                activeFilterNames.length === 0
+                                    ? true
+                                    : activeFilterNames.includes(task.category)
+                        )
+                        .map( event => {
                         return(
                         <li key={event.id}>
                             <div className={`user-agenda-title category-${event.category}`}>
@@ -68,6 +78,7 @@ class UserAgenda extends Component {
 
 export default connect(
     state => ({
+        activeFilterNames: state.filtering.activeFilterNames,
         userAgendaFromState: state.users.data
     }), {removeEvent}
 )(UserAgenda)

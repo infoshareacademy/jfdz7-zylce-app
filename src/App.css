@@ -392,6 +392,7 @@
 .user-event-delete-btn:hover{
     background-color: #E53935;
     border: 1px solid #fff;
+    cursor: pointer;
 
 }
 .user-event-date{
@@ -688,6 +689,7 @@
         font-size: 9px;
     }
 }
+
 
 @media (max-width: 800px) {
 
