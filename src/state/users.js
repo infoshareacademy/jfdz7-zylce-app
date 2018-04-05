@@ -49,7 +49,7 @@ export const disableSync = () => dispatch => {
 export const toggleBtnName = (eventId, userEvents) => {
 
     const convEventId = parseInt(eventId)
-    
+
     let isMatchtoId = (element) => {
         return (convEventId === element)
     }
@@ -68,7 +68,7 @@ export const toggleBtnName = (eventId, userEvents) => {
         document.querySelector('.event-add-remove-btn').innerHTML = 'Usuń wydarzenie'
     }else{
         alert('Event nie jest dodany')
-        document.querySelector('.event-add-remove-btn').innerHTML = 'Dodaj wydarzenie'
+        document.querySelector('.event-add-remove-btn').innerHTML = 'Zapisz w swoich wydarzeniach'
 
     }
 }
