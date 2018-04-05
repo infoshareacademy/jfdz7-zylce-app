@@ -19,7 +19,7 @@ class CalendarView extends Component {
                         end: moment(event.end).toDate(),
                         category: event.category,
                         description: event.description,
-                        picture: event.picture
+                        picture: event.picture,
                     })
                 )}/>
                 <EventPreview />

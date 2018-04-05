@@ -1,9 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
+
+
 import {addEventToUserEvents} from "../state/users";
-import {removeEvent} from "../state/users";
+// import {removeEvent} from "../state/users";
 import {toggleAddRemoveEvent} from '../state/toggleAddRemoveUserEvents';
+import activeEvent from "../state/activeEvent";
 
 const initialState = {
     title: '',
@@ -19,6 +22,7 @@ class EventPreview extends React.Component {
     saveEventToUserEvents = (event) => {
 
         event.preventDefault();
+        activeEvent()
 
         const title = this.props.activeEvent.title;
         const description = this.props.activeEvent.description;
@@ -31,17 +35,15 @@ class EventPreview extends React.Component {
         this.setState(initialState);
         this.hidePopup(event)
 
-        this.props.toggleAddRemoveEvent(eventId, title, description, start, end, category, picture)
+        this.props.toggleAddRemoveEvent(eventId, title, description, start, end, category, picture, eventId)
     }
 
-    removeEventFromUserEvents = (event) => {
-        event.preventDefault();
-
-        this.props.removeEvent(this.props.activeEvent.id);
-        this.hidePopup(event)
-
-
-    }
+    // removeEventFromUserEvents = (event) => {
+    //     event.preventDefault();
+    //
+    //     this.props.removeEvent(this.props.activeEvent.id);
+    //     this.hidePopup(event)
+    // }
 
     showPopup = (event) => {
         event.preventDefault();
@@ -57,6 +59,7 @@ class EventPreview extends React.Component {
         document.getElementById('event-preview-date').innerText = '';
         document.getElementById('event-preview-picture').innerText = '';
     };
+
 
     render() {
 
@@ -81,7 +84,7 @@ class EventPreview extends React.Component {
 
                         </div>
                         <div id="event-preview-btns" className="event-preview-btns">
-                            <button onClick={this.saveEventToUserEvents}>Dodaj/Usuń wydarzenie</button>
+                            <button className="event-add-remove-btn" onClick={this.saveEventToUserEvents}>Dodaj / Usuń wydarzenie</button>
                             <button onClick={this.hidePopup}>Wróc do kalendarza wydarzeń</button>
                         </div>
                         <a id="close-event-preview" className="close-event-preview" onClick={this.hidePopup} href=''>x</a>
@@ -94,6 +97,7 @@ class EventPreview extends React.Component {
 }
 
 export default connect(state => ({
-    activeEvent: state.activeEvent.activeEvent
-}), {addEventToUserEvents, removeEvent, toggleAddRemoveEvent})(EventPreview)
+    activeEvent: state.activeEvent.activeEvent,
+    userEvents: state.users.data
+}), {addEventToUserEvents, toggleAddRemoveEvent})(EventPreview)
 

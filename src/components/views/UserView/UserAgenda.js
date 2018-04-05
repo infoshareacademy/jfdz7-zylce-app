@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
-import {removeEvent} from "../../../state/users"
+import {toggleAddRemoveEvent} from '../../../state/toggleAddRemoveUserEvents';
 
 import moment from 'moment'
 moment.locale('pl');
-
 
 class UserAgenda extends Component {
     translateCategoryName = (categoryName) => {
@@ -23,7 +22,7 @@ class UserAgenda extends Component {
 
     handleRemoveClick = event => {
         const eventId = event.target.dataset.eventId
-        this.props.removeEvent(eventId)
+        this.props.toggleAddRemoveEvent(eventId)
     }
 
     render() {
@@ -80,5 +79,5 @@ export default connect(
     state => ({
         activeFilterNames: state.filtering.activeFilterNames,
         userAgendaFromState: state.users.data
-    }), {removeEvent}
+    }), { toggleAddRemoveEvent}
 )(UserAgenda)

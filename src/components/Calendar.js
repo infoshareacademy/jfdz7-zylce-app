@@ -7,6 +7,7 @@ import {connect} from "react-redux";
 
 import {setActiveEvent} from "../state/activeEvent";
 
+import {toggleBtnName} from '../state/users'
 
 moment.locale('pl');
 BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment));
@@ -60,6 +61,13 @@ class Calendar extends React.Component {
         document.getElementById('event-preview-description').innerText = description;
         document.getElementById('event-preview-date').appendChild(paragraph).innerText =
             `${eventStartDate.toLocaleDateString('pl-PL', dateOptions)}, ${eventStartDate.toLocaleTimeString('pl-PL', timeOptions)} - ${eventEndDate.toLocaleTimeString('pl-PL', timeOptions)}`;
+
+        // kod lukasz
+        let eventId = event.id
+        let userEvents = this.props.userEvents
+        toggleBtnName(eventId, userEvents)
+
+
     };
 
     slotSelected = () => {
@@ -111,8 +119,10 @@ class Calendar extends React.Component {
 export default connect(
     state => ({
         activeFilterNames: state.filtering.activeFilterNames,
-        activeEvent: state.activeEvent.activeEvent
-    }), { setActiveEvent }
+        activeEvent: state.activeEvent.activeEvent,
+        userEvents: state.users.data
+
+    }), { setActiveEvent, toggleBtnName }
     //     events: state.events.data,
     //     activeFilterNames: state.filtering.activeFilterNames,
     //     newUserEvent: state.users.newEvent

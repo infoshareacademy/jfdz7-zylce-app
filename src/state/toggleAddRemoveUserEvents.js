@@ -6,11 +6,12 @@ let callback
 export const enableAddRemoveSync = () => dispatch => {
     const userUid = firebase.auth().currentUser.uid
 
+
     dbRef = firebase.database().ref('/users/' + userUid + '/events')
     callback = snapshot => {
         const value = snapshot.val()
         console.log(value)
-        dispatch({ type: 'SET_FAVORITE_TASKS', tasks: value })
+        dispatch({ type: 'SET_USER_EVENTS', tasks: value })
     }
 
     dbRef.on('value', callback)
@@ -19,6 +20,8 @@ export const enableAddRemoveSync = () => dispatch => {
 export const disableAddRemoveSync = () => dispatch => {
     dbRef.off('value', callback)
 }
+
+
 
 export const toggleAddRemoveEvent = (eventId, title, description, start, end, category, picture) => dispatch => {
 
@@ -32,6 +35,7 @@ export const toggleAddRemoveEvent = (eventId, title, description, start, end, ca
         if (snapshot.val()) {
             childRef.remove()
             childRef.set(null)
+
         } else {
             childRef.push({id: eventId})
             childRef.update({
@@ -42,19 +46,22 @@ export const toggleAddRemoveEvent = (eventId, title, description, start, end, ca
                 category: category,
                 picture: picture,
             })
+
+
         }
     })
 }
 
+
 const initialState = {
-    tasks: null
+    addedEvents: null
 }
 
 export default (state = initialState, action = {}) => {
-    if (action.type === 'SET_FAVORITE_TASKS') {
+    if (action.type === 'SET_USER_EVENTS') {
         return {
             ...state,
-            tasks: action.tasks
+            addedEvents: action.addedEvents
         }
     } else {
         return state
