@@ -1,10 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-
-
-// import {addEventToUserEvents} from "../state/users";
-// import {removeEvent} from "../state/users";
 import {toggleAddRemoveEvent} from '../state/toggleAddRemoveUserEvents';
 import activeEvent from "../state/activeEvent";
 
@@ -37,13 +33,6 @@ class EventPreview extends React.Component {
 
         this.props.toggleAddRemoveEvent(eventId, title, description, start, end, category, picture, eventId)
     }
-
-    // removeEventFromUserEvents = (event) => {
-    //     event.preventDefault();
-    //
-    //     this.props.removeEvent(this.props.activeEvent.id);
-    //     this.hidePopup(event)
-    // }
 
     showPopup = (event) => {
         event.preventDefault();

@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
-import BigCalendar from 'react-big-calendar';
 import Calendar from '../../Calendar';
 import FilterControls from '../../FilterControls'
 import EventPreview from '../../EventPreview';
 import moment from 'moment';
 import 'moment/locale/pl';
 import {connect} from 'react-redux'
-
-
-BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment))
-
 
 class UserCalendar extends Component {
     state ={
@@ -25,15 +20,6 @@ class UserCalendar extends Component {
             time: 'Czas',
             event: 'Wydarzenie'},
         currentEvent: []
-    }
-
-
-    onRemoveEvent = (eventId) => {
-
-        console.log('kliknąłem na button w evencie')
-        this.setState({
-            userEvents: this.props.userEventsFromState.filter( userEvent => userEvent.id !== eventId)
-        })
     }
 
     render() {

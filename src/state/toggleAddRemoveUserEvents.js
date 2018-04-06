@@ -6,7 +6,6 @@ let callback;
 export const enableAddRemoveSync = () => dispatch => {
     const userUid = firebase.auth().currentUser.uid;
 
-
     dbRef = firebase.database().ref('/users/' + userUid + '/events');
     callback = snapshot => {
         const value = snapshot.val();
@@ -23,8 +22,6 @@ export const disableAddRemoveSync = () => dispatch => {
 export const toggleAddRemoveEvent = (eventId, title, description, start, end, category, picture) => dispatch => {
 
     const childRef = dbRef.child(eventId);
-    let dateOptions = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
-    let timeOptions = {hour: 'numeric', minute: 'numeric'};
     let startEvent = start;
     let endEvent = end;
 

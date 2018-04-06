@@ -41,10 +41,10 @@ export const disableSync = () => dispatch => {
 
 export const toggleBtnName = (eventId, userEvents) => {
 
-    const convEventId = parseInt(eventId)
+    const convertedEventId = parseInt(eventId)
 
     let isMatchtoId = (element) => {
-        return (convEventId === element)
+        return (convertedEventId === element)
     };
 
     let eventsIdArray = userEvents.map( event => {
@@ -58,35 +58,6 @@ export const toggleBtnName = (eventId, userEvents) => {
         document.querySelector('.event-add-remove-btn').innerHTML = 'Zapisz w swoich wydarzeniach';
     }
 };
-
-
-// export const addEventToUserEvents = (
-//     title,
-//     description,
-//     start,
-//     end,
-//     category,
-//     picture,
-//     eventId
-// ) => dispatch => {
-//     let dateOptions = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
-//     let timeOptions = {hour: 'numeric', minute: 'numeric'};
-//
-//     let startEvent = start;
-//     let endEvent = end;
-//
-//     dbRef.push({
-//         title: title,
-//         description: description,
-//         category: category,
-//         start: start,
-//         end: end,
-//         eventStart: `${startEvent.toLocaleDateString('pl-PL', dateOptions)} - ${startEvent.toLocaleTimeString('pl-PL', timeOptions)}`,
-//         eventEnd: `${endEvent.toLocaleDateString('pl-PL', dateOptions)} - ${endEvent.toLocaleTimeString('pl-PL', timeOptions)}`,
-//         picture: picture,
-//         eventId: eventId
-//     })
-// };
 
 const initialState = {
     data:[],

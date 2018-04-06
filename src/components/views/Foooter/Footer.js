@@ -4,7 +4,7 @@ class Footer extends Component {
     render() {
         return (
             <React.Fragment>
-                <p>Footer</p>
+                <p>Zaplanuj.to 2018</p>
             </React.Fragment>
         )
     }
