@@ -21,8 +21,7 @@ const reducer = combineReducers({
     activeEvent,
     auth,
     userData,
-    adminData
-    userData,
+    adminData,
     eventPreview,
     users,
     enableUserSync,
@@ -39,14 +38,12 @@ store.dispatch(getEvents());
 
 firebase.auth().onAuthStateChanged(user => {
     if (user !== null) {
-        store.dispatch(enableSync())
-        store.dispatch(enableUserSync())
-        store.dispatch(enableAddRemoveSync())
         store.dispatch(enableSync());
+        store.dispatch(enableUserSync());
+        store.dispatch(enableAddRemoveSync())
     } else {
-        store.dispatch(disableSync())
-        store.dispatch(disableAddRemoveSync())
         store.dispatch(disableSync());
+        store.dispatch(disableAddRemoveSync())
     }
     store.dispatch(setUser(user));
 });
