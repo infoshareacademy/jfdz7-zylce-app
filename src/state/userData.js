@@ -18,7 +18,6 @@ export const enableSync = () => dispatch => {
         const user = {...value, id: userUid };
         dispatch(setUserData(user))
     };
-
     dbRef.on('value', callback)
 };
 

@@ -33,6 +33,7 @@ class SignUpForm extends React.Component {
             lastVisit: moment().unix(),
             role: 'user',
             displayName: this.state.firstName + ' ' + this.state.lastName,
+            online: true,
         })
     };
 

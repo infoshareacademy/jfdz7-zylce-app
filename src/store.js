@@ -8,6 +8,7 @@ import filtering from "./state/filtering";
 import activeEvent from "./state/activeEvent";
 import auth, {setUser} from "./state/auth";
 import userData, {enableSync, disableSync} from "./state/userData";
+import adminData  from "./state/adminData";
 
 import eventPreview from "./state/activeEvent";
 import users, {enableUserSync } from './state/users';
@@ -19,6 +20,8 @@ const reducer = combineReducers({
     filtering,
     activeEvent,
     auth,
+    userData,
+    adminData
     userData,
     eventPreview,
     users,
@@ -39,11 +42,13 @@ firebase.auth().onAuthStateChanged(user => {
         store.dispatch(enableSync())
         store.dispatch(enableUserSync())
         store.dispatch(enableAddRemoveSync())
+        store.dispatch(enableSync());
     } else {
         store.dispatch(disableSync())
         store.dispatch(disableAddRemoveSync())
+        store.dispatch(disableSync());
     }
-    store.dispatch(setUser(user))
+    store.dispatch(setUser(user));
 });
 
 export default store;
