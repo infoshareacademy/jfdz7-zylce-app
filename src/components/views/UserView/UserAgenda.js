@@ -30,7 +30,7 @@ class UserAgenda extends Component {
 
         return (
             <React.Fragment >
-                <h3>Lista dodanych wydarzeń</h3>
+                <h3>Lista wydarzeń dodanych do mojego kalendarza</h3>
                 <ul className="user-events">
                     {this.props.userAgendaFromState
                         .filter(
@@ -40,31 +40,34 @@ class UserAgenda extends Component {
                                     : activeFilterNames.includes(event.category)
                         )
                         .map( event => {
-                        return(
-                        <li key={event.id}>
-                            <div className={`user-agenda-title category-${event.category}`}>
-                                {event.title} ({this.translateCategoryName(event.category)})
-                                <button
-                                    className="user-event-delete-btn"
-                                    data-event-id={event.id}
-                                    onClick={this.handleRemoveClick}
-                                >Usuń
-                                </button>
-                            </div>
-                            <div>
-                                <div className="user-event-date">
-                                    <strong>Start:</strong>{moment(event.start).format('LLLL')}
-                                    <span> </span>
-                                    <strong>Koniec:</strong> {moment(event.end).format('LLLL')}
-                                    <hr />
-                                </div>
-                                <div className="user-event-description">
-                                    <span> <strong>Opis:</strong> {event.description}</span>
-                                    <img className="user-event-poster" src={event.picture}/>
-                                </div>
-                            </div>
-                        </li>)
-                    })}
+                            return(
+                                <li key={event.id}>
+                                    <div className={`user-agenda-title category-${event.category}`}>
+                                        {event.title} ({this.translateCategoryName(event.category)})
+                                        <button
+                                            className="user-event-delete-btn"
+                                            data-event-id={event.id}
+                                            onClick={this.handleRemoveClick}
+                                        >Usuń
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <div className="user-event-date">
+                                            <span className="user-event-date-start">
+                                                <strong>Start:</strong>{moment(event.start).format('LLLL')}
+                                            </span>
+                                            <span className="user-event-date-end">
+                                                <strong>Koniec:</strong> {moment(event.end).format('LLLL')}
+                                            </span>
+                                        </div>
+                                        <hr />
+                                        <div className="user-event-description">
+                                            <span> <strong>Opis:</strong> {event.description}</span>
+                                            <img className="user-event-poster" src={event.picture}/>
+                                        </div>
+                                    </div>
+                                </li>)
+                        })}
                 </ul>
             </React.Fragment>
         )

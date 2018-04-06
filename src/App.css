@@ -366,6 +366,7 @@
 .user-agenda-title{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-size: 20px;
     font-weight: bold;
     color: #ffffff;
@@ -380,7 +381,7 @@
 }
 
 .user-event-delete-btn{
-    background-color: #EF5350;
+    background-color: #C62828;
     border: none;
     color: #fff;
     padding: 5px 10px;
@@ -390,15 +391,19 @@
 }
 
 .user-event-delete-btn:hover{
-    background-color: #E53935;
+    background-color: #B71C1C;
     border: 1px solid #fff;
     cursor: pointer;
 
 }
 .user-event-date{
     padding: 5px;
+    display: flex;
 }
 
+.user-event-date-start, .user-event-date-end{
+    margin-right: 10px;
+}
 
 .user-event-poster{
     width: 75px;
