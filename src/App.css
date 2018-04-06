@@ -443,6 +443,9 @@ h3{
     font-size: 15px;
     padding: 10px 20px;
     border-radius: 5px;
+
+}
+.notifications-area{
     display: flex;
     justify-content: space-between;
     align-items: center;

@@ -74,6 +74,7 @@ export const eventNotification = (userEvents) => {
 
     if(isMatchtoDate){
         console.log('dzisiaj jest jakas impra')
+        // document.querySelector('.notifications').classList.remove('hidden')
     }
 }
 
