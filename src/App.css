@@ -371,6 +371,7 @@
     font-weight: bold;
     color: #ffffff;
     padding: 5px 10px;
+    border-bottom: 2px solid #0e5c90;
     border-radius-topleft: 5px ;
     border-radius-topright: 5px ;
 }
@@ -384,9 +385,11 @@
     background-color: #C62828;
     border: none;
     color: #fff;
+    font-size: 17px;
     padding: 5px 10px;
     border-radius: 5px;
     border: 1px solid #fff;
+    transition-duration: 0.5s;
 
 }
 
