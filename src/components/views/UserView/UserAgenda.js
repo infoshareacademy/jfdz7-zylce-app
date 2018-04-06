@@ -66,7 +66,6 @@ class UserAgenda extends Component {
                         </li>)
                     })}
                 </ul>
-
             </React.Fragment>
         )
     }
