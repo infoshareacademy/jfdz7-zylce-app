@@ -24,19 +24,22 @@ class AdminPanel extends React.Component {
                             <th>pierwsza wizyta</th>
                             <th>ostatnia wizyta</th>
                         </tr>
-                        {this.props.usersData.map((user, idx)=>(
-                            <tr key={idx}>
-                                <td>
+                        {this.props.usersData.map((user, idx)=> {
+                            if (user.role !== 'admin') {
+                                return (<tr key={idx}>
+                                    <td className="users-table-name">
                                     {user.displayName}
-                                </td>
-                                <td>
+                                    </td>
+                                    <td className="users-table-date">
                                     {moment(user.joinedAt*1000).format('L')}, {moment(user.joinedAt*1000).format('HH:mm:ss')}
-                                </td>
-                                <td>
+                                    </td>
+                                    <td className="users-table-date">
                                     {user.online ? `obecnie` :
                                         `${moment(user.lastVisit*1000).format('L')}, ${moment(user.lastVisit*1000).format('HH:mm:ss')}`}
-                                </td>
-                            </tr>))}
+                                    </td>
+                                </tr>)
+                            }
+                        })}
 
                     </table>
                 </div>

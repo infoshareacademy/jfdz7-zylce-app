@@ -16,7 +16,7 @@ class Menu extends React.Component {
             return (
                 <button >
                     <NavLink to='/adminPanel'>
-                        mój kalendarz
+                        użytkownicy
                     </NavLink>
                 </button>
             )
