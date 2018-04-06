@@ -400,7 +400,7 @@ h3{
 }
 
 .user-event-delete-btn{
-    background-color: #C62828;
+    background-color: #0e5c90;
     border: none;
     color: #fff;
     font-size: 17px;
@@ -412,8 +412,9 @@ h3{
 }
 
 .user-event-delete-btn:hover{
-    background-color: #B71C1C;
-    border: 1px solid #fff;
+    background-color: #ffffff;
+    color: #B71C1C;
+    border: 1px solid #B71C1C;
     cursor: pointer;
 
 }

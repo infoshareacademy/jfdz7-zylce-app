@@ -55,7 +55,7 @@ class UserAgenda extends Component {
                                 return(
                                     <li key={event.id} className="one-user-event">
                                         <div className={`user-agenda-title category-${event.category}`}>
-                                            {event.title} ({this.translateCategoryName(event.category)})
+                                            {event.title} ( {this.translateCategoryName(event.category)} )
                                             <button
                                                 className="user-event-delete-btn"
                                                 data-event-id={event.id}
