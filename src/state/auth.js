@@ -24,6 +24,10 @@ export const signUpWithEmail = (email, password, userData) => dispatch => {
         });
 };
 
+export function updateVisitCounter(currentUserUid) {
+    return database.ref('users/' + currentUserUid + '/visitCounter').transaction(i => i+1);
+}
+
 export const signInWithFb = () => dispatch => {
     let result = auth.signInWithPopup(facebookProvider);
     return result
@@ -31,11 +35,12 @@ export const signInWithFb = () => dispatch => {
             database
                 .ref('/users/' + auth.currentUser.uid + '/')
                 .update({
-                        displayName: auth.currentUser.displayName,
-                        firstName: (auth.currentUser.displayName).split(" ")[0],
-                        lastName: (auth.currentUser.displayName).split(" ")[1],
-                        role: 'user',
-                        joinedAt: moment(auth.currentUser.createdAt).unix(),
+                    displayName: auth.currentUser.displayName,
+                    firstName: (auth.currentUser.displayName).split(" ")[0],
+                    lastName: (auth.currentUser.displayName).split(" ")[1],
+                    role: 'user',
+                    joinedAt: moment(auth.currentUser.createdAt).unix(),
+                    online: true,
                 })
         })
 };
@@ -52,16 +57,29 @@ export const signInWithGoogle = () => dispatch => {
                     lastName: (auth.currentUser.displayName).split(" ")[1],
                     role: 'user',
                     joinedAt: moment(auth.currentUser.createdAt).unix(),
+                    online: true,
                 })
         })
 };
 
 export const signInWithEmail = (email, password) => dispatch => {
     auth.signInWithEmailAndPassword(email, password)
+        .then(() => {
+        database
+            .ref('/users/' + auth.currentUser.uid + '/')
+            .update({
+                online: true,
+            })
+        })
 };
 
 export const signOut = () => dispatch => {
-    database.ref('/users/' + auth.currentUser.uid).update({lastVisit: moment(auth.currentUser.lastLoginAt).unix()});
+    database.ref('/users/' + auth.currentUser.uid)
+        .update({
+            lastVisit: moment(auth.currentUser.lastLoginAt).unix(),
+            online: false,
+
+            });
     auth.signOut();
 };
 

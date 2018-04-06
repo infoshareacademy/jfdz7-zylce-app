@@ -513,7 +513,52 @@
     color: #ffffff;
 }
 
+.users-table {
+    padding-top: 30px;
+}
 
+.users-table caption {
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: lowercase;
+    color: #0e3868;
+    padding: 10px 0;
+}
+
+.users-table table {
+    border: 3px solid #0e3868;
+    border-radius: 5px;
+    margin: 0 auto;
+    background-color: #0e3868;
+}
+
+.users-table th {
+    color: white;
+    text-transform: uppercase;
+    font-size: 13px;
+    padding: 0 5px;
+}
+
+.users-table tr {
+    border-top: 1px solid #0e3868;
+    margin: 0;
+    padding: 0;
+}
+
+.users-table td {
+    background-color: white;
+    border-top: 1px solid #0e3868;
+    margin: 0;
+    padding: 8px;
+}
+
+.users-table .users-table-name {
+    font-size: 13px;
+}
+
+.users-table .users-table-date {
+    font-size: 12px;
+}
 
 
 @media (max-width: 400px) {

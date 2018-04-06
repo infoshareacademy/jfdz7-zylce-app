@@ -5,46 +5,52 @@ import moment from 'moment';
 
 import SignOutButton from './SignOutButton';
 
-const options = [
-    {
-        path: '/',
-        label: 'kalendarz',
-        options: {
-            exact: true
-        }
-    },
-    {
-        path: '/userCalendar',
-        label: 'moje wydarzenia'
-    },
-];
-
-const defaultOptions = {};
-
 class Menu extends React.Component {
+
+    isAdmin = () => {
+        return (this.props.user.role === 'admin')
+    };
+
+    renderAdminPanelButton = () => {
+        if (this.isAdmin()) {
+            return (
+                <button >
+                    <NavLink to='/adminPanel'>
+                        użytkownicy
+                    </NavLink>
+                </button>
+            )
+        }
+    };
+
     render() {
         return (
             <div className='header'>
                 <div id='menu' className='menu'>
                     <div className="menu-list">
-                        {options.map((option, index) => (
-                            <button key={index}>
-                                <NavLink
-                                    exact={(option.options || defaultOptions).exact}
-                                    to={option.path}
-                                >
-                                    {option.label}
-                                </NavLink>
-                            </button>
-                        ))}
+                        <button>
+                            <NavLink exact to='/'>
+                                kalendarz
+                            </NavLink>
+                        </button>
+                        <button>
+                            <NavLink to='/userCalendar'>
+                                mój kalendarz
+                            </NavLink>
+                        </button>
+                        {this.renderAdminPanelButton()}
                     </div>
                     <div id="authentication" className="authentication">
                         <div id="logged-user-info" className="logged-user-info">
                             <div id="logged-user-welcome" className="logged-user-welcome">
-                                Cześć{' ' + this.props.user.firstName}!
+                                Cześć{this.props.user.firstName.length>0 ? ' ' + this.props.user.firstName : ''}!
                                 </div>
                             <div id="last-visit-info" className="last-visit-info">
-                                Ostatnie logowanie: {(moment(this.props.user.lastVisit*1000).format('L'))}, {(moment(this.props.user.lastVisit*1000).format('HH:mm:ss'))}
+                                {this.props.user.lastVisit.length===0 ? ''
+                                    : `Ostatnie logowanie: ${
+                                    (moment(this.props.user.lastVisit*1000).format('L'))}, ${(moment(this.props.user.lastVisit*1000).format('HH:mm:ss'))}`
+                                }
+
                             </div>
                         </div>
                         <SignOutButton />
