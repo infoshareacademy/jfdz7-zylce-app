@@ -360,7 +360,8 @@
 .user-events > li {
     border: 2px solid #0e5c90;
     border-radius: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+
 }
 
 .user-agenda-title{
