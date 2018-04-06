@@ -59,6 +59,24 @@ export const toggleBtnName = (eventId, userEvents) => {
     }
 };
 
+//TODO: Tutaj jest funkcja opowiadająca za info o dzisiejszym wydarzeniu
+export const eventNotification = (userEvents) => {
+    let eventsStartDateArray = userEvents.map( event => {
+        return event.start;
+    });
+
+    console.log('daty: ', eventsStartDateArray[1])
+
+    let isMatchtoDate = (element) => {
+        return (eventsStartDateArray[1] === eventsStartDateArray[1])
+    };
+    console.log(isMatchtoDate())
+
+    if(isMatchtoDate){
+        alert('dzisiaj jest jakas impra')
+    }
+}
+
 const initialState = {
     data:[],
     newEvent: {
