@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 
 
-import {addEventToUserEvents} from "../state/users";
+// import {addEventToUserEvents} from "../state/users";
 // import {removeEvent} from "../state/users";
 import {toggleAddRemoveEvent} from '../state/toggleAddRemoveUserEvents';
 import activeEvent from "../state/activeEvent";
@@ -99,5 +99,5 @@ class EventPreview extends React.Component {
 export default connect(state => ({
     activeEvent: state.activeEvent.activeEvent,
     userEvents: state.users.data
-}), {addEventToUserEvents, toggleAddRemoveEvent})(EventPreview)
+}), {toggleAddRemoveEvent})(EventPreview)
 

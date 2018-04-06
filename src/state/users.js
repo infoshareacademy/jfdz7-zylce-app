@@ -5,7 +5,6 @@ import moment from 'moment'
 moment.locale('pl');
 
 // Action Types
-const ADD_EVENT = 'calendarView/ADD_EVENT';
 const SET_EVENTS = 'userView/SET_TASKS';
 
 // Action Creators
@@ -39,12 +38,6 @@ export const enableUserSync = () => dispatch => {
 export const disableSync = () => dispatch => {
     dbRef.off('value', callback)
 };
-//
-// export const removeEvent = eventId => dispatch => {
-//     dbRef.child(eventId).remove();
-//     console.log(eventId)
-// };
-
 
 export const toggleBtnName = (eventId, userEvents) => {
 
@@ -52,56 +45,48 @@ export const toggleBtnName = (eventId, userEvents) => {
 
     let isMatchtoId = (element) => {
         return (convEventId === element)
-    }
+    };
 
     let eventsIdArray = userEvents.map( event => {
-        return parseInt(event.id)
-    })
-    console.log(convEventId)
-    console.log(eventsIdArray)
+        return parseInt(event.id);
+    });
     let isEventAdd = eventsIdArray.some(isMatchtoId);
 
-    console.log(isEventAdd)
-
     if(isEventAdd){
-        alert('Event jest już dodany!')
-        document.querySelector('.event-add-remove-btn').innerHTML = 'Usuń wydarzenie'
+        document.querySelector('.event-add-remove-btn').innerHTML = 'Usuń wydarzenie';
     }else{
-        alert('Event nie jest dodany')
-        document.querySelector('.event-add-remove-btn').innerHTML = 'Zapisz w swoich wydarzeniach'
-
+        document.querySelector('.event-add-remove-btn').innerHTML = 'Zapisz w swoich wydarzeniach';
     }
-}
-
-
-export const addEventToUserEvents = (
-    title,
-    description,
-    start,
-    end,
-    category,
-    picture,
-    eventId
-) => dispatch => {
-    let dateOptions = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
-    let timeOptions = {hour: 'numeric', minute: 'numeric'};
-
-    let startEvent = start;
-    let endEvent = end;
-
-    dbRef.push({
-        title: title,
-        description: description,
-        category: category,
-        start: start,
-        end: end,
-        eventStart: `${startEvent.toLocaleDateString('pl-PL', dateOptions)} - ${startEvent.toLocaleTimeString('pl-PL', timeOptions)}`,
-        eventEnd: `${endEvent.toLocaleDateString('pl-PL', dateOptions)} - ${endEvent.toLocaleTimeString('pl-PL', timeOptions)}`,
-        picture: picture,
-        eventId: eventId
-    })
 };
 
+
+// export const addEventToUserEvents = (
+//     title,
+//     description,
+//     start,
+//     end,
+//     category,
+//     picture,
+//     eventId
+// ) => dispatch => {
+//     let dateOptions = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
+//     let timeOptions = {hour: 'numeric', minute: 'numeric'};
+//
+//     let startEvent = start;
+//     let endEvent = end;
+//
+//     dbRef.push({
+//         title: title,
+//         description: description,
+//         category: category,
+//         start: start,
+//         end: end,
+//         eventStart: `${startEvent.toLocaleDateString('pl-PL', dateOptions)} - ${startEvent.toLocaleTimeString('pl-PL', timeOptions)}`,
+//         eventEnd: `${endEvent.toLocaleDateString('pl-PL', dateOptions)} - ${endEvent.toLocaleTimeString('pl-PL', timeOptions)}`,
+//         picture: picture,
+//         eventId: eventId
+//     })
+// };
 
 const initialState = {
     data:[],
