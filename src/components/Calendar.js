@@ -62,7 +62,6 @@ class Calendar extends React.Component {
         document.getElementById('event-preview-date').appendChild(paragraph).innerText =
             `${eventStartDate.toLocaleDateString('pl-PL', dateOptions)}, ${eventStartDate.toLocaleTimeString('pl-PL', timeOptions)} - ${eventEndDate.toLocaleTimeString('pl-PL', timeOptions)}`;
 
-        // kod lukasz
         let eventId = event.id
         let userEvents = this.props.userEvents
         toggleBtnName(eventId, userEvents)
