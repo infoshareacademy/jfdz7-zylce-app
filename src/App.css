@@ -351,12 +351,29 @@
 }
 
 /*UserView Styles*/
+h3{
+    text-align: center;
+}
+.user-no-event-info{
+    background-color: #B71C1C;
+    padding: 20px 30px;
+    color: #ffffff;
+    border-radius: 10px;
+    max-width: 75%;
+    margin: auto;
+}
 
 .user-events{
     list-style: none;
     padding: 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
+.one-user-event{
+    width: 49%;
 
+}
 .user-events > li {
     border: 2px solid #0e5c90;
     border-radius: 5px;
@@ -696,4 +713,13 @@
 
 @media (max-width: 800px) {
 
+}
+
+@media only screen and (max-width: 768px) {
+    .user-events{
+        display: block;
+    }
+    .one-user-event{
+        width: 100%;
+    }
 }

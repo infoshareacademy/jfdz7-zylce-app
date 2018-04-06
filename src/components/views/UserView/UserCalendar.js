@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Calendar from '../../Calendar';
-import FilterControls from '../../FilterControls'
 import EventPreview from '../../EventPreview';
 import moment from 'moment';
 import 'moment/locale/pl';
@@ -26,7 +25,6 @@ class UserCalendar extends Component {
 
         return (
             <React.Fragment>
-                <FilterControls/>
                 <Calendar events={this.props.userEventsFromState.map(event =>  ({
                         id: event.id,
                         title: event.title,

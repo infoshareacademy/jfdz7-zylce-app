@@ -10,8 +10,8 @@ class UserView extends Component {
     render() {
         return (
             <React.Fragment>
-                <UserCalendar/>
                 <UserAgenda/>
+                <UserCalendar/>
             </React.Fragment>
         )
     }
