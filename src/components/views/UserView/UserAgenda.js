@@ -28,19 +28,16 @@ class UserAgenda extends Component {
     render() {
         const { activeFilterNames } = this.props
 
-        let dateOptions = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
-        let timeOptions = {hour: 'numeric', minute: 'numeric'};
-
         return (
             <React.Fragment >
                 <h3>Lista dodanych wydarzeń</h3>
                 <ul className="user-events">
                     {this.props.userAgendaFromState
                         .filter(
-                            task =>
+                            event =>
                                 activeFilterNames.length === 0
                                     ? true
-                                    : activeFilterNames.includes(task.category)
+                                    : activeFilterNames.includes(event.category)
                         )
                         .map( event => {
                         return(
@@ -56,9 +53,9 @@ class UserAgenda extends Component {
                             </div>
                             <div>
                                 <div className="user-event-date">
-                                    <strong>Start:</strong> {event.eventStart},
+                                    <strong>Start:</strong>{moment(event.start).format('LLLL')}
                                     <span> </span>
-                                    <strong>Koniec:</strong> {event.eventEnd}
+                                    <strong>Koniec:</strong> {moment(event.end).format('LLLL')}
                                     <hr />
                                 </div>
                                 <div className="user-event-description">
