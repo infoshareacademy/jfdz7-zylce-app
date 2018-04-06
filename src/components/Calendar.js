@@ -7,7 +7,6 @@ import {connect} from "react-redux";
 
 import {setActiveEvent} from "../state/activeEvent";
 import {toggleBtnName} from '../state/users';
-import {eventNotification} from '../state/users'
 
 moment.locale('pl');
 BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment));
@@ -74,11 +73,6 @@ class Calendar extends React.Component {
     };
 
     render() {
-
-        //TODO: Tutaj są rzeczy do wyskakującej info o dzisiejszym wydarzeniu
-        let userEvents = this.props.userEvents
-        eventNotification(userEvents)
-
         const min = new Date();
         min.setHours(8);
         min.setMinutes(0, 0, 0);
@@ -126,5 +120,5 @@ export default connect(
         activeEvent: state.activeEvent.activeEvent,
         userEvents: state.users.data
 
-    }), { setActiveEvent, toggleBtnName, eventNotification }
+    }), { setActiveEvent, toggleBtnName }
 )(Calendar)

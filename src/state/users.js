@@ -65,7 +65,7 @@ export const eventNotification = (userEvents) => {
         return event.start;
     });
 
-    console.log('daty: ', eventsStartDateArray[1])
+    console.log('daty: ', eventsStartDateArray)
 
     let isMatchtoDate = (element) => {
         return (eventsStartDateArray[1] === eventsStartDateArray[1])
@@ -73,7 +73,7 @@ export const eventNotification = (userEvents) => {
     console.log(isMatchtoDate())
 
     if(isMatchtoDate){
-        alert('dzisiaj jest jakas impra')
+        console.log('dzisiaj jest jakas impra')
     }
 }
 

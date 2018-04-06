@@ -433,6 +433,37 @@ h3{
     border: 2px solid #0e5c90;
 }
 
+/*Notifications*/
+
+.notifications{
+    position: absolute;
+    top: 120%;
+    right:1%;
+    background-color: #d29725;
+    font-size: 15px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.notification-img{
+    width: 50px;
+    padding-right: 10px;
+}
+.notification-close-btn{
+    position: absolute;
+    top: 10%;
+    right: 10px;
+    color: #d29725;
+    background-color: #000;
+    border-radius: 4px;
+    padding: 2px 4px;
+    cursor: pointer;
+    justify-content: center;
+    align-content: center;
+}
+
 /*SignUp ana LogIn panel*/
 .auth-input{
     border-radius: 3px;
