@@ -122,8 +122,4 @@ export default connect(
         userEvents: state.users.data
 
     }), { setActiveEvent, toggleBtnName }
-    //     events: state.events.data,
-    //     activeFilterNames: state.filtering.activeFilterNames,
-    //     newUserEvent: state.users.newEvent
-    // }), {}
 )(Calendar)
