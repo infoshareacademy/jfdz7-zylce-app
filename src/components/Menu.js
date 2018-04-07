@@ -1,11 +1,24 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import moment from 'moment';
 
 import SignOutButton from './SignOutButton';
 
 class Menu extends React.Component {
+
+    state = {
+        activeLink: true,
+        dwa: ''
+    }
+
+    handleActiveLinkChange = event => {
+        // event.preventDefault();
+        this.setState({
+           activeLink: !this.state.activeLink,
+            dwa: event.target.dataset.path
+        })
+    }
 
     isAdmin = () => {
         return (this.props.user.role === 'admin')
@@ -15,9 +28,13 @@ class Menu extends React.Component {
         if (this.isAdmin()) {
             return (
                 <button >
-                    <NavLink to='/adminPanel'>
+                    <Link
+                        data-path="adminPanel" onClick={this.handleActiveLinkChange} activeClassName="active"
+                        className={this.state.dwa === "adminPanel" ? "active" : " "}
+                        to='/adminPanel'
+                    >
                         użytkownicy
-                    </NavLink>
+                    </Link>
                 </button>
             )
         }
@@ -29,14 +46,19 @@ class Menu extends React.Component {
                 <div id='menu' className='menu'>
                     <div className="menu-list">
                         <button>
-                            <NavLink exact to='/'>
+                            <Link data-path="/" onClick={this.handleActiveLinkChange} activeClassName="active"
+                                     className={this.state.dwa === "/" ? "active" : " "}
+                                     exact to='/'>
                                 kalendarz
-                            </NavLink>
+                            </Link>
                         </button>
-                        <button>
-                            <NavLink to='/userCalendar'>
+                        <button >
+                            <Link data-path="userCalendar"
+                                     onClick={this.handleActiveLinkChange} activeClassName="active"
+                                     className={this.state.dwa === "userCalendar" ? "active" : " "}
+                                     to='/userCalendar'>
                                 mój kalendarz
-                            </NavLink>
+                            </Link>
                         </button>
                         {this.renderAdminPanelButton()}
                     </div>
