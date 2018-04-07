@@ -204,7 +204,7 @@
     max-width: 700px;
     min-height: 200px;
     width: 90%;
-    position: absolute;
+    position: fixed;
     top: 300px;
     left: 50%;
     transform:translate(-50%, -50%);
@@ -428,8 +428,8 @@ h3{
 }
 
 .user-event-poster{
-    width: 75px;
-    height: 100px;
+    max-width: 75px;
+    max-height: 100px;
     border: 2px solid #0e5c90;
 }
 
