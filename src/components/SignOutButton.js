@@ -4,7 +4,9 @@ import { signOut } from '../state/auth'
 
 class SignOutButton extends Component {
     render() {
-        return <button onClick={() => this.props.signOut()}>Wyloguj się</button>
+        return <div className="sign-out-btn" >
+            <button onClick={() => this.props.signOut()}>Wyloguj się</button>
+        </div>
     }
 }
 
