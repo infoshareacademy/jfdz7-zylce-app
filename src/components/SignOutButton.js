@@ -5,9 +5,9 @@ import { signOut } from '../state/auth';
 
 class SignOutButton extends React.Component {
     render() {
-        return (<div id="sign-out-btn" className="sign-out-btn">
+        return <div id="sign-out-btn" className="sign-out-btn">
             <button onClick={() => this.props.signOut()}>Wyloguj się</button>
-        </div>)
+        </div>
     }
 }
 
