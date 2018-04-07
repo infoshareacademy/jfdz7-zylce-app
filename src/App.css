@@ -598,7 +598,9 @@ h3{
     line-height: 100%;
     justify-content: center;
     align-content: center;
+    font-weight: bold;
 }
+
 
 /*SignUp ana LogIn panel*/
 .auth-input{
