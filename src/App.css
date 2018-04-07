@@ -587,18 +587,16 @@ h3{
 }
 .notification-close-btn{
     position: absolute;
-    top: 10%;
+    top: 3px;
     right: 10px;
-    color: #d29725;
-    background-color: #000;
+    color: #000;
     border-radius: 50%;
-    padding: 2px 4px 4px;
     cursor: pointer;
     text-align: center;
-    line-height: 100%;
     justify-content: center;
     align-content: center;
     font-weight: bold;
+    font-size: 20px;
 }
 
 
