@@ -429,6 +429,103 @@
     transition-duration: 0.5s;
 }
 
+/*UserView Styles*/
+h3{
+    text-align: center;
+}
+.user-no-event-info{
+    background-color: #B71C1C;
+    padding: 20px 30px;
+    color: #ffffff;
+    border-radius: 10px;
+    max-width: 75%;
+    margin: auto;
+}
+
+.user-events{
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.one-user-event{
+    width: 49%;
+
+}
+.user-events > li {
+    border: 2px solid #0e5c90;
+    border-radius: 5px;
+    margin-bottom: 10px;
+
+}
+
+.user-agenda-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+    padding: 5px 10px;
+    border-bottom: 2px solid #0e5c90;
+    border-radius-topleft: 5px ;
+    border-radius-topright: 5px ;
+}
+.user-event-description{
+    padding: 5px 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-event-delete-btn{
+    background-color: #0e5c90;
+    border: none;
+    color: #fff;
+    font-size: 17px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    transition-duration: 0.5s;
+
+}
+
+.user-event-delete-btn:hover{
+    background-color: #ffffff;
+    color: #B71C1C;
+    border: 1px solid #B71C1C;
+    cursor: pointer;
+
+}
+.user-event-date{
+    padding: 5px;
+    display: flex;
+}
+
+.user-event-date-start, .user-event-date-end{
+    margin-right: 10px;
+}
+
+.user-event-poster{
+    max-width: 75px;
+    max-height: 100px;
+    border: 2px solid #0e5c90;
+}
+
+/*SignUp ana LogIn panel*/
+.auth-input{
+    border-radius: 3px;
+}
+
+.auth-input-name{
+    background-color: yellow;
+
+}
+
+.sig-up-form{
+    text-align: center;
+}
+
 .sign-form {
     display: flex;
     justify-content: center;
@@ -567,7 +664,11 @@
     -2px 2px 4px #b8b8b8,
     -2px -2px 4px #b8b8b8;
     border-radius: 10px;
-    background-color: #ffffff;;
+    background-color: #ffffff;
+}
+
+.sign-up-modal-inner{
+    background-color: #ffffff;
 }
 
 .close-sign-up-modal {
@@ -821,10 +922,20 @@
     }
 }
 
+
 @media (min-width: 731px) and (max-width: 850px) {
     .menu-list a {
         font-size: 13px;
     }
 
+}
+
+@media only screen and (max-width: 768px) {
+    .user-events{
+        display: block;
+    }
+    .one-user-event{
+        width: 100%;
+    }
 }
 
