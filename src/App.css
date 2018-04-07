@@ -583,6 +583,9 @@
     font-size: 12px;
 }
 
+.users-table .users-table-status {
+    font-size: 10px;
+}
 
 @media (max-width: 600px) {
     .event-preview-title {
