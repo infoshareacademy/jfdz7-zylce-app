@@ -15,7 +15,7 @@ class SignUpForm extends React.Component {
     };
 
     onSubmit = event => {
-    event.preventDefault();
+        event.preventDefault();
         console.log(this.state);
         const { email, password, error, ...userData } = this.state;
 
