@@ -64,7 +64,7 @@ class Menu extends React.Component {
                         </div>
                         <SignOutButton />
                         {/*TODO: Tu jest element wyskakujący jak jest jakieś wydarzenie*/}
-                        <div className="notifications">
+                        <div className="notifications hidden">
                         <div className="notifications-area">
                             <span className="notification-close-btn">x</span>
                             <img className="notification-img" src={Reminder} alt="Logo" />
