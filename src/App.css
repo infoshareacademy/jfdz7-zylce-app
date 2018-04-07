@@ -284,7 +284,7 @@
     min-height: 200px;
     width: 90%;
     position: fixed;
-    top: 350px;
+    margin-top: 350px;
     left: 50%;
     transform:translate(-50%, -50%);
     box-shadow: 2px 2px 4px #0e5c90,
