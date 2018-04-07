@@ -83,7 +83,6 @@ export const eventNotification = (userEvents) => {
     notificationPopUpBtn.addEventListener("click", ()=> notificationPopUp.classList.add('hidden')
     )
 
-
     function isDateMatch(element) {
         return (element === today);
     }
@@ -92,7 +91,7 @@ export const eventNotification = (userEvents) => {
 
     if(!isDateMatchToStartDateArray){
         console.log('nie ma impry dzisiaj')
-        notificationPopUp.classList.add('hidden')
+        // notificationPopUp.classList.add('hidden')
 
     }else{
         console.log('dzisiaj coś się dzieje w okolicy')
