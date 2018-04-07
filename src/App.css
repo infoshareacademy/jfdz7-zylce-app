@@ -272,7 +272,7 @@
     width: 100%;
     height: 150vh;
     margin: 5px auto;
-    position: absolute;
+    position: fixed;
     z-index: 88;
     top: -10px;
     left: 0;
@@ -283,7 +283,7 @@
     max-width: 700px;
     min-height: 200px;
     width: 90%;
-    position: fixed;
+    position: absolute;
     margin-top: 350px;
     left: 50%;
     transform:translate(-50%, -50%);
