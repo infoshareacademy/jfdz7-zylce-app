@@ -520,7 +520,7 @@ h3{
     right:1%;
     background-color: #FFEB3B;
     font-size: 15px;
-    padding: 10px 20px;
+    padding: 10px 20px 10px 10px;
     border-radius: 5px;
     box-shadow: 2px 2px 7px #000000;
 
@@ -533,6 +533,7 @@ h3{
 }
 .notification-img-aeria{
     width: 52px;
+    height: 52px;
     padding-right: 5px;
 }
 .notification-img{
