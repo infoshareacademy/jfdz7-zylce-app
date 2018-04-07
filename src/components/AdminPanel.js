@@ -28,7 +28,7 @@ class AdminPanel extends React.Component {
                             if (user.role !== 'admin') {
                                 return (<tr key={idx}>
                                     <td className="users-table-name">
-                                    {user.displayName}
+                                    {(user.displayName.length < 2 ? '-----' : user.displayName)}
                                     </td>
                                     <td className="users-table-date">
                                     {moment(user.joinedAt*1000).format('L')}, {moment(user.joinedAt*1000).format('HH:mm:ss')}

@@ -24,10 +24,6 @@ export const signUpWithEmail = (email, password, userData) => dispatch => {
         });
 };
 
-export function updateVisitCounter(currentUserUid) {
-    return database.ref('users/' + currentUserUid + '/visitCounter').transaction(i => i+1);
-}
-
 export const signInWithFb = () => dispatch => {
     let result = auth.signInWithPopup(facebookProvider);
     return result
@@ -36,6 +32,7 @@ export const signInWithFb = () => dispatch => {
                 .ref('/users/' + auth.currentUser.uid + '/')
                 .update({
                     displayName: auth.currentUser.displayName,
+                    email: auth.currentUser.email,
                     firstName: (auth.currentUser.displayName).split(" ")[0],
                     lastName: (auth.currentUser.displayName).split(" ")[1],
                     role: 'user',
@@ -53,6 +50,7 @@ export const signInWithGoogle = () => dispatch => {
                 .ref('/users/' + auth.currentUser.uid + '/')
                 .update({
                     displayName: auth.currentUser.displayName,
+                    email: auth.currentUser.email,
                     firstName: (auth.currentUser.displayName).split(" ")[0],
                     lastName: (auth.currentUser.displayName).split(" ")[1],
                     role: 'user',
