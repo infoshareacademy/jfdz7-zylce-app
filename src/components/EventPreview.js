@@ -1,11 +1,43 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
+import {toggleAddRemoveEvent} from '../state/toggleAddRemoveUserEvents';
+import activeEvent from "../state/activeEvent";
+
+const initialState = {
+    title: '',
+    description: '',
+    start: '',
+    end: '',
+    category: ''
+}
+
 class EventPreview extends React.Component {
+    state = initialState
+
+    saveEventToUserEvents = (event) => {
+
+        event.preventDefault();
+        activeEvent()
+
+        const title = this.props.activeEvent.title;
+        const description = this.props.activeEvent.description;
+        const start = this.props.activeEvent.start;
+        const end = this.props.activeEvent.end;
+        const category = this.props.activeEvent.category;
+        const picture = this.props.activeEvent.picture;
+        const eventId = this.props.activeEvent.id
+
+        this.setState(initialState);
+        this.hidePopup(event)
+
+        this.props.toggleAddRemoveEvent(eventId, title, description, start, end, category, picture, eventId)
+    }
 
     showPopup = (event) => {
         event.preventDefault();
         document.getElementById('event-preview').classList.add('event-preview');
+
     };
 
     hidePopup = (event) => {
@@ -16,6 +48,7 @@ class EventPreview extends React.Component {
         document.getElementById('event-preview-date').innerText = '';
         document.getElementById('event-preview-picture').innerText = '';
     };
+
 
     render() {
 
@@ -40,8 +73,8 @@ class EventPreview extends React.Component {
 
                         </div>
                         <div id="event-preview-btns" className="event-preview-btns">
-                            <button onClick={() => console.log('zapisz')}>Zapisz wydarzenie</button>
-                            <button onClick={this.hidePopup}>Wróc do kalendarza</button>
+                            <button className="event-add-remove-btn" onClick={this.saveEventToUserEvents}>Dodaj / Usuń wydarzenie</button>
+                            <button onClick={this.hidePopup}>Wróc do kalendarza wydarzeń</button>
                         </div>
                         <a id="close-event-preview" className="close-event-preview" onClick={this.hidePopup} href=''>x</a>
                     </div>
@@ -53,5 +86,7 @@ class EventPreview extends React.Component {
 }
 
 export default connect(state => ({
-    activeEvent: state.activeEvent.activeEvent
-}), {})(EventPreview)
+    activeEvent: state.activeEvent.activeEvent,
+    userEvents: state.users.data
+}), {toggleAddRemoveEvent})(EventPreview)
+

@@ -25,23 +25,23 @@ class SignIn extends React.Component {
     };
 
     inputRender = fieldName => {
-            if (fieldName === 'password') {
-                return (<div className="sign-input">
-                    <input
-                        name={fieldName}
-                        onChange={this.handleInputChange}
-                        type={fieldName}
-                    />
-                </div>)
-            } else {
-                return (<div className="sign-input">
-                    <input
-                        name={fieldName}
-                        onChange={this.handleInputChange}
-                        type="text"
-                    />
-                    </div>)
-            }
+        if (fieldName === 'password') {
+            return (<div className="sign-input">
+                <input
+                    name={fieldName}
+                    onChange={this.handleInputChange}
+                    type={fieldName}
+                />
+            </div>)
+        } else {
+            return (<div className="sign-input">
+                <input
+                    name={fieldName}
+                    onChange={this.handleInputChange}
+                    type="text"
+                />
+            </div>)
+        }
     };
 
     render() {
@@ -68,5 +68,4 @@ class SignIn extends React.Component {
         )
     }
 }
-
 export default connect(null, {signInWithEmail, signInWithFb, signInWithGoogle })(SignIn)
