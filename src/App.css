@@ -9,7 +9,7 @@
     padding: 70px 8px;
     }
 .header {
-    background-color: #ffffff;
+    background-color: #0e5c90;
     box-shadow: 1px 1px 18px #0e5c90;
     transition: all ease .5s;
     position: fixed;
@@ -31,9 +31,15 @@
     justify-content: space-between;
 }
 
+.menu .toggle-menu-list button{
+    display: none;
+}
+
 .authentication {
-    width: 40%;
+    width: 50%;
     display: flex;
+    color: #fff;
+    opacity: 0.9;
     justify-content: flex-end;
     align-items: center;
 }
@@ -41,15 +47,12 @@
 .logged-user-info {
     display: flex;
     flex-wrap: wrap;
-    color: #4f2f4c;
     font-size: 15px;
     flex-direction: column;
 }
 
 .authentication .logged-user-welcome {
     display: block;
-
-    color: #4f2f4c;
     font-size: 17px;
 }
 
@@ -67,39 +70,59 @@
     margin-bottom: 5px;
     margin-left: 5px;
     width: 120px;
-    color: #4f2f4c;
-    background-color: white;
+    opacity: 0.6;
     cursor: pointer;
-    font-family: sans-serif;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    border: 1px #ff0080;
-    border-radius: 5px;
-    opacity: 0.65;
-    outline: none;
+    color: #fff;
+    background-color: #0e5c90;
+    font-size: 13px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    border: 2px solid #0e5c90;
+    border-radius: 10px;
+    text-decoration: none;
+    transition-duration: 0.5s;
+}
+
+.authentication .sign-out-btn button:hover {
+    opacity: 1;
 }
 
 .menu-list {
-    width: 60%;
+    width: 50%;
     padding: 0;
     text-transform: uppercase;
+    display: flex;
 }
 
 .menu-list button {
-    margin-right: 8px;
+    margin-right: 10px;
     border: none;
     background: none;
+    outline: none;
 }
 
 .menu-list a {
-    color: #4f2f4c;
-    font-size: 16px;
+    color: #fff;
+    opacity: 0.6;
+    font-size: 15px;
+    letter-spacing: 1px;
     text-decoration: none;
     text-transform: uppercase;
+    transition-duration: 0.5s;
 }
 
 .menu-list a:hover {
-    color: #FF0080;
+    opacity: 0.8;
+    transition-duration: 0.5s;
+    /*text-shadow: 1px 1px 1px #403c46,*/
+    /*-1px -1px 1px #403c46,*/
+    /*1px -1px 1px #403c46,*/
+    /*-1px 1px 1px #403c46;*/
+}
+
+.menu-list a.active {
+    opacity: 1;
+
 }
 
 .calendar {
@@ -700,7 +723,7 @@ h3{
 }
 
 
-@media (max-width: 400px) {
+@media (max-width: 600px) {
     .event-preview-title {
         border-radius: 10px 10px 0 0;
         padding-top: 20px;
@@ -771,12 +794,78 @@ h3{
         width: 90%;
     }
 
-    .authentication .logged-user-welcome {
+    .container {
+    }
+
+    .menu .toggle-menu-list {
+        padding: 8px;
+    }
+
+    .menu .toggle-menu-list button {
+        display: inline;
+        background: none;
+        border: none;
+        outline: none;
+        color: #fff;
+        letter-spacing: 1px;
+        opacity: 0.7;
+        coursor: pointer;
+        transition-duration: 0.5s;
+    }
+
+    .menu .toggle-menu-list button:focus {
+        opacity: 1;
+    }
+
+    .menu {
+        flex-flow: column-reverse;
+        min-width: 300px;
+    }
+
+    .menu-list {
+        width: 100%;
+        position: absolute;
+        top: 40px;
+        padding-top: 20px;
         display: none;
+        background-color: #0e5c90;
+        flex-flow: column;
+
+    }
+
+    .menu-list button {
+        text-align: left;
+        display: block;
+        width: 100%;
+        padding: 8px;
+    }
+
+    .menu-list a{
+        font-size: 13px;
+        padding: 15px;
+
+    }
+
+    .authentication {
+        width: 100%;
+        padding-bottom: 8px;
+        justify-content: space-between;
+    }
+
+    .authentication .logged-user-welcome {
+        font-size: 14px;
+        padding-bottom: 5px;
     }
 
     .authentication .last-visit-info {
-        display: none;
+
+
+    }
+
+    .authentication .sign-out-btn button {
+        width: 100px;
+        font-size: 11px;
+        padding: 3px;
     }
 
     .rbc-toolbar-label {
@@ -791,6 +880,16 @@ h3{
 
     .rbc-event-content, .rbc-header span, .rbc-date-cell a, .rbc-toolbar button{
         font-size: 9px;
+    }
+
+    .filter-buttons .filter-btn {
+        padding: 5px;
+        width: 75px;
+    }
+
+    .filter-buttons .show-all-events-btn {
+        padding: 5px;
+        width: 180px;
     }
 }
 
