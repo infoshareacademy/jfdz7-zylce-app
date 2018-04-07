@@ -455,6 +455,9 @@ h3{
     width: 50px;
     padding-right: 10px;
 }
+.notification-messages{
+    display: block;
+}
 .notification-close-btn{
     position: absolute;
     top: 10%;

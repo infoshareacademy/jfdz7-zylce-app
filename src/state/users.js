@@ -62,19 +62,23 @@ export const toggleBtnName = (eventId, userEvents) => {
 //TODO: Tutaj jest funkcja opowiadająca za info o dzisiejszym wydarzeniu
 export const eventNotification = (userEvents) => {
     let today = moment().format('L');
+    let tommorow = moment(new Date()).add(1,'days');
+    let tommorowFormated = moment(tommorow).format('L')
     console.log('dzisiaj jest: ', today)
+    console.log('jutro jest: ', tommorowFormated)
 
     let eventsStartDateArray = userEvents.map( event => {
         return moment(event.start).format('L');
     });
-    let eventsBeforeStartDateArray = userEvents.map( event => {
-        return moment(event.start).subtract(1, 'days').calendar();
-    });
+    let eventsAfterStartDateArray = userEvents.map( event => {
+        return moment(event.start).add(1, 'days').format("DD.MM.YYYY");
+    })
+
 
     console.log('daty: ', eventsStartDateArray)
-    console.log('daty przed: ', eventsBeforeStartDateArray)
+    console.log('daty jutro : ', eventsAfterStartDateArray)
 
-    const notificationPopUp = document.querySelector('#okno')
+    const notificationPopUp = document.querySelector('#notification-popup')
     const notificationPopUpBtn = document.querySelector('.notification-close-btn')
     notificationPopUpBtn.addEventListener("click", ()=> notificationPopUp.classList.add('hidden')
     )
@@ -84,7 +88,7 @@ export const eventNotification = (userEvents) => {
         return (element === today);
     }
     let isDateMatchToStartDateArray = eventsStartDateArray.some(isDateMatch);
-    console.log('czy daty do siebie pasuja? ', isDateMatchToStartDateArray)
+    console.log('czy daty do siebie pasuja? ', isDateMatchToStartDateArray);
 
     if(!isDateMatchToStartDateArray){
         console.log('nie ma impry dzisiaj')
@@ -93,8 +97,29 @@ export const eventNotification = (userEvents) => {
     }else{
         console.log('dzisiaj coś się dzieje w okolicy')
         notificationPopUp.classList.remove('hidden')
+        document.querySelector('.notification-info').innerHTML = 'Dzisiaj są jakieś wydarzenia w twoim kalendarzu'
+    }
+
+    function isTommorowDateMatch(element) {
+        return (element === tommorowFormated);
+    }
+
+    let isTommorowDateMatchToAfterStartDateArray = eventsStartDateArray.some(isTommorowDateMatch);
+    console.log('czy jutrzejsze daty do siebie pasuja? ', isTommorowDateMatchToAfterStartDateArray);
+
+    if(!isTommorowDateMatchToAfterStartDateArray){
+        console.log('nie ma impry jutro')
+        document.querySelector('.notification-tommorow-info').innerHTML = ''
+
+
+    }else{
+        console.log('jutro coś się dzieje w okolicy')
+        notificationPopUp.classList.remove('hidden')
+        document.querySelector('.notification-tommorow-info').innerHTML = 'Jutro są jakieś wydarzenia w twoim kalendarzu'
 
     }
+
+
 }
 
 const initialState = {
