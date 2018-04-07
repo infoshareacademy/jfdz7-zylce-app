@@ -61,19 +61,39 @@ export const toggleBtnName = (eventId, userEvents) => {
 
 //TODO: Tutaj jest funkcja opowiadająca za info o dzisiejszym wydarzeniu
 export const eventNotification = (userEvents) => {
+    let today = moment().format('L');
+    console.log('dzisiaj jest: ', today)
+
     let eventsStartDateArray = userEvents.map( event => {
-        return event.start;
+        return moment(event.start).format('L');
+    });
+    let eventsBeforeStartDateArray = userEvents.map( event => {
+        return moment(event.start).subtract(1, 'days').calendar();
     });
 
     console.log('daty: ', eventsStartDateArray)
+    console.log('daty przed: ', eventsBeforeStartDateArray)
 
-    let isMatchtoDate = (element) => {
-        return (eventsStartDateArray[1] === eventsStartDateArray[1])
-    };
-    console.log(isMatchtoDate())
+    const notificationPopUp = document.querySelector('#okno')
+    const notificationPopUpBtn = document.querySelector('.notification-close-btn')
+    notificationPopUpBtn.addEventListener("click", ()=> notificationPopUp.classList.add('hidden')
+    )
 
-    if(isMatchtoDate){
-        console.log('dzisiaj jest jakas impra')
+
+    function isDateMatch(element) {
+        return (element === today);
+    }
+    let isDateMatchToStartDateArray = eventsStartDateArray.some(isDateMatch);
+    console.log('czy daty do siebie pasuja? ', isDateMatchToStartDateArray)
+
+    if(!isDateMatchToStartDateArray){
+        console.log('nie ma impry dzisiaj')
+        notificationPopUp.classList.add('hidden')
+
+    }else{
+        console.log('dzisiaj coś się dzieje w okolicy')
+        notificationPopUp.classList.remove('hidden')
+
     }
 }
 

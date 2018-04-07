@@ -27,12 +27,12 @@ class Menu extends React.Component {
         }
     };
 
-    render() {
-
+    componentDidUpdate() {
         //TODO: Tutaj są rzeczy do wyskakującej info o dzisiejszym wydarzeniu
         let userEvents = this.props.userEvents
         eventNotification(userEvents)
-
+    }
+    render() {
         return (
             <div className='header'>
                 <div id='menu' className='menu'>
@@ -64,7 +64,7 @@ class Menu extends React.Component {
                         </div>
                         <SignOutButton />
                         {/*TODO: Tu jest element wyskakujący jak jest jakieś wydarzenie*/}
-                        <div className="notifications hidden">
+                        <div id="okno" className="notifications hidden">
                         <div className="notifications-area">
                             <span className="notification-close-btn">x</span>
                             <img className="notification-img" src={Reminder} alt="Logo" />
