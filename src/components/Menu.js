@@ -106,16 +106,19 @@ class Menu extends React.Component {
                             </div>
                         </div>
                         <SignOutButton />
-                        {/*TODO: Tu jest element wyskakujący jak jest jakieś wydarzenie*/}
-                        <div id="notification-popup" className="notifications hidden">
+
+                    </div>
+                    {/*TODO: Tu jest element wyskakujący jak jest jakieś wydarzenie*/}
+                    <div id="notification-popup" className="notifications hidden">
                         <div className="notifications-area">
                             <span className="notification-close-btn">x</span>
-                            <img className="notification-img" src={Reminder} alt="Logo" />
+                            <div className="notification-img-aeria">
+                                <img className="notification-img" src={Reminder} alt="Logo" />
+                            </div>
                             <div className="notification-messages">
                                 <p className="notification-info"></p>
                                 <p className="notification-tommorow-info"></p>
                             </div>
-                        </div>
                         </div>
                     </div>
                 </div>
