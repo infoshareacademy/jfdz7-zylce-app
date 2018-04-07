@@ -38,7 +38,6 @@ class Menu extends React.Component {
     renderAdminPanelButton = () => {
         if (this.isAdmin()) {
             return (
-                <button data-path="adminPanel" onClick={this.handleActiveLinkChange}>
                     <Link
                         data-path="adminPanel" onClick={this.handleActiveLinkChange}
                          activeClassName="active"
@@ -47,7 +46,6 @@ class Menu extends React.Component {
                     >
                         użytkownicy
                     </Link>
-                </button>
             )
         }
     };
@@ -58,7 +56,7 @@ class Menu extends React.Component {
                 <div id='menu' className='menu'>
 
                     <div id="menu-list" className="menu-list">
-                        <button >
+
                             <Link exact to='/'
                                   className={this.state.activeLink === "/" ? "active" : " "}
                                   data-path="/"
@@ -66,8 +64,8 @@ class Menu extends React.Component {
                             >
                                 kalendarz
                             </Link>
-                        </button>
-                        <button >
+
+
                             <Link to='/userCalendar'
                                   className={this.state.activeLink === "userCalendar" ? "active" : " "}
                                   data-path="userCalendar"
@@ -75,7 +73,7 @@ class Menu extends React.Component {
                             >
                                 mój kalendarz
                             </Link>
-                        </button>
+
                         {this.renderAdminPanelButton()}
                     </div>
                     <div id="authentication" className="authentication">

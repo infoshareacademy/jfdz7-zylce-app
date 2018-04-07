@@ -95,14 +95,10 @@
     display: flex;
 }
 
-.menu-list button {
-    margin-right: 10px;
-    border: none;
-    background: none;
-    outline: none;
-}
 
 .menu-list a {
+    padding: 8px;
+    text-wrap: avoid;
     color: #fff;
     opacity: 0.6;
     font-size: 15px;
@@ -110,6 +106,10 @@
     text-decoration: none;
     text-transform: uppercase;
     transition-duration: 0.5s;
+}
+
+.menu-list a:last-child {
+    padding-right: 0;
 }
 
 .menu-list a:hover {
@@ -134,11 +134,7 @@
     color: #0e5c90;
     letter-spacing: 1px;
     font-size: 18px;
-    font-weight: bold;
-    text-shadow: 1px 1px 1px rgba(14, 56, 104, 0.2),
-    -1px -1px 1px rgba(14, 56, 104, 0.2),
-    1px -1px 1px rgba(14, 56, 104, 0.2),
-    -1px 1px 1px rgba(14, 56, 104, 0.2);
+    font-weight: bolder;
 }
 
 .hidden {
@@ -647,7 +643,7 @@
     font-size: 10px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 730px) {
     .event-preview-title {
         border-radius: 10px 10px 0 0;
         padding-top: 20px;
@@ -674,7 +670,6 @@
         text-align: center;
         vertical-align: text-top;
         font-size: 13px;
-        color: rgba(12, 0, 255, 0.73);
     }
 
     .event-preview-dsc {
@@ -775,16 +770,12 @@
 
     }
 
-    .menu-list button {
-        text-align: left;
-        display: block;
-        width: 100%;
-        padding: 8px;
-    }
 
     .menu-list a{
         font-size: 13px;
         padding: 15px;
+        display: block;
+        width: 100%;
 
     }
 
@@ -828,5 +819,12 @@
     .events-filter .filter-message {
         padding: 5px;
     }
+}
+
+@media (min-width: 731px) and (max-width: 850px) {
+    .menu-list a {
+        font-size: 13px;
+    }
+
 }
 
