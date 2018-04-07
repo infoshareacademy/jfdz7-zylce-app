@@ -27,7 +27,7 @@ class Menu extends React.Component {
         }
     };
 
-    componentDidUpdate() {
+    componentDidMount() {
         //TODO: Tutaj są rzeczy do wyskakującej info o dzisiejszym wydarzeniu
         let userEvents = this.props.userEvents
         eventNotification(userEvents)
