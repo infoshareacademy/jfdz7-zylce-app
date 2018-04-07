@@ -31,6 +31,10 @@
     justify-content: space-between;
 }
 
+.menu .toggle-menu-list button{
+    display: none;
+}
+
 .authentication {
     width: 40%;
     display: flex;
@@ -87,6 +91,7 @@
     width: 60%;
     padding: 0;
     text-transform: uppercase;
+    display: flex;
 }
 
 .menu-list button {
@@ -650,12 +655,77 @@
         width: 90%;
     }
 
-    .authentication .logged-user-welcome {
+    .container {
+    }
+
+    .menu .toggle-menu-list {
+        padding: 8px;
+    }
+
+    .menu .toggle-menu-list button {
+        display: inline;
+        background: none;
+        border: none;
+        outline: none;
+        color: #fff;
+        letter-spacing: 1px;
+        opacity: 0.7;
+        coursor: pointer;
+        transition-duration: 0.5s;
+    }
+
+    .menu .toggle-menu-list button:focus {
+        opacity: 1;
+    }
+
+    .menu {
+        flex-flow: column-reverse;
+    }
+
+    .menu-list {
+        width: 100%;
+        position: absolute;
+        top: 40px;
+        padding-top: 20px;
         display: none;
+        background-color: #0e5c90;
+        flex-flow: column;
+
+    }
+
+    .menu-list button {
+        text-align: left;
+        display: block;
+        width: 100%;
+        padding: 8px;
+    }
+
+    .menu-list a{
+        font-size: 13px;
+        padding: 15px;
+
+    }
+
+    .authentication {
+        width: 100%;
+        padding-bottom: 8px;
+        justify-content: space-between;
+    }
+
+    .authentication .logged-user-welcome {
+        font-size: 14px;
+        padding-bottom: 5px;
     }
 
     .authentication .last-visit-info {
-        display: none;
+
+
+    }
+
+    .authentication .sign-out-btn button {
+        width: 100px;
+        font-size: 11px;
+        padding: 3px;
     }
 
     .rbc-toolbar-label {
@@ -670,6 +740,16 @@
 
     .rbc-event-content, .rbc-header span, .rbc-date-cell a, .rbc-toolbar button{
         font-size: 9px;
+    }
+
+    .filter-buttons .filter-btn {
+        padding: 5px;
+        width: 75px;
+    }
+
+    .filter-buttons .show-all-events-btn {
+        padding: 5px;
+        width: 180px;
     }
 }
 
