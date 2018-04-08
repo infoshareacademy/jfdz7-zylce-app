@@ -994,10 +994,10 @@ h3{
 }
 
 @media only screen and (max-width: 768px) {
-    .event-preview {
-        position: absolute;
-        top:60px;
-    }
+    /*.event-preview {*/
+        /*position: absolute;*/
+        /*top:60px;*/
+    /*}*/
 
     .user-events{
         display: block;
