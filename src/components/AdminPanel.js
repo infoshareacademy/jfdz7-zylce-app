@@ -35,8 +35,7 @@ class AdminPanel extends React.Component {
                                     {moment(user.joinedAt*1000).format('L')}, {moment(user.joinedAt*1000).format('HH:mm:ss')}
                                     </td>
                                     <td className="users-table-date">
-                                    {user.online ? `obecnie` :
-                                        `${moment(user.lastVisit*1000).format('L')}, ${moment(user.lastVisit*1000).format('HH:mm:ss')}`}
+                                        { `${moment(user.lastVisit*1000).format('L')}, ${moment(user.lastVisit*1000).format('HH:mm:ss')}`}
                                     </td>
                                     <td className="users-table-status">
                                         {user.online ? 'aktywny' : 'nieaktywny'}
