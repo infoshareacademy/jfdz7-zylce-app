@@ -59,6 +59,51 @@ export const toggleBtnName = (eventId, userEvents) => {
     }
 };
 
+export const eventNotification = (userEvents) => {
+    let today = moment().format('L');
+    let tommorow = moment(new Date()).add(1,'days');
+    let tommorowFormated = moment(tommorow).format('L')
+
+    let eventsStartDateArray = userEvents.map( event => {
+        return moment(event.start).format('L');
+    });
+    let eventsAfterStartDateArray = userEvents.map( event => {
+        return moment(event.start).add(1, 'days').format("DD.MM.YYYY");
+    })
+
+    const notificationPopUp = document.querySelector('#notification-popup')
+    const notificationPopUpBtn = document.querySelector('.notification-close-btn')
+    notificationPopUpBtn.addEventListener("click", ()=> notificationPopUp.classList.add('hidden')
+    )
+
+    function isDateMatch(element) {
+        return (element === today);
+    }
+    let isDateMatchToStartDateArray = eventsStartDateArray.some(isDateMatch);
+
+    if(!isDateMatchToStartDateArray){
+
+    }else{
+        notificationPopUp.classList.remove('hidden')
+        document.querySelector('.notification-info').innerHTML = 'Dzisiaj są jakieś wydarzenia w twoim kalendarzu'
+    }
+
+    function isTommorowDateMatch(element) {
+        return (element === tommorowFormated);
+    }
+
+    let isTommorowDateMatchToAfterStartDateArray = eventsStartDateArray.some(isTommorowDateMatch);
+
+    if(!isTommorowDateMatchToAfterStartDateArray){
+        document.querySelector('.notification-tommorow-info').innerHTML = ''
+    }else{
+        notificationPopUp.classList.remove('hidden')
+        document.querySelector('.notification-tommorow-info').innerHTML = 'Jutro są jakieś wydarzenia w twoim kalendarzu'
+    }
+
+
+}
+
 const initialState = {
     data:[],
     newEvent: {

@@ -6,8 +6,7 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 import {connect} from "react-redux";
 
 import {setActiveEvent} from "../state/activeEvent";
-
-import {toggleBtnName} from '../state/users'
+import {toggleBtnName} from '../state/users';
 
 moment.locale('pl');
 BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment));

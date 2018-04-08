@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 
 import SignOutButton from './SignOutButton';
+import {eventNotification} from '../state/users';
+
+import Reminder from '../components/images/reminder.png'
+
 
 class Menu extends React.Component {
 
@@ -50,6 +54,11 @@ class Menu extends React.Component {
         }
     };
 
+    componentDidMount() {
+        //TODO: Tutaj są rzeczy do wyskakującej info o dzisiejszym wydarzeniu
+        let userEvents = this.props.userEvents
+        eventNotification(userEvents)
+    }
     render() {
         return (
             <div className='header'>
@@ -95,6 +104,20 @@ class Menu extends React.Component {
                             </div>
                         </div>
                         <SignOutButton />
+
+                    </div>
+                    {/*TODO: Tu jest element wyskakujący jak jest jakieś wydarzenie*/}
+                    <div id="notification-popup" className="notifications hidden">
+                        <div className="notifications-area">
+                            <span className="notification-close-btn">x</span>
+                            <div className="notification-img-aeria">
+                                <img className="notification-img" src={Reminder} alt="Logo" />
+                            </div>
+                            <div className="notification-messages">
+                                <p className="notification-info"></p>
+                                <p className="notification-tommorow-info"></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -104,5 +127,7 @@ class Menu extends React.Component {
 
 export default connect(
     state => ({
-    user: state.userData.user
-}), {})(Menu)
+        user: state.userData.user,
+        userEvents: state.users.data
+
+    }), {eventNotification})(Menu)

@@ -270,7 +270,7 @@
 
 .event-preview {
     width: 100%;
-    height: 150vh;
+    height: 200vh;
     margin: 5px auto;
     position: fixed;
     z-index: 88;
@@ -288,8 +288,8 @@
     left: 50%;
     transform:translate(-50%, -50%);
     box-shadow: 2px 2px 4px #0e5c90,
-                -2px 2px 4px #0e5c90,
-                -2px -2px 4px #0e5c90;
+    -2px 2px 4px #0e5c90,
+    -2px -2px 4px #0e5c90;
     border-radius: 10px;
     background-color: #ffffff;;
 }
@@ -512,6 +512,68 @@ h3{
     border: 2px solid #0e5c90;
 }
 
+/*Notifications*/
+
+.notifications{
+    position: absolute;
+    top: 120%;
+    right:1%;
+    background-color: #FFEB3B;
+    font-size: 15px;
+    padding: 10px 20px 10px 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 7px #000000;
+
+
+}
+.notifications-area{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.notification-img-aeria{
+    width: 52px;
+    height: 52px;
+    padding-right: 5px;
+}
+.notification-img{
+    width: 50px;
+    padding-right: 10px;
+    animation-name: iconAnimation;
+    animation-duration: 1s;
+    animation-iteration-count: 3;
+
+}
+
+
+@keyframes iconAnimation {
+    0%   {width: 50px;}
+    50%  {width: 40px;}
+    100% {width: 50px;}
+}
+
+
+.notification-messages{
+    display: block;
+    color: #000;
+    font-weight: bold;
+    padding-right: 15px;
+}
+.notification-close-btn{
+    position: absolute;
+    top: 3px;
+    right: 10px;
+    color: #000;
+    border-radius: 50%;
+    cursor: pointer;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
 /*SignUp ana LogIn panel*/
 .auth-input{
     border-radius: 3px;
@@ -706,6 +768,7 @@ h3{
 }
 
 .users-table table {
+    width: 90%;
     border: 3px solid #0e3868;
     border-radius: 5px;
     margin: 0 auto;
@@ -733,11 +796,11 @@ h3{
 }
 
 .users-table .users-table-name {
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .users-table .users-table-date {
-    font-size: 12px;
+    font-size: 10px;
 }
 
 .users-table .users-table-status {
@@ -923,6 +986,7 @@ h3{
 }
 
 
+
 @media (min-width: 731px) and (max-width: 850px) {
     .menu-list a {
         font-size: 13px;
@@ -931,6 +995,11 @@ h3{
 }
 
 @media only screen and (max-width: 768px) {
+    .event-preview {
+        position: absolute;
+        top:60px;
+    }
+
     .user-events{
         display: block;
     }
@@ -938,4 +1007,3 @@ h3{
         width: 100%;
     }
 }
-
