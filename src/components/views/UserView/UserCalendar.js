@@ -35,7 +35,9 @@ class UserCalendar extends Component {
                         picture: event.picture
                     })
                 )}/>
-                <EventPreview />
+                <div className="user-event-preview">
+                    <EventPreview />
+                </div>
             </React.Fragment>
         )
     }
